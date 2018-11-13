@@ -1,0 +1,54 @@
+body
+{
+	background: #346075;
+}
+
+form
+{
+	background: #EEEEEE;
+	margin: 5px auto;
+	max-width: 500px;
+	height: auto;
+	padding: 25px;
+	border :1px solid rgba(0,0,0,0);
+	box-shadow: 6px 6px 0px rgba(0,0,0,0.2) ;
+}
+
+h1
+{
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 15px; 
+	color: rgba(0,0,0,0.5);
+}
+
+input
+{
+	display: block;
+	margin: 10px 0;
+	padding: 5px;
+	width: 100%;
+	border-radius: 10px;
+	border : 2px solid #FFFFFF;
+}
+
+label
+{
+	display: block;
+	margin:1px;
+}
+button
+{
+	display: block;
+	margin: 1px 0;
+	padding: 10px;
+	width: 20%;
+	box-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+}
+
+textarea
+{
+	display: block;
+	margin-bottom: 5px;
+	resize: none;
+}

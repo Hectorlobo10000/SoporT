@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Support\Facades\Auth;
 
 class VerificationController extends Controller
 {
@@ -14,7 +16,7 @@ class VerificationController extends Controller
     |
     | This controller is responsible for handling email verification for any
     | user that recently registered with the application. Emails may also
-    | be re-sent if the user didn't receive the original email message.
+    | be resent if the user did not receive the original email message.
     |
     */
 
@@ -37,5 +39,17 @@ class VerificationController extends Controller
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+    protected function redirectTo()
+    {
+        if(Auth::User()->role_id==1){
+            return route('usuarios.index');
+        }else if(Auth::User()->role_id==2){
+            return route('pending');
+        }else if(Auth::User()->role_id==3){
+            return route('tasks.index');
+        }else if(Auth::User()->role_id==4){
+            return route('boss index');
+        }
     }
 }

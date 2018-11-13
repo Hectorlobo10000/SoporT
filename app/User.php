@@ -1,62 +1,88 @@
 <?php
 
-namespace App;
+/**
+ * Created by Reliese Model.
+ * Date: Thu, 08 Nov 2018 16:41:58 +0000.
+ */
 
+namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * Class User
+ *
+ * @property int $id
+ * @property int $department_id
+ * @property string $name
+ * @property string $email
+ * @property \Carbon\Carbon $email_verified_at
+ * @property string $password
+ * @property string $remember_token
+ * @property string $phone
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ *
+ * @property \App\Department $department
+ * @property \Illuminate\Database\Eloquent\Collection $places
+ * @property \Illuminate\Database\Eloquent\Collection $task_messages
+ * @property \Illuminate\Database\Eloquent\Collection $tasks
+ * @property \Illuminate\Database\Eloquent\Collection $task_types
+ *
+ * @package App
+ */
 class User extends Authenticatable
 {
-    use Notifiable;
+	use Notifiable;
 
-    /** @var array */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'phone',
-        'role_id',
-        'department_id',
+
+	protected $fillable = [
+		'department_id',
+		'role_id',
+		'place_id',
+		'name',
+		'email',
+		'password',
+		'phone'
+	];
+
+	protected $casts = [
+		'department_id' => 'int'
+	];
+
+	protected $hidden = [
+        'password', 'remember_token',
     ];
 
-    /** @var array */
-    protected $cast = [
-        'role_id' => 'int',
-        'department_id' => 'int', 
-    ];
 
-    /** @var array */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
 
-    public function role() {
-        return $this->belongsTo('App\Role');
-    }
+	public function department()
+	{
+		return $this->belongsTo(\App\Department::class);
+	}
+	public function role()
+	{
+		return $this->belongsTo(\App\Role::class);
+	}
 
-    public function department() {
-        return $this->belongsTo('App\Department');
-    }
+	public function place()
+	{
+		return $this->belongsTo(\App\Place::class);
+	}
 
-    public function taskMessages() {
-        return $this->hasMany('App\TaskMessage');
-    }
+	public function task_messages()
+	{
+		return $this->hasMany(\App\TaskMessage::class);
+	}
 
-    public function tasks() {
-        return $this->hasMany('App\Task');
-    }
+	public function tasks()
+	{
+		return $this->hasMany(\App\Task::class);
+	}
 
-    public function place() {
-        return $this->hasOne('App\Place');
-    }
-
-    public function usersPerTaskTypes() {
-        return $this->belongsToMany('App\UserPerTaskType');
-    }
-
-    public function getRoleIdAttribute($value) {
-        return $value;
-    }
+	public function task_types()
+	{
+		return $this->belongsToMany(\App\TaskType::class, 'users_x_task_types');
+	}
 }

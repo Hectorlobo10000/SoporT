@@ -1,23 +1,40 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ * Date: Thu, 08 Nov 2018 16:42:03 +0000.
+ */
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class TaskType
+ *
+ * @property int $id
+ * @property string $name
+ *
+ * @property \Illuminate\Database\Eloquent\Collection $tasks
+ * @property \Illuminate\Database\Eloquent\Collection $users
+ *
+ * @package App
+ */
 class TaskType extends Model
 {
-    protected $table = 'task_types';
+	public $timestamps = false;
 
-    /** @var array */
-    protected $fillable = [
-        'name',
-    ];
+	protected $fillable = [
+		'name'
+	];
 
-    public function tasks() {
-        return $this->hasMany('App\Task');
-    }
+	public function tasks()
+	{
+		return $this->hasMany(\App\Task::class);
+	}
 
-    public function usersPerTaskTypes() {
-        return $this->belongsToMany('App\UserPerTaskType');
-    }
+	public function users()
+	{
+		return $this->belongsToMany(\App\User::class, 'users_x_task_types');
+	}
 }

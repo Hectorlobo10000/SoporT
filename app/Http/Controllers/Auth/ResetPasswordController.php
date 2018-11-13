@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Support\Facades\Auth;
 
 class ResetPasswordController extends Controller
 {
@@ -35,5 +36,17 @@ class ResetPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+    protected function redirectTo()
+    {
+        if(Auth::User()->role_id==1){
+            return route('usuarios.index');
+        }else if(Auth::User()->role_id==2){
+            return route('pending');
+        }else if(Auth::User()->role_id==3){
+            return route('tasks.index');
+        }else if(Auth::User()->role_id==4){
+            return route('boss index');
+        }
     }
 }

@@ -1,19 +1,39 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ * Date: Thu, 08 Nov 2018 16:41:31 +0000.
+ */
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Role
+ *
+ * @property int $id
+ * @property string $name
+ *
+ * @property \Illuminate\Database\Eloquent\Collection $departments
+ *
+ * @package App
+ */
 class Role extends Model
 {
-    protected $table = 'roles';
+	public $incrementing = false;
+	public $timestamps = false;
 
-    /** @var array */
-    protected $fillable = [
-        'name'
-    ];
+	protected $casts = [
+		'id' => 'int'
+	];
 
-    public function users() {
-        return $this->hasMany('App\User');
-    }
+	protected $fillable = [
+		'name'
+	];
+
+	public function users()
+	{
+		return $this->hasMany(\App\User::class);
+	}
 }

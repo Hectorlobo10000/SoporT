@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -22,21 +21,32 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /** @return void */
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    // protected $redirectTo = '/home';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
-
-    public function redirectTo() {
-        if(Auth::user()->role_id == 1){
-            return '/admin/dashboard';
-        }
-        elseif(Auth::user()->role_id == 2) {
-            return '/boss/dashboard';
-        }
-        else {
-            return '/client/dashboard';
+    protected function redirectTo()
+    {
+        if(Auth::User()->role_id==1){
+            return route('usuarios.index');
+        }else if(Auth::User()->role_id==2){
+            return route('pending');
+        }else if(Auth::User()->role_id==3){
+            return route('tasks.index');
+        }else if(Auth::User()->role_id==4){
+            return route('boss index');
         }
     }
 }
