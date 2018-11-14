@@ -1,7 +1,6 @@
 @extends('layouts.app3')
 
 @section('title','Cliente')
-
 <div class="row">
 	<div class="col">
 		<h2 style="margin-top: 40px;margin-left: 40px;">Solicitudes</h1>

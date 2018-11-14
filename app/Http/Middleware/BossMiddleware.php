@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class BossMiddleware
 {
@@ -15,9 +16,10 @@ class BossMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user()->role_id == 4){
-            return redirect()->route('boss index');
+
+        if (Auth::check() && Auth::user()->role_id==4 ){
+            return $next($request);
         }
-        return $next($request);
+        return abort(404);
     }
 }
