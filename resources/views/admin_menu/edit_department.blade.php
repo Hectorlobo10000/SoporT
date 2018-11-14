@@ -7,7 +7,7 @@
   <form method="post" action="{{action('DepartmentController@update',$departamento->id)}}">
 	@csrf
 	@method('PUT')
-	<label>Nombre:</label>
+	<label>Nombre de departamento:</label>
 	<input type="text" name="name" value="{{$departamento->name}}">
     <button type="submit" class="btn btn-info">Modificar</button>
 </form>
