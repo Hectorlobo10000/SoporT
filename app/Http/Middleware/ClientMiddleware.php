@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class ClientMiddleware
 {
@@ -15,9 +16,10 @@ class ClientMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user()->role_id == 3){
-            return redirect()->route('tasks.index');
+
+        if (Auth::check() && Auth::user()->role_id==3 ){
+            return $next($request);
         }
-        return $next($request);
+        return abort(404);
     }
 }
