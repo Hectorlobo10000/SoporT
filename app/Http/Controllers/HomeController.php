@@ -14,6 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth');
     }
 
     /**
@@ -23,6 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('/home');
+        if(Auth::User()->role_id==1){
+            return redirect('usuarios');
+        }else if(Auth::User()->role_id==2){
+            return route('pending');
+        }else if(Auth::User()->role_id==3){
+            return route('tasks.index');
+        }else if(Auth::User()->role_id==4){
+            return route('boss index');
+        }
     }
 }

@@ -14,7 +14,7 @@ class TaskTypeController extends Controller
     public function index()
     {
         $tipos = TaskType::all();
-        return view('admin_menu.activity_types',compact('tipos'));
+        return view('admin_menu.task_types',compact('tipos'));
     }
 
     /**
@@ -61,7 +61,7 @@ class TaskTypeController extends Controller
     public function edit($id)
     {
         $tipo=TaskType::find($id);
-        return view('admin_menu.edit_activity_type',compact('tipo'));
+        return view('admin_menu.edit_task_type',compact('tipo'));
     }
 
     /**
