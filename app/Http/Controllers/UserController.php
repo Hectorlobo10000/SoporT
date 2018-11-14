@@ -2,18 +2,13 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Department;
 use App\User;
 use App\Role;
 use App\Place;
 use App\UsersXTaskType;
 use App\TaskType;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Auth;
-
 
 class UserController extends Controller
 {
@@ -27,7 +22,7 @@ class UserController extends Controller
         $tipos = TaskType::all();
         $usuarios = User::all();
 
-        $rol = User::where('role_id', 1)->get();
+        $rol = User::where('role_id', 4)->get();
         $departamentos = Department::all();
 
         if ($rol->isEmpty()) {
@@ -39,7 +34,7 @@ class UserController extends Controller
 
         else
         {
-            $roles = Role::find([2, 3, 4]);
+            $roles = Role::find([1, 2, 3]);
 
             return view('admin_menu.users',compact('roles','departamentos','usuarios','tipos'));
         }
@@ -73,14 +68,14 @@ class UserController extends Controller
 
         $idrol= Role::where('name', $request->input('roles'))->get();
 
-        if ($idrol[0]->name == 4)
+        if ($idrol[0]->name == 2)
         {
             $usuario = new User(['department_id'=>$iddepto[0]->id,
                                  'role_id'=>$idrol[0]->id,
                                  'place_id'=>$idlugar,
                                  'name'=>$request->input('name'),
                                  'email'=>$request->input('email'),
-                                 'password'=>$request->input('pass'),
+                                 'password'=>Hash::make($request->input('pass')),
                                  'phone'=>$request->input('phone')]);
             $usuario->save();
 
@@ -102,7 +97,7 @@ class UserController extends Controller
                                  'place_id'=>$idlugar,
                                  'name'=>$request->input('name'),
                                  'email'=>$request->input('email'),
-                                 'password'=>$request->input('pass'),
+                                 'password'=>Hash::make($request->input('pass')),
                                  'phone'=>$request->input('phone')]);
             $usuario->save();
         }
