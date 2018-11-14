@@ -14,9 +14,9 @@ class CreateUsersXTaskTypesTable extends Migration {
 	{
 		Schema::create('users_x_task_types', function(Blueprint $table)
 		{
+			$table->increments('id');
 			$table->integer('task_type_id')->unsigned()->index('FK_users_x_task_types_task_types_idx');
 			$table->integer('user_id')->unsigned()->index('FK_users_x_task_types_users_idx');
-			$table->primary(['task_type_id','user_id']);
 		});
 	}
 
