@@ -1,11 +1,9 @@
 <?php
 
-	Route::get('/', function () {
-	    return redirect('/home');
-	});
+
 	Auth::routes();
 	Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-	Route::get('/home','HomeController@index');
+	Route::get('/','HomeController@index');
 	Route::group(['middleware'=>['check.admin.role']], function(){
 		//rutas del admin
 		Route::resource('usuarios','UserController');
