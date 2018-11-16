@@ -14,7 +14,27 @@
     <link href="https://fonts.googleapis.com/css?family=Anton|Righteous|Source+Code+Pro" rel="stylesheet">
 </head>
 <body id="me">
-	@yield('content')
+    <div class="container">
+        <div class="row" id="me-seccion-1">
+            <div class="col-sm" align="left" style="width: 100%">
+                        <br>
+                        <a id="me-titulo" href="#">
+                            <h1>
+                                {{ config('app.name', 'Laravel') }}
+                            </h1>
+                        </a>
+                    </div>
+            <div class="col-sm" align="right" style="width: 100%">
+                <div class="dropdown">
+                    <button class="dropbtn">{{Auth::User()->name}}</button>
+                    <div class="dropdown-content">
+                        <a href="{{ url('/logout') }}">Cerrar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @yield('content')
 </body>
 
 </html>
