@@ -13,7 +13,7 @@ class TaskTypeController extends Controller
      */
     public function index()
     {
-        $tipos = TaskType::all();
+        $tipos = TaskType::paginate(3);
         return view('admin_menu.task_types',compact('tipos'));
     }
 

@@ -57,6 +57,13 @@
 @endforeach
 
 @endsection
+
+@section('paginar')
+
+{{$usuarios->links()}}
+
+@endsection
+
 @section('button','Agregar')
 @section('modal title','Agregar Clientes')
 
@@ -75,14 +82,12 @@
 	<label>Contraseña:</label>
 	<input type="password" name="pass" class="formulario">
 
-	<label>Departamento:</label>
-	<input type="text" name="depto" class="formulario">
-
-	<label>Municipio:</label>
-	<input type="text" name="muni" class="formulario">
-
-	<label>Dirección:</label>
-	<input type="text" name="addres" class="formulario">
+	<label>Lugar:</label>
+	<select class="form-control" name="lugares">
+    @foreach($lugares as $lugar)
+     <option>{{$lugar->domain}},{{$lugar->municipality}},{{$lugar->address}}</option>
+    @endforeach
+    </select>
 
     <label>Rol:</label>
     <select class="form-control" name="roles">

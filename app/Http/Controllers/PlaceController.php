@@ -14,7 +14,7 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        $lugares = Place::all();
+        $lugares = Place::paginate(5);
         return view('admin_menu.places',compact('lugares'));
     }
 

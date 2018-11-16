@@ -48,6 +48,13 @@
 @endforeach
 
 @endsection
+
+@section('paginar')
+
+{{$tipos->links()}}
+
+@endsection
+
 @section('button','Agregar')
 @section('modal title','Agregar Tipo Actvidad')
 

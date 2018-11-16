@@ -2,9 +2,8 @@
 @section('content')
 <div id="me-seccion-2">
 		<nav>
-			<ul>
+			<ul class="menu">
 			    @yield('task bar')
-			    <li></li>
 			</ul>
 		</nav>
 	</div>

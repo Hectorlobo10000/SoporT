@@ -20,7 +20,8 @@ class UserController extends Controller
     public function index()
     {
         $tipos = TaskType::all();
-        $usuarios = User::all();
+        $lugares = Place::all();
+        $usuarios = User::paginate(3);
 
         $rol = User::where('role_id', 4)->get();
         $departamentos = Department::all();
@@ -29,14 +30,14 @@ class UserController extends Controller
 
             $roles = Role::all();
 
-            return view('admin_menu.users',compact('roles','departamentos','usuarios','tipos'));
+            return view('admin_menu.users',compact('roles','departamentos','usuarios','tipos','lugares'));
         }
 
         else
         {
             $roles = Role::find([1, 2, 3]);
 
-            return view('admin_menu.users',compact('roles','departamentos','usuarios','tipos'));
+            return view('admin_menu.users',compact('roles','departamentos','usuarios','tipos','lugares'));
         }
     }
 
@@ -58,11 +59,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $lugar = new Place(['domain'=>$request->input('depto')
-                           ,'municipality'=>$request->input('muni')
-                           ,'address'=>$request->input('addres')]);
-        $lugar->save();
-        $idlugar = $lugar->id;
+        $places = explode(',', $request->input('lugares'));
+
+        $idlugar = Place::where(['domain' => $places[0],
+                               'municipality' => $places[1],
+                               'address' => $places[2]])->get();
 
         $iddepto = Department::where('name', $request->input('dept'))->get();
 
@@ -72,7 +73,7 @@ class UserController extends Controller
         {
             $usuario = new User(['department_id'=>$iddepto[0]->id,
                                  'role_id'=>$idrol[0]->id,
-                                 'place_id'=>$idlugar,
+                                 'place_id'=>$idlugar[0]->id,
                                  'name'=>$request->input('name'),
                                  'email'=>$request->input('email'),
                                  'password'=>Hash::make($request->input('pass')),
@@ -94,15 +95,16 @@ class UserController extends Controller
         {
             $usuario = new User(['department_id'=>$iddepto[0]->id,
                                  'role_id'=>$idrol[0]->id,
-                                 'place_id'=>$idlugar,
+                                 'place_id'=>$idlugar[0]->id,
                                  'name'=>$request->input('name'),
                                  'email'=>$request->input('email'),
                                  'password'=>Hash::make($request->input('pass')),
                                  'phone'=>$request->input('phone')]);
             $usuario->save();
+            return redirect()->route('usuarios.index');
         }
 
-        return redirect()->route('usuarios.index');
+         return redirect()->route('usuarios.index');
     }
 
     /**

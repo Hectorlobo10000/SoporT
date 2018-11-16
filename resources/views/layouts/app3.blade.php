@@ -39,6 +39,7 @@
                  @endif
                     <div class="table-responsive">
                     <table class="table table-bordered">
+
                         <thead>
                             @yield('header')
                         </thead>
@@ -48,6 +49,8 @@
                         </tbody>
                     </table>
 
+                     @yield('paginar')
+                     
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                         @yield('button')
                     </button>

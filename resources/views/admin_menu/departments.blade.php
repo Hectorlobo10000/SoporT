@@ -48,6 +48,13 @@
 @endforeach
 
 @endsection
+
+@section('paginar')
+
+{{$departamentos->links()}}
+
+@endsection
+
 @section('button','Agregar')
 @section('modal title','Agregar Clientes')
 
