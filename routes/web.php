@@ -1,7 +1,7 @@
 <?php
 
 	Route::get('/', function () {
-	    return view('auth.login');
+	    return redirect('/home');
 	});
 	Auth::routes();
 	Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
