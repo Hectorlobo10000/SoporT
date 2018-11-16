@@ -11,6 +11,7 @@
 	@foreach($tasks as $task)
 		@if($task->task_state_id===2)
 		@section('extra fields')
+			<th>Chat</th>
 			<th>Anotación</th>
 			<th><-----</th>
 			<th>-----></th>
@@ -24,6 +25,7 @@
 				<td>{{$task->client->place->municipality}}</td>
 				<td>{{$task->client->place->address}}</td>
 				<td>{{$task->created_at}}</td>
+				<td><a class="btn btn-success" href="#">Chat</a></td>
 				<td><a class="btn btn-secondary" href="{{route('show task annotation',['task'=>$task])}}">mostrar anotación</a></td>
 				<td>
 					<form action="{{route('update task state',['task'=>$task])}}" method="POST" id="form 1 {{$task->id}}">
