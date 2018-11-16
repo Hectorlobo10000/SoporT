@@ -28,10 +28,10 @@
 						{{method_field('PATCH')}}
 	    				{{ csrf_field() }}
 						<input type="hidden" name="task_state_id" value="2">
-						<a  href="javascript:{}" onclick="document.getElementById('form {{$task->id}}').submit(); return false;">mover a iniciadas</a>
+						<a  class="btn btn-info" href="javascript:{}" onclick="document.getElementById('form {{$task->id}}').submit(); return false;">Mover a iniciadas</a>
 					</form>
 				</td>
-				<td><a href="">imprimir ticket</a></td>
+				<td><a class="btn btn-warning" href="">imprimir ticket</a></td>
 			</tr>
 		@endif
 	@endforeach

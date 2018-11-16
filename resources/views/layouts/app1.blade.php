@@ -16,7 +16,7 @@
 <body id="me">
     <div class="container">
         <div class="row" id="me-seccion-1">
-            <div class="col-sm" align="left" style="width: 100%">
+            <div class="col-10" align="left">
                         <br>
                         <a id="me-titulo" href="#">
                             <h1>
@@ -24,9 +24,9 @@
                             </h1>
                         </a>
                     </div>
-            <div class="col-sm" align="right" style="width: 100%">
+            <div class="col-2" align="right">
                 <div class="dropdown">
-                    <button class="dropbtn">{{Auth::User()->name}}</button>
+                    <button class="dropbtn">{{Auth::User()->name}} ▼</button>
                     <div class="dropdown-content">
                         <a href="{{ url('/logout') }}">Cerrar Sesión</a>
                     </div>

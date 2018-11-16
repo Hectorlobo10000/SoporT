@@ -11,14 +11,14 @@
 	<div id="me-seccion-3">
 		<table>
 			<tr>
-				<th>id</th>
-				<th>solicitante</th>
-				<th>asunto</th>
-				<th>descripción</th>
-				<th>departamento</th>
+				<th>ID</th>
+				<th>Solicitante</th>
+				<th>Asunto</th>
+				<th>Descripción</th>
+				<th>Departamento</th>
 				<th>municipio</th>
-				<th>dirección</th>
-				<th>fecha de asignación</th>
+				<th>Dirección</th>
+				<th>Fecha de asignación</th>
 				@yield('extra fields')
 			</tr>
 			@yield('records')
