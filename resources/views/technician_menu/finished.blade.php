@@ -11,8 +11,8 @@
 	@foreach($tasks as $task)
 		@if($task->task_state_id===3)
 			@section('extra fields')
-				<th></th>
 				<th><-----</th>
+				<th></th>
 			@endsection
 			<tr>
 				<td>{{$task->id}}</td>
@@ -23,7 +23,6 @@
 				<td>{{$task->client->place->municipality}}</td>
 				<td>{{$task->client->place->address}}</td>
 				<td>{{$task->created_at}}</td>
-				<td><a href="">imprimir ticket</a></td>
 				<td>
 					<form action="{{route('update task state',['task'=>$task])}}" method="POST" id="form {{$task->id}}">
 						{{method_field('PATCH')}}
@@ -32,6 +31,7 @@
 						<a  href="javascript:{}" onclick="document.getElementById('form {{$task->id}}').submit(); return false;">mover a iniciadas</a>
 					</form>
 				</td>
+				<td><a href="">imprimir ticket</a></td>
 			</tr>
 		@endif
 	@endforeach
