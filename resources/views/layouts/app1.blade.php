@@ -14,9 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Anton|Righteous|Source+Code+Pro" rel="stylesheet">
 </head>
 <body id="me">
-    <div class="container">
         <div class="row" id="me-seccion-1">
-            <div class="col-10" align="left">
+            <div class="col" style="float: left">
                         <br>
                         <a id="me-titulo" href="#">
                             <h1>
@@ -24,16 +23,15 @@
                             </h1>
                         </a>
                     </div>
-            <div class="col-2" align="right">
+            <div class="col" >
                 <div class="dropdown">
-                    <button class="dropbtn">{{Auth::User()->name}} ▼</button>
+                    <a href="#" class="drop-link" style="text-decoration: none; color: #333">{{Auth::User()->name}} ▼</a>
                     <div class="dropdown-content">
                         <a href="{{ url('/logout') }}">Cerrar Sesión</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 	@yield('content')
 </body>
 
