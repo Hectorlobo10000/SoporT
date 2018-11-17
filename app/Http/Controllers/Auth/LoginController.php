@@ -26,7 +26,6 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = '/home';
     protected $redirectTo = '/';
 
     /**
@@ -37,17 +36,5 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
-    }
-    protected function redirectTo()
-    {
-        if(Auth::User()->role_id==1){
-            return route('usuarios.index');
-        }else if(Auth::User()->role_id==2){
-            return route('pending');
-        }else if(Auth::User()->role_id==3){
-            return route('tasks.index');
-        }else if(Auth::User()->role_id==4){
-            return route('boss index');
-        }
     }
 }
