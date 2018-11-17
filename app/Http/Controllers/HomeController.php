@@ -33,6 +33,5 @@ class HomeController extends Controller
         }else if(Auth::User()->role_id==4){
             return redirect()->route('boss index');
         }
-        return redirect('/login');
     }
 }
