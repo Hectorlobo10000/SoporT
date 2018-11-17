@@ -21,7 +21,7 @@ class UserController extends Controller
     {
         $tipos = TaskType::all();
         $lugares = Place::all();
-        $usuarios = User::paginate(3);
+        $usuarios = User::paginate(20);
 
         $rol = User::where('role_id', 4)->get();
         $departamentos = Department::all();
