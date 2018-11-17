@@ -25,7 +25,7 @@
 <tr>
 	<th>Id</th>
 	<th>Nombre</th>
-	<th>Correo</th>
+	<th>E-mail</th>
 	<th>Telefono</th>
 	<th>Departamento</th>
 	<th>Municipio</th>

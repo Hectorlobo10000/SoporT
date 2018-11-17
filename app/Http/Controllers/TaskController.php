@@ -20,7 +20,9 @@ class TaskController extends Controller
         $tasks = Task::all();
         return view('client_menu.tasks',compact('tasks','task_types'));
     }
-
+    public function history(){
+      return view('/client_menu/task_history');
+    }
     /**
      * Show the form for creating a new resource.
      *

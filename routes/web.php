@@ -30,6 +30,8 @@
 		Route::get('/tareas/edit/{task}','TaskController@edit')->name('tasks.edit');
 		Route::put('/tareas/update/{task}','TaskController@update')->name('tasks.update');
 		Route::post('/tareas/store','TaskController@store')->name('tasks.store');
+		Route::get('/tareas/historial','TaskController@history')->name('tasks.history');
+
 	});
 
 	Route::group(['middleware'=>['check.boss.role']], function(){

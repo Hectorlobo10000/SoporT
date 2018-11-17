@@ -33,11 +33,24 @@
         </div>
 
         <div id="page-content-wrapper">
+            <div class="row">
+                    <div class="col">
+                        <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">&#9776;</a>
+                    </div>
+                    <div class="col">
+                        <br>
+                        <div class="dropdown">
+                            <a class="drop-link" >{{Auth::User()->name}} ▼</a>
+                            <div class="dropdown-content">
+                                <a href="{{ url('/logout') }}">Cerrar Sesión</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <div class="container-fluid">
-                 @if(Auth::User()->role_id!=3)
-                    <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">&#9776;</a>
-                 @endif
-                    <div class="table-responsive">
+
+
+                <div class="table-responsive">
                     <table class="table table-bordered">
 
                         <thead>
@@ -50,7 +63,7 @@
                     </table>
 
                      @yield('paginar')
-                     
+
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                         @yield('button')
                     </button>

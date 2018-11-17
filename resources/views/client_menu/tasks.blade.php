@@ -1,31 +1,26 @@
 @extends('layouts.app3')
 
 @section('title','Cliente')
-<div class="row">
-	<div class="col">
-		<h2 style="margin-top: 40px;margin-left: 40px;">Solicitudes</h1>
-	</div>
-	<div class="col">
-		<br>
-		<div class="dropdown">
-		    <a class="dropbtn">{{Auth::User()->name}}</a>
-		    <div class="dropdown-content">
-		        <a href="{{ url('/logout') }}">Cerrar Sesión</a>
-		    </div>
-		</div>
-	</div>
-</div>
+@section('menu')
+<li>
+	<a href="{{route('tasks.index')}}">Solicitudes</a>
+</li>
 
+<li>
+	<a href="{{route('tasks.history')}}">Historial</a>
+</li>
+
+@endsection
 @section('header')
 <tr>
-	<th>id</th>
-	<th>técnico encargado</th>
-	<th>teléfono</th>
-	<th>correo electrónico</th>
-	<th>asunto</th>
-	<th>descripción</th>
-	<th>fecha de la solicitud</th>
-	<th>estado de la solicitud</th>
+	<th>ID</th>
+	<th>Técnico encargado</th>
+	<th>Teléfono</th>
+	<th>E-mail</th>
+	<th>Asunto</th>
+	<th>Descripción</th>
+	<th>Fecha de la solicitud</th>
+	<th>Estado de la solicitud</th>
 	<th>Chat</th>
 	<th>Modificar</th>
 	<th>Eliminar</th>
