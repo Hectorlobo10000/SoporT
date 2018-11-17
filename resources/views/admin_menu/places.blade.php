@@ -26,7 +26,7 @@
 	<th>Id</th>
 	<th>Departamento</th>
 	<th>Municipio</th>
-	<th>Direccion</th>
+	<th>Dirección</th>
 	<th>Modificar</th>
 	<th>Eliminar</th>
 </tr>
