@@ -12,6 +12,10 @@ class PlaceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        date_default_timezone_set('US/Central');
+    }
     public function index()
     {
         $lugares = Place::paginate(20);

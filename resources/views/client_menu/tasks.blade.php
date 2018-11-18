@@ -20,7 +20,7 @@
 	<th>Asunto</th>
 	<th>Descripción</th>
 	<th>Fecha de la solicitud</th>
-	<th>Estado de la solicitud</th>
+	<th>Estado</th>
 	<th>Chat</th>
 	<th>Modificar</th>
 	<th>Eliminar</th>
@@ -42,7 +42,13 @@
 				<td><a class="btn btn-success" href="">Chat</a></td>
 				@if($task->task_state_id == 1)
 					<td><a class="btn btn-warning" href="{{route('tasks.edit',$task->id)}}">Modificar</a></td>
-					<td><a class="btn btn-danger" href="">Eliminar</a></td>
+					<td>
+						<form method="post" action="{{route('tasks.destroy',$task->id)}}">
+							@csrf
+							@method('DELETE')
+							<button type="submit" class="btn btn-danger">Eliminar</button>
+					    </form>
+					</td>
 				@else
 					<td></td>
 					<td></td>
@@ -52,8 +58,10 @@
 		@endif
 	@endforeach
 @endsection
-@section('button','Solicitar Soporte')
-@section('modal title','Solicitar tarea')
+@section('button')
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Solicitar soporte</button>
+@endsection
+@section('modal title','Solicitar soporte')
 
 @section('modal form')
 <form method="post" action="{{route('tasks.store')}}">

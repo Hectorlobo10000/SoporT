@@ -14,6 +14,10 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        date_default_timezone_set('US/Central');
+    }
     public function index()
     {
         $task_types = TaskType::all();
@@ -114,7 +118,7 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
-        return redirect('tasks');
+        return redirect()->route('tasks.index');
     }
 
     private function getTechnicianId(int $task_type_id, int $place_id){

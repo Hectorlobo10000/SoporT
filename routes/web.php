@@ -30,6 +30,7 @@
 		Route::get('/tareas/edit/{task}','TaskController@edit')->name('tasks.edit');
 		Route::put('/tareas/update/{task}','TaskController@update')->name('tasks.update');
 		Route::post('/tareas/store','TaskController@store')->name('tasks.store');
+		Route::delete('/tareas/destroy/{task}','TaskController@destroy')->name('tasks.destroy');
 		Route::get('/tareas/historial','TaskController@history')->name('tasks.history');
 
 	});

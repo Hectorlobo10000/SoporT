@@ -8,6 +8,7 @@ class TechnicianController extends Controller
 {
    	public function __construct()
     {
+        date_default_timezone_set('US/Central');
     }
 	private $tasks;
 

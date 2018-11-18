@@ -11,6 +11,7 @@
 	@foreach($tasks as $task)
 		@if($task->task_state_id===3)
 			@section('extra fields')
+				<th>Chat</th>
 				<th><-----</th>
 				<th></th>
 			@endsection
@@ -23,6 +24,7 @@
 				<td>{{$task->client->place->municipality}}</td>
 				<td>{{$task->client->place->address}}</td>
 				<td>{{$task->created_at}}</td>
+				<td><a class="btn btn-success" href="#">Chat</a></td>
 				<td>
 					<form action="{{route('update task state',['task'=>$task])}}" method="POST" id="form {{$task->id}}">
 						{{method_field('PATCH')}}

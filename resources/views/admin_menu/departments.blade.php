@@ -55,7 +55,9 @@
 
 @endsection
 
-@section('button','Agregar')
+@section('button')
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Agregar</button>
+@endsection
 @section('modal title','Agregar Clientes')
 
 @section('modal form')
