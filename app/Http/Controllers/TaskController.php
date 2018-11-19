@@ -20,9 +20,8 @@ class TaskController extends Controller
     }
     public function index()
     {
-        $task_types = TaskType::all();
         $tasks = Task::all();
-        return view('client_menu.tasks',compact('tasks','task_types'));
+        return view('client_menu.tasks',compact('tasks'));
     }
     public function history(){
       return view('/client_menu/task_history');
@@ -34,7 +33,8 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+      $task_types = TaskType::all();
+      return view('client_menu.add_task',compact('task_types'));
     }
 
     /**

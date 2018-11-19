@@ -40,12 +40,12 @@
 	<td>{{$lugare->domain}}</td>
 	<td>{{$lugare->municipality}}</td>
 	<td>{{$lugare->address}}</td>
-	<td><a class="btn btn-warning" href="{{route('lugares.edit',$lugare->id)}}">Modificar</a></td>
+	<td><a class="btn btn-warning" style="width: 100px;" href="{{route('lugares.edit',$lugare->id)}}">Modificar</a></td>
 	<td>
-		<form method="post" action="{{action('PlaceController@destroy',$lugare->id)}}" style="width: 100%">
+		<form method="post" action="{{action('PlaceController@destroy',$lugare->id)}}" >
 		@csrf
 		@method('DELETE')
-		<button type="submit" class="btn btn-danger" style="width: 100%">Eliminar</button>
+		<button  style="width: 100px" type="submit" class="btn btn-danger">Eliminar</button>
 	    </form>
 	</td>
 </tr>

@@ -31,6 +31,7 @@
 		Route::put('/tareas/update/{task}','TaskController@update')->name('tasks.update');
 		Route::post('/tareas/store','TaskController@store')->name('tasks.store');
 		Route::delete('/tareas/destroy/{task}','TaskController@destroy')->name('tasks.destroy');
+		Route::get('/tareas/create','TaskController@create')->name('tasks.create');
 		Route::get('/tareas/historial','TaskController@history')->name('tasks.history');
 
 	});

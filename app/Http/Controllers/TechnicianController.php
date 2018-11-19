@@ -27,12 +27,7 @@ class TechnicianController extends Controller
 
 
     public function showAnnotation(Task $task){
-      if($task->technician_id==Auth::id()){
         return view('technician_menu.annotation.show',compact('task'));
-      }else{
-        return abort(404);
-      }
-
     }
 
     public function editAnnotation(Task $task){
@@ -47,7 +42,7 @@ class TechnicianController extends Controller
         'annotation'=>'required'
       ]);
       $task->update($request->all());
-      return redirect()->route('show task annotation',compact('task'));
+      return redirect()->route('pending');
     }
 
     public function updateState(Request $request,Task $task){

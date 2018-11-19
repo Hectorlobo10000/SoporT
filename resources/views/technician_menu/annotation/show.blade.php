@@ -1,11 +1,13 @@
-@extends('layouts.app1')
+@extends('layouts.app4')
 @section('content')
-<div id="me-seccion-4">
-	<br><br>
-	<h3>Anotaciones de la tarea {{$task->id}}:</h3>
-	<textarea readonly>{{$task->annotation}}</textarea>
-    <br>
-    <button class="btn btn-dark"><a id="link" href="{{route('pending')}}">Regresar al menu</a></button>
-    <button class="btn btn-dark"><a id="link" href="{{route('edit task annotation',['task'=>$task])}}">Editar</a></button>
-</div>
+
+<form>
+	<h1>Mostrar Anotaciones</h1>
+	<label>Anotaciones de la tarea {{$task->id}}:</label>
+	<textarea readonly class="formulario" style="height: 400px;">{{$task->annotation}}</textarea>
+    <a class="btn btn-secondary" id="link" href="{{route('pending')}}">Regresar al menu</a>
+    <a class="btn btn-warning" id="link" href="{{route('edit task annotation',['task'=>$task])}}">Editar</a>
+</form>
+
+
 @endsection

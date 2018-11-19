@@ -36,9 +36,9 @@
 <tr>
 	<td>{{$departamento->id}}</td>
 	<td>{{$departamento->name}}</td>
-	<td><a class="btn btn-warning" href="{{route('departamentos.edit',$departamento->id)}}">Modificar</a></td>
+	<td><a class="btn btn-warning" style="width: 100px;" href="{{route('departamentos.edit',$departamento->id)}}">Modificar</a></td>
 	<td>
-		<form method="post" action="{{action('DepartmentController@destroy',$departamento->id)}}" style="width: 100%">
+		<form method="post" action="{{action('DepartmentController@destroy',$departamento->id)}}" style="width: 100px;">
 		@csrf
 		@method('DELETE')
 		<button type="submit" class="btn btn-danger" style="width: 100%">Eliminar</button>

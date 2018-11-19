@@ -2,16 +2,24 @@ body {
   overflow-x: hidden;
 }
 
-th
-{
-  text-align:center;
-}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 2px solid #DCDCDC;
 
-td
-{
-  text-align: center;
 }
+th {
+    border: 2px  solid   #DCDCDC;
+    height: 50px;
+    text-align: center;
+    padding:10px;
+}
+td{
+    border: 2px solid #DCDCDC;
+    padding: 5px;
+    text-align: center;
 
+}
 h1
 {
   margin-left: 20px;

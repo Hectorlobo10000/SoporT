@@ -58,27 +58,8 @@
 		@endif
 	@endforeach
 @endsection
-@section('button')
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Solicitar soporte</button>
+@section('btn add')
+<a class="btn btn-primary" href="{{route('tasks.create')}}">Crear Solicitud</a>
 @endsection
-@section('modal title','Solicitar soporte')
 
-@section('modal form')
-<form method="post" action="{{route('tasks.store')}}">
-	@csrf
-    <label>Tipo de solicitud:</label>
-    <select class="form-control" name="task_type_id">
-		@foreach($task_types as $task_type)
-			<option value="{{$task_type->id}}" >{{$task_type->name}}</option>
-		@endforeach
-	</select>
 
-    <input type="hidden" name="client_id" value={{Auth::id()}}>
-
-    <label>Descripción:</label>
-	<input type="text" name="description" class="formulario">
-
-	<button type="button" class="btn btn-danger" data-dismiss="modal" style="float:left">Cancelar</button>
-    <button type="submit" class="btn btn-primary" style="float:right">Agregar</button>
-</form>
-@endsection

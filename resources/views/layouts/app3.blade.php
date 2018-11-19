@@ -16,6 +16,7 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
 
+
 </head>
 
 <body>

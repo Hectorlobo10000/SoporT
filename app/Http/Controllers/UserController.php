@@ -47,14 +47,14 @@ class UserController extends Controller
 
             $roles = Role::all();
 
-            return view('admin_menu.adduser',compact('roles','departamentos','tipos','lugares'));
+            return view('admin_menu.add_user',compact('roles','departamentos','tipos','lugares'));
         }
 
         else
         {
             $roles = Role::find([1, 2, 3]);
 
-          return view('admin_menu.adduser',compact('roles','departamentos','tipos','lugares'));
+          return view('admin_menu.add_user',compact('roles','departamentos','tipos','lugares'));
         }
     }
 
