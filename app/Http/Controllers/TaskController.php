@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Task;
 use App\TaskType;
-use App\User;
+use App\TaskLog;
 use Illuminate\Support\Facades\DB;
 class TaskController extends Controller
 {
@@ -24,7 +24,8 @@ class TaskController extends Controller
         return view('client_menu.tasks',compact('tasks'));
     }
     public function history(){
-      return view('/client_menu/task_history');
+      $task_logs = TaskLog::all();
+      return view('/client_menu/task_history',compact('task_logs'));
     }
     /**
      * Show the form for creating a new resource.
@@ -53,13 +54,20 @@ class TaskController extends Controller
         $place_id = Auth::user()->place_id;
 
         $task = new Task([
-            'task_type_id'=> $task_type_id ,
-            'technician_id'=>$this->getTechnicianId($task_type_id,$place_id),
-            'client_id'=>$request->input('client_id'),
-            'task_state_id' => 1,
-            'description'=> $request->input('description')
+          'task_type_id'=> $task_type_id ,
+          'technician_id'=>$this->getTechnicianId($task_type_id,$place_id),
+          'client_id'=>$request->input('client_id'),
+          'task_state_id' => 1,
+          'description'=> $request->input('description')
         ]);
+
         $task->save();
+        $task_id = $task->id;
+        $task_log = new TaskLog([
+          'task_id' => $task->id,
+          'task_state_id' => $task->task_state_id
+        ]);
+        $task_log->save();
 
         return redirect()->route('tasks.index');
     }

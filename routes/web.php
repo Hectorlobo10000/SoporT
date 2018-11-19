@@ -33,6 +33,8 @@
 		Route::delete('/tareas/destroy/{task}','TaskController@destroy')->name('tasks.destroy');
 		Route::get('/tareas/create','TaskController@create')->name('tasks.create');
 		Route::get('/tareas/historial','TaskController@history')->name('tasks.history');
+		Route::delete('/tareas/historial/destroy/{task_log}','TaskLogController@destroy')->name('task_logs.destroy');
+
 
 	});
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Task;
+use App\TaskLog;
 class TechnicianController extends Controller
 {
    	public function __construct()
@@ -50,6 +51,12 @@ class TechnicianController extends Controller
         'task_state_id'=>'required'
       ]);
       $task->update($request->all());
+      $task->save();
+      $task_log = new TaskLog([
+        'task_id' => $task->id,
+        'task_state_id' => $task->task_state_id
+      ]);
+      $task_log->save();
       return redirect()->back();
     }
 }
