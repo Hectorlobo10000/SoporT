@@ -25,7 +25,6 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TaskMessage extends Model
 {
-	public $timestamps = false;
 
 	protected $casts = [
 		'task_id' => 'int',

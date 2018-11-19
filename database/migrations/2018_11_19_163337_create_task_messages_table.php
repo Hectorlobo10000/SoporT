@@ -18,7 +18,7 @@ class CreateTaskMessagesTable extends Migration {
 			$table->integer('task_id')->unsigned()->index('FK_task_messages_tasks_idx');
 			$table->integer('user_id')->unsigned()->index('FK_task_messages_users_idx');
 			$table->string('content', 300);
-			$table->dateTime('created_at')->nullable();
+			$table->timestamps();
 		});
 	}
 
