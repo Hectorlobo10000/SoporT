@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Http\Requests\PlaceUpdateRequest;
+use App\Http\Requests\PlaceStoreRequest;
 use App\Place;
 
 class PlaceController extends Controller
@@ -12,7 +13,7 @@ class PlaceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
+     public function __construct()
     {
         date_default_timezone_set('US/Central');
     }
@@ -29,7 +30,7 @@ class PlaceController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin_menu.add_place');
     }
 
     /**
@@ -38,7 +39,7 @@ class PlaceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PlaceStoreRequest $request)
     {
 
         $lugar = new Place([
@@ -50,18 +51,6 @@ class PlaceController extends Controller
 
         return redirect()->route('lugares.index');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -80,13 +69,8 @@ class PlaceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Place $lugare)
+    public function update(PlaceUpdateRequest $request, Place $lugare)
     {
-        $request->validate(
-            ['domain'=>'required'],
-            ['municipality'=>'required'],
-            ['address'=>'required']
-        );
         $lugare->domain = $request->input('domain');
         $lugare->municipality = $request->input('municipality');
         $lugare->address = $request->input('address');

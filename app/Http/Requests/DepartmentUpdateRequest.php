@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserStoreRequest extends FormRequest
+class DepartmentUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,19 +23,12 @@ class UserStoreRequest extends FormRequest
      */
     public function rules()
     {
-        return ['name'=>'required',
-                'email'=>'required|unique:users,email',
-                'phone'=>'required'
-               ];
+        return ['name'=>'required'];
     }
 
     
     public function messages()
     {
-        return ['name.required' => 'Nombre es obligatorio',
-                'email.required' => 'Correo es obligatorio',
-                'email.unique' => 'El correo ya existe',
-                'phone.required' => 'El telefono es obligatorio'
-               ];
+        return ['name.required' => 'Nombre es obligatorio'];
     }
 }

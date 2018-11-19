@@ -61,31 +61,9 @@
                             @yield('content')
                         </tbody>
                     </table>
-
-                    @yield('paginar')
-                    @yield('button')
-
                 </div>
-
-
-                <div id="myModal" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-
-                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">@yield('modal title')</h4>
-                        </div>
-
-                        <div class="modal-body">
-                            @yield('modal form')
-                        </div>
-
-                        <div class="modal-footer">
-                        </div>
-
-                    </div>
-                </div>
-                </div>
+                @yield('paginar')
+                @yield('btn add')
             </div>
         </div>
 

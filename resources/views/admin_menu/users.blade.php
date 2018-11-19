@@ -30,7 +30,7 @@
 	<th>Departamento</th>
 	<th>Municipio</th>
 	<th>Direccion</th>
-	<th>Depto. Trabaja</th>
+	<th>Depto Trabaja</th>
 	<th>Rol</th>
 	<th>Acciones</th>
 </tr>
@@ -50,12 +50,9 @@
 	<td>{{$usuario->department->name}}</td>
 	<td>{{$usuario->role->name}}</td>
 	<td>
-		<a class="btn btn-warning" style="width: 100%" href="{{route('usuarios.edit',$usuario->id)}}">Modificar</a>
-		<form method="post" action="{{route('usuarios.destroy',$usuario->id)}}">
-			@csrf
-			@method('DELETE')
-			<button type="submit" class="btn btn-danger" style="width: 100%">Eliminar</button>
-	    </form>	</td>
+		<a class="btn btn-warning" href="{{route('usuarios.edit',$usuario->id)}}">Modificar</a>
+		<a class="btn btn-danger" href="">Eliminar</a>
+	</td>
 </tr>
 @endforeach
 
@@ -67,55 +64,6 @@
 
 @endsection
 
-@section('button')
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Agregar</button>
-@endsection
-@section('modal title','Agregar Clientes')
-
-@section('modal form')
-<form method="post" action="{{route('usuarios.store')}}">
-	@csrf
-	<label>Nombre:</label>
-	<input type="text" name="name" class="formulario">
-
-	<label>Teléfono:</label>
-	<input type="text" name="phone" class="formulario">
-
-	<label>Correo:</label>
-	<input type="email" name="email" class="formulario">
-
-	<label>Contraseña:</label>
-	<input type="password" name="pass" class="formulario">
-
-	<label>Lugar:</label>
-	<select class="form-control" name="lugares">
-    @foreach($lugares as $lugar)
-     <option>{{$lugar->domain}},{{$lugar->municipality}},{{$lugar->address}}</option>
-    @endforeach
-    </select>
-
-    <label>Rol:</label>
-    <select class="form-control" name="roles">
-    @foreach($roles as $role)
-     <option>{{$role->name}}</option>
-    @endforeach
-    </select>
-
-    <label>Departamento:</label>
-	<select class="form-control" name="dept">
-	@foreach($departamentos as $departamento)
-     <option>{{$departamento->name}}</option>
-    @endforeach
-    </select>
-
-    <label>Tipos de actividades (Solo para técnicos):</label>
-    @foreach($tipos as $tipo)
-    <label>
-    	<input type="checkbox" name="tipoact[]" class="tp" value="{{$tipo->id}}">  {{$tipo->name}}
-    </label>
-    @endforeach
-
-	<button type="button" class="btn btn-danger" data-dismiss="modal" style="float:left">Cancelar</button>
-    <button type="submit" class="btn btn-primary" style="float:right">Agregar</button>
-</form>
+@section('btn add')
+<a class="btn btn-primary" href="{{route('usuarios.create')}}">Agregar</a>
 @endsection

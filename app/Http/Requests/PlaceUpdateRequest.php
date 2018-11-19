@@ -4,13 +4,13 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserUpdateRequest extends FormRequest
+class PlaceUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
-     */
+    */
     public function authorize()
     {
         return true;
@@ -23,17 +23,16 @@ class UserUpdateRequest extends FormRequest
      */
     public function rules()
     {
-         return ['name'=>'required',
-                'email'=>'required',
-                'phone'=>'required'
-               ];
+        return ['domain'=>'required',
+                'municipality'=>'required',
+                'address'=>'required'];
     }
 
+    
     public function messages()
     {
-        return ['name.required' => 'Nombre es obligatorio',
-                'email.required' => 'Correo es obligatorio'. $this->tag,
-                'phone.required' => 'El telefono es obligatorio'
-               ];
+        return ['domain.required'=>'El nombre del departamento es obligatorio',
+                'municipality.required'=>'El nombre del municipio es obligatorio',
+                'address.required'=>'La direccion es obligatoria'];
     }
 }

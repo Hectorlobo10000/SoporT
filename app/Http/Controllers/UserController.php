@@ -19,32 +19,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
+     public function __construct()
     {
         date_default_timezone_set('US/Central');
     }
     public function index()
     {
-        $tipos = TaskType::all();
-        $lugares = Place::all();
         $usuarios = User::paginate(20);
 
-        $rol = User::where('role_id', 4)->get();
-        $departamentos = Department::all();
-
-        if ($rol->isEmpty()) {
-
-            $roles = Role::all();
-
-            return view('admin_menu.users',compact('roles','departamentos','usuarios','tipos','lugares'));
-        }
-
-        else
-        {
-            $roles = Role::find([1, 2, 3]);
-
-            return view('admin_menu.users',compact('roles','departamentos','usuarios','tipos','lugares'));
-        }
+        return view('admin_menu.users',compact('usuarios'));
     }
 
     /**
@@ -54,7 +37,25 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $tipos = TaskType::all();
+        $lugares = Place::all();
+
+        $rol = User::where('role_id', 4)->get();
+        $departamentos = Department::all();
+
+        if ($rol->isEmpty()) {
+
+            $roles = Role::all();
+
+            return view('admin_menu.adduser',compact('roles','departamentos','tipos','lugares'));
+        }
+
+        else
+        {
+            $roles = Role::find([1, 2, 3]);
+
+          return view('admin_menu.adduser',compact('roles','departamentos','tipos','lugares'));
+        }
     }
 
     /**
@@ -95,6 +96,7 @@ class UserController extends Controller
                 $tp_x_us->save();
             }
 
+            return redirect()->route('usuarios.index');
         }
 
         else
@@ -109,19 +111,6 @@ class UserController extends Controller
             $usuario->save();
             return redirect()->route('usuarios.index');
         }
-
-         return redirect()->route('usuarios.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -132,8 +121,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $lugares = Place::all();
         $usuario=User::find($id);
-        return view('admin_menu.edit_user',compact('usuario'));
+        return view('admin_menu.edit_user',compact('usuario','lugares'));
     }
 
     /**
@@ -145,11 +135,6 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, $id)
     {
-       $request->validate([ 'name'=>'required', 'phone'=>'required',
-                            'email'=>'required', 'depto'=>'required',
-                            'muni'=>'required', 'addres'=>'required'
-                        ]);
-
         User::find($id)->update($request->except(['depto','muni','addres']));
 
         return redirect()->route('usuarios.index');

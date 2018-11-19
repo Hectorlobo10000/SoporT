@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Http\Requests\TypeTaskStoreRequest;
+use App\Http\Requests\TypeTaskUpdateRequest;
 use App\TaskType;
+
 
 class TaskTypeController extends Controller
 {
@@ -11,7 +14,7 @@ class TaskTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
+     public function __construct()
     {
         date_default_timezone_set('US/Central');
     }
@@ -28,7 +31,7 @@ class TaskTypeController extends Controller
      */
     public function create()
     {
-        //
+         return view('admin_menu.add_typetask');
     }
 
     /**
@@ -37,25 +40,13 @@ class TaskTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TypeTaskStoreRequest $request)
     {
         $tipoact = new TaskType(['name'=>$request->input('name')]);
         $tipoact->save();
 
         return redirect('actividades');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -65,7 +56,7 @@ class TaskTypeController extends Controller
     public function edit($id)
     {
         $tipo=TaskType::find($id);
-        return view('admin_menu.edit_task_type',compact('tipo'));
+        return view('admin_menu.edit_task_types',compact('tipo'));
     }
 
     /**
@@ -75,9 +66,8 @@ class TaskTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TypeTaskUpdateRequest $request, $id)
     {
-        $request->validate(['name'=>'required']);
         $tipo = TaskType::find($id);
         $tipo->name =$request->input('name');
         $tipo->save();

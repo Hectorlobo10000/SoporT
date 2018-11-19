@@ -55,17 +55,7 @@
 
 @endsection
 
-@section('button')
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Agregar</button>
+@section('btn add')
+<a class="btn btn-primary" href="{{route('departamentos.create')}}">Agregar</a>
 @endsection
-@section('modal title','Agregar Clientes')
 
-@section('modal form')
-<form method="post" action="{{route('departamentos.store')}}">
-	@csrf
-	<label>Nombre de departamento:</label>
-	<input type="text" name="name" class="formulario">
-	<button type="button" class="btn btn-danger" data-dismiss="modal" style="float:left">Cancelar</button>
-    <button type="submit" class="btn btn-primary" style="float:right">Agregar</button>
-</form>
-@endsection

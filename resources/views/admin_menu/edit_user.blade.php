@@ -3,30 +3,39 @@
 @section('title','Editar usuario')
 
 @section('content')
-<h1>Editar usuario</h1>
   <form method="post" action="{{route('usuarios.update',$usuario->id)}}">
 	@csrf
 	@method('PUT')
+	<h1>Editar Usuario</h1>
 
-		<label>Nombre:</label>
-	<input type="text" name="name" value="{{$usuario->name}}">
+	<label>Nombre:</label>
+	<input type="text" name="name" class="formulario" value="{{$usuario->name}}">
 
-	<label>Telefono:</label>
-	<input type="text" name="phone" value="{{$usuario->phone}}">
+    @if($errors->has('name'))
+    <div class="alert alert-danger">
+        <span>{{ $errors->first('name')}}</span>
+    </div>
+    @endif
+
+	<label>Teléfono:</label>
+	<input type="text" name="phone" class="formulario" value="{{$usuario->phone}}">
+
+    @if($errors->has('phone'))
+    <div class="alert alert-danger">
+        <span>{{ $errors->first('phone')}}</span>
+    </div>
+    @endif
 
 	<label>Correo:</label>
-	<input type="email" name="email" value="{{$usuario->email}}">
+	<input type="email" name="email" class="formulario" value="{{$usuario->email}}">
 
-	<label>Departamento:</label>
-	<input type="text" name="depto" value="{{$usuario->place->domain}}">
+    @if($errors->has('email'))
+    <div class="alert alert-danger">
+        <span>{{ $errors->first('email')}}</span>
+    </div>
+    @endif
 
-	<label>Municipio:</label>
-	<input type="text" name="muni"value="{{$usuario->place->municipality}}">
-
-	<label>Direccion:</label>
-	<input type="text" name="addres" value="{{$usuario->place->address}}">
-
-    <button type="submit" class="btn btn-info">Modificar</button>
+    <button class="btn btn-primary" type="submit">Crear</button>
 </form>
 
 @endsection

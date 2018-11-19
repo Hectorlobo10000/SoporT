@@ -55,17 +55,7 @@
 
 @endsection
 
-@section('button')
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Agregar</button>
-@endsection
-@section('modal title','Agregar Tipo Actvidad')
 
-@section('modal form')
-<form method="post" action="{{route('actividades.store')}}">
-	@csrf
-	<label>Nombre:</label>
-	<input type="text" name="name" class="formulario">
-	<button type="button" class="btn btn-danger" data-dismiss="modal" style="float:left">Cancelar</button>
-    <button type="submit" class="btn btn-primary" style="float:right">Agregar</button>
-</form>
+@section('btn add')
+<a class="btn btn-primary" href="{{route('actividades.create')}}">Agregar</a>
 @endsection

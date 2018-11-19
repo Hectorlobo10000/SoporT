@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\DepartmentStoreRequest;
+use App\Http\Requests\DepartmentUpdateRequest;
 use App\Department;
 class DepartmentController extends Controller
 {
@@ -11,7 +13,7 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
+     public function __construct()
     {
         date_default_timezone_set('US/Central');
     }
@@ -28,7 +30,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin_menu.add_department');
     }
 
     /**
@@ -37,7 +39,7 @@ class DepartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DepartmentStoreRequest $request)
     {
         $departamento = new Department(
             ['name'=>$request->input('name')
@@ -76,9 +78,8 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Department $departamento)
+    public function update(DepartmentUpdateRequest $request,Department $departamento)
     {
-        $request->validate(['name'=>'required']);
         $departamento->name =$request->input('name');
         $departamento->save();
         return redirect()->route('departamentos.index');

@@ -59,24 +59,6 @@
 
 @endsection
 
-@section('button')
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Agregar</button>
-@endsection
-@section('modal title','Agregar Clientes')
-
-@section('modal form')
-<form method="post" action="{{route('lugares.store')}}">
-	@csrf
-	<label>Departamento:</label>
-	<input type="text" name="domain" class="formulario">
-
-	<label for="municipality">Municipio:</label>
-	<input type="text" name="municipality" class="formulario">
-
-	<label>Dirección:</label>
-	<input type="text" name="address" class="formulario">
-
-	<button type="button" class="btn btn-danger" data-dismiss="modal" style="float:left">Cancelar</button>
-    <button type="submit" class="btn btn-primary" style="float:right">Agregar</button>
-</form>
+@section('btn add')
+<a class="btn btn-primary" href="{{route('lugares.create')}}">Agregar</a>
 @endsection
