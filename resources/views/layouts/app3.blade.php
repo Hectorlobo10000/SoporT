@@ -15,7 +15,8 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/menu_empleado_tabla.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/menu_empleado.css')}}">
 
 </head>
 
@@ -33,7 +34,7 @@
             </ul>
         </div>
 
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper" >
             <div class="row">
                     <div class="col">
                         <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">&#9776;</a>
@@ -48,12 +49,9 @@
                         </div>
                     </div>
                 </div>
-            <div class="container-fluid">
-
-
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-
+            <div id="me-seccion-3">
+                <div class="table-responsive" >
+                    <table>
                         <thead>
                             @yield('header')
                         </thead>
@@ -63,7 +61,9 @@
                         </tbody>
                     </table>
                 </div>
+                <br>
                 @yield('paginar')
+                <br>
                 @yield('btn add')
             </div>
         </div>

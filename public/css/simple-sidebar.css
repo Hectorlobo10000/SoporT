@@ -2,24 +2,6 @@ body {
   overflow-x: hidden;
 }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
-    border: 2px solid #DCDCDC;
-
-}
-th {
-    border: 2px  solid   #DCDCDC;
-    height: 50px;
-    text-align: center;
-    padding:10px;
-}
-td{
-    border: 2px solid #DCDCDC;
-    padding: 5px;
-    text-align: center;
-
-}
 h1
 {
   margin-left: 20px;
@@ -198,11 +180,6 @@ h1
 .btn-warning
 {
   display: block;
-  margin: 5px;
-}
-.btn-danger
-{
-  display: block;
-  margin: 5px;
+  margin-bottom: 5px;
 }
 

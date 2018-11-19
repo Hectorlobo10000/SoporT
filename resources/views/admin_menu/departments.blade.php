@@ -36,12 +36,13 @@
 <tr>
 	<td>{{$departamento->id}}</td>
 	<td>{{$departamento->name}}</td>
-	<td><a class="btn btn-warning" style="width: 100px;" href="{{route('departamentos.edit',$departamento->id)}}">Modificar</a></td>
-	<td>
-		<form method="post" action="{{action('DepartmentController@destroy',$departamento->id)}}" style="width: 100px;">
+	<td width="100px">
+		<a class="btn btn-warning"href="{{route('departamentos.edit',$departamento->id)}}" style="width: 100px">Modificar</a></td>
+	<td width="100px">
+		<form method="post" action="{{action('DepartmentController@destroy',$departamento->id)}}">
 		@csrf
 		@method('DELETE')
-		<button type="submit" class="btn btn-danger" style="width: 100%">Eliminar</button>
+		<button type="submit" style="width: 100px" class="btn btn-danger">Eliminar</button>
 	    </form>
 	</td>
 </tr>

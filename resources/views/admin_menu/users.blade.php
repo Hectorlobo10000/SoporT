@@ -49,12 +49,12 @@
 	<td>{{$usuario->place->address}}</td>
 	<td>{{$usuario->department->name}}</td>
 	<td>{{$usuario->role->name}}</td>
-	<td>
-		<a class="btn btn-warning" style="width: 100%" href="{{route('usuarios.edit',$usuario->id)}}">Modificar</a>
+	<td  width="100px">
+		<a class="btn btn-warning" style="width: 100px" href="{{route('usuarios.edit',$usuario->id)}}">Modificar</a>
 		<form method="post" action="{{route('usuarios.destroy',$usuario->id)}}">
 			@csrf
 			@method('DELETE')
-			<button type="submit" class="btn btn-danger" style="width: 100%">Eliminar</button>
+			<button type="submit" class="btn btn-danger" style="width: 100px">Eliminar</button>
 	    </form>
 	</td>
 </tr>

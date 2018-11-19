@@ -36,12 +36,14 @@
 <tr>
 	<td>{{$tipo->id}}</td>
 	<td>{{$tipo->name}}</td>
-	<td><a class="btn btn-warning" style="width: 100px;" href="{{route('actividades.edit',$tipo->id)}}">Modificar</a></td>
-	<td>
-		<form method="post" action="{{action('TaskTypeController@destroy',$tipo->id)}}" style="width: 100px;">
+	<td  width="100px">
+		<a class="btn btn-warning" style="width: 100px;" href="{{route('actividades.edit',$tipo->id)}}">Modificar</a>
+	</td>
+	<td  width="100px">
+		<form method="post" action="{{action('TaskTypeController@destroy',$tipo->id)}}">
 		@csrf
 		@method('DELETE')
-		<button type="submit" class="btn btn-danger" style="width: 100px;">Eliminar</button>
+		<button type="submit" class="btn btn-danger" style="width: 100px">Eliminar</button>
 	    </form>
 	</td>
 </tr>
