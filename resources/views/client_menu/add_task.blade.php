@@ -13,10 +13,16 @@
         @endforeach
     </select>
 
+
     <input type="hidden" name="client_id" value={{Auth::id()}}>
 
     <label>Descripción:</label>
     <textarea maxlength="1000" name="description" class="formulario" style="height: 400px; "></textarea>
+    @if($errors->has('description'))
+    <div class="alert alert-danger">
+        <span>{{ $errors->first('description')}}</span>
+    </div>
+    @endif
     <button type="submit" class="btn btn-primary">Crear</button>
 </form>
 

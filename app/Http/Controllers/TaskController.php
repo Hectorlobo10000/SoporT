@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\TaskStoreRequest;
+use App\Http\Requests\TaskUpdateRequest;
 use App\Task;
 use App\TaskType;
 use App\TaskLog;
@@ -44,7 +46,7 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TaskStoreRequest $request)
     {
         $request->validate([
             'task_type_id'=>'required',
@@ -101,7 +103,7 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Task $task)
+    public function update(TaskUpdateRequest $request,Task $task)
     {
         $request->validate([
             'task_type_id'=>'required',

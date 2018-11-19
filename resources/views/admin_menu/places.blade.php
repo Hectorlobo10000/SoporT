@@ -23,7 +23,7 @@
 
 @section('header')
 <tr>
-	<th>Id</th>
+	<th>#</th>
 	<th>Departamento</th>
 	<th>Municipio</th>
 	<th>Dirección</th>
@@ -33,10 +33,13 @@
 @endsection
 
 @section('content')
-
+<?php $counter = 0; ?>
 @foreach($lugares as $lugare)
+<?php
+	$counter = $counter +1;
+?>
 <tr>
-	<td>{{$lugare->id}}</td>
+	<td>{{$counter}}</td>
 	<td>{{$lugare->domain}}</td>
 	<td>{{$lugare->municipality}}</td>
 	<td>{{$lugare->address}}</td>

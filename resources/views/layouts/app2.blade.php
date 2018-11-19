@@ -11,7 +11,8 @@
 	<div id="me-seccion-3">
 		<table>
 			<tr>
-				<th>ID</th>
+				<th>#</th>
+				<th>Código</th>
 				<th>Solicitante</th>
 				<th>Asunto</th>
 				<th>Descripción</th>

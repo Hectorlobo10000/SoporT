@@ -23,7 +23,7 @@
 
 @section('header')
 <tr>
-	<th>Id</th>
+	<th>#</th>
 	<th>Nombre</th>
 	<th>E-mail</th>
 	<th>Telefono</th>
@@ -37,10 +37,13 @@
 @endsection
 
 @section('content')
-
+<?php $counter = 0; ?>
 @foreach($usuarios as $usuario)
+<?php
+	$counter = $counter +1;
+?>
 <tr>
-	<td>{{$usuario->id}}</td>
+	<td>{{$counter}}</td>
 	<td>{{$usuario->name}}</td>
 	<td>{{$usuario->email}}</td>
 	<td>{{$usuario->phone}}</td>

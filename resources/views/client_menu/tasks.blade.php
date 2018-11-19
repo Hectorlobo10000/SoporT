@@ -13,7 +13,8 @@
 @endsection
 @section('header')
 <tr>
-	<th>ID</th>
+	<th>#</th>
+	<th>Código</th>
 	<th>Técnico encargado</th>
 	<th>Teléfono</th>
 	<th>E-mail</th>
@@ -28,10 +29,16 @@
 @endsection
 
 @section('content')
+<?php $counter = 0; ?>
 	@foreach($tasks as $task)
+
 		@if(Auth::id()==$task->client_id)
+		<?php
+			$counter = $counter + 1;
+		?>
 			<tr>
-				<td>{{$task->id}}</td>
+				<td>{{$counter}}</td>
+				<td>{{'000'.$task->id}}</td>
 				<td>{{$task->technician->name}}</td>
 				<td>{{$task->technician->phone}}</td>
 				<td>{{$task->technician->email}}</td>

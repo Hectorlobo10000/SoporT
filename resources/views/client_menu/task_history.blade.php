@@ -22,7 +22,7 @@
 		@if(Auth::id()==$task_log->task->client_id)
 			<tr>
 				<td>
-					La solicitud {{$task_log->task_id}} paso a estar {{$task_log->task_state->name}}. Fecha: {{$task_log->created_at}}
+					La solicitud {{'000'.$task_log->task_id}} paso a estar {{$task_log->task_state->name}}. Fecha: {{$task_log->created_at}}
 				</td>
 				<td>
 					<form method="post" action="{{route('task_logs.destroy',$task_log->id)}}">

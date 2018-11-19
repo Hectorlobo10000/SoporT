@@ -15,8 +15,12 @@
 	</select>
 
 	<label>Descripción:</label>
-	<input type="text" name="description" value="{{$task->description}}">
-
+	<textarea maxlength="1000" name="description" class="formulario" style="height: 400px;">{{$task->description}}</textarea>
+    @if($errors->has('description'))
+    <div class="alert alert-danger">
+        <span>{{ $errors->first('description')}}</span>
+    </div>
+    @endif
     <button type="submit" class="btn btn-info">Modificar</button>
 </form>
 

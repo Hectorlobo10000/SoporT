@@ -23,7 +23,7 @@
 
 @section('header')
 <tr>
-	<th>Id</th>
+	<th>#</th>
 	<th>Tipo Actvidad</th>
 	<th>Modificar</th>
 	<th>Eliminar</th>
@@ -31,10 +31,13 @@
 @endsection
 
 @section('content')
-
+<?php $counter = 0; ?>
 @foreach($tipos as $tipo)
+<?php
+	$counter = $counter +1;
+?>
 <tr>
-	<td>{{$tipo->id}}</td>
+	<td>{{$counter}}</td>
 	<td>{{$tipo->name}}</td>
 	<td  width="100px">
 		<a class="btn btn-warning" style="width: 100px;" href="{{route('actividades.edit',$tipo->id)}}">Modificar</a>
