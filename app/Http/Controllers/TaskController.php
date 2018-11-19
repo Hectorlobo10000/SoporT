@@ -62,7 +62,6 @@ class TaskController extends Controller
         ]);
 
         $task->save();
-        $task_id = $task->id;
         $task_log = new TaskLog([
           'task_id' => $task->id,
           'task_state_id' => $task->task_state_id
