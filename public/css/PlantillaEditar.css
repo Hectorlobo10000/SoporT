@@ -86,13 +86,12 @@ h1
   padding: 5px;
   width: 100%;
   border-radius: 10px;
-  border : 2px solid #CCCCCC;
+  border : 2px solid grey;
   background: #FFFFFF;
 }
 .chat{
   width: 100%;
-  border-radius: 10px;
-  border : 2px solid #CCCCCC;
+  border : 2px solid grey;
   height: 500px;
   float: center;
   background-color: #FAEBD7;
@@ -113,9 +112,7 @@ h1
 }
 .chateando-con{
   width: 100%;
-  background-color: white;
-  border: 2px solid #CCCCCC;
-  border-radius: 10px;
+  background-color: transparent;
   text-align: center;
 }
 .mensaje-div-receiver{

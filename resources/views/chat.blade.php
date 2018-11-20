@@ -2,7 +2,8 @@
 @section('title','Chat')
 @section('content')
 <h1>Tarea {{'000'.$task->id}}</h1>
-<div class="container">
+<div class="container" style="background-color: #CCCCCC;border-radius: 10px;
+  border : 2px solid grey;">
 	@if(Auth::user()->role_id==2)
 		<div class="chateando-con"><p style="margin: 5px">Chateando con {{$task->client->name}}</p></div>
 	@elseif(Auth::user()->role_id==3)
