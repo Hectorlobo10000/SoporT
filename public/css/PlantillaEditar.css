@@ -81,7 +81,7 @@ h1
 	border : 2px solid #CCCCCC;
 	background: #FFFFFF;
 }
-.formulario2{
+.form2{
   display: block;
   padding: 5px;
   width: 100%;
@@ -93,28 +93,26 @@ h1
   width: 100%;
   height: 500px;
   float: center;
-  background-color: #FAEBD7;
+  background-color: #F0F8FF;
   overflow: auto;
 }
-.texto{
+.text{
     width: 100%;
 
 }
-.mensaje-div-sender{
+.message-container-sender{
+  text-align: right;
+}
+.message-div-sender{
   display: inline-block;
-  background-color: #90EE90;
+  background-color: #87CEEB;
   border-radius: 10px;
   margin: 5px;
   width: auto;
   border : 2px solid #CCCCCC;
   left: 0;
 }
-.chateando-con{
-  width: 100%;
-  background-color: transparent;
-  text-align: center;
-}
-.mensaje-div-receiver{
+.message-div-receiver{
   display: inline-block;
   background-color: white;
   border-radius: 10px;
@@ -122,7 +120,11 @@ h1
   width: auto;
   border : 2px solid #CCCCCC;
 }
-.mensaje{
+.chatting-with{
+  width: 100%;
+  background-color: transparent;
+}
+.message{
   margin: 10px;
 }
 .btn-enviar{
@@ -135,10 +137,14 @@ h1
   background-color: transparent;
   color: #000000;
   display: block;
+
 }
 .btn-enviar:hover {
-  background-image: url(../images/enviar-hover.png);
   border: 1px solid grey;
+}
+.btn-enviar:active{
+    background-image: url(../images/enviar-hover.png);
+
 }
 
 label
