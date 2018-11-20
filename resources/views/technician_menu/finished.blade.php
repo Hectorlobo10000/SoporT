@@ -29,13 +29,13 @@
 				<td>{{$task->client->place->municipality}}</td>
 				<td>{{$task->client->place->address}}</td>
 				<td>{{$task->created_at}}</td>
-				<td><a class="btn btn-success" href="{{route('chat.index',$task->id)}}">Chat</a></td>
+				<td><a class="btn btn-info" href="{{route('chat.index',$task->id)}}">Chat</a></td>
 				<td>
 					<form action="{{route('update task state',['task'=>$task])}}" method="POST" id="form {{$task->id}}">
 						{{method_field('PATCH')}}
 	    				{{ csrf_field() }}
 						<input type="hidden" name="task_state_id" value="2">
-						<a  class="btn btn-info" href="javascript:{}" onclick="document.getElementById('form {{$task->id}}').submit(); return false;">Mover a iniciadas</a>
+						<a  class="btn btn-success" href="javascript:{}" onclick="document.getElementById('form {{$task->id}}').submit(); return false;">Mover a iniciadas</a>
 					</form>
 				</td>
 				<td><a class="btn btn-warning" href="">imprimir ticket</a></td>
