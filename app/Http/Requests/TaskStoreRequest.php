@@ -31,7 +31,6 @@ class TaskStoreRequest extends FormRequest
 
     public function messages()
     {
-        return ['description.required' => 'La descripción es obligatoria',
-               ];
+        return ['description.required' => 'La descripción es obligatoria',];
     }
 }

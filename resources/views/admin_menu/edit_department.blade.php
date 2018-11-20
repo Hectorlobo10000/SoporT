@@ -4,7 +4,7 @@
 
 @section('content')
 <h1>Editar departamento</h1>
-  <form method="post" action="{{action('DepartmentController@update',$departamento->id)}}">
+  <form class="form" method="post" action="{{action('DepartmentController@update',$departamento->id)}}">
 	@csrf
 	@method('PUT')
         <h1>Editar Departamento</h1>

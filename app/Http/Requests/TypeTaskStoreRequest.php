@@ -26,7 +26,7 @@ class TypeTaskStoreRequest extends FormRequest
         return ['name'=>'required'];
     }
 
-    
+
     public function messages()
     {
         return ['name.required' => 'Nombre es obligatorio'];

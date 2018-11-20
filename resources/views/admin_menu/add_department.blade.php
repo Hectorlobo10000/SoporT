@@ -3,7 +3,7 @@
 @section('title','Agregar usuario')
 
 @section('content')
-<form method="post" action="{{route('departamentos.store')}}">
+<form class="form" method="post" action="{{route('departamentos.store')}}">
     @csrf
     <h1>Agregar Departamento</h1>
     <label>Nombre de departamento:</label>

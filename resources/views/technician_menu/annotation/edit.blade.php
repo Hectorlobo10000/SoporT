@@ -3,7 +3,7 @@
 @section('content')
 
 
-<form action="{{route('update task annotation',['task'=>$task])}}" method="POST">
+<form class="form" action="{{route('update task annotation',['task'=>$task])}}" method="POST">
     {{method_field('PATCH')}}
     {{ csrf_field() }}
     <h1>Editar Anotaciones</h1>

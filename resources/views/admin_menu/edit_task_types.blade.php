@@ -4,7 +4,7 @@
 
 @section('content')
 <h1>Editar tipo de actividad</h1>
-  <form method="post" action="{{action('TaskTypeController@update',$tipo->id)}}">
+  <form class="form" method="post" action="{{action('TaskTypeController@update',$tipo->id)}}">
 	@csrf
 	@method('PUT')
     <h1>Editar Tipo De Actividad</h1>

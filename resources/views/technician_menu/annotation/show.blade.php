@@ -1,7 +1,7 @@
 @extends('layouts.app4')
 @section('content')
 
-<form>
+<form class="form">
 	<h1>Mostrar Anotaciones</h1>
 	<label>Anotaciones de la tarea {{'000'.$task->id}}:</label>
 	<textarea readonly class="formulario" style="height: 400px;">{{$task->annotation}}</textarea>

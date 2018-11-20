@@ -46,7 +46,7 @@
 				<td>{{$task->description}}</td>
 				<td>{{$task->created_at}}</td>
 				<td>{{$task->task_state->name}}</td>
-				<td><a class="btn btn-success" href="">Chat</a></td>
+				<td><a class="btn btn-success" href="{{route('chat.index',$task->id)}}">Chat</a></td>
 				@if($task->task_state_id == 1)
 					<td><a class="btn btn-warning" href="{{route('tasks.edit',$task->id)}}">Modificar</a></td>
 					<td>

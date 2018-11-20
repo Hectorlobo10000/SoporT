@@ -4,7 +4,7 @@
 
 @section('content')
 <h1>Editar lugar</h1>
-  <form method="post" action="{{action('PlaceController@update',$lugare->id)}}">
+  <form class="form" method="post" action="{{action('PlaceController@update',$lugare->id)}}">
 	@csrf
 	@method('PUT')
         <h1>Editar Lugar</h1>

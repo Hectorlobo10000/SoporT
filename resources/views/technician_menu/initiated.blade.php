@@ -30,7 +30,7 @@
 				<td>{{$task->client->place->municipality}}</td>
 				<td>{{$task->client->place->address}}</td>
 				<td>{{$task->created_at}}</td>
-				<td><a class="btn btn-success" href="#">Chat</a></td>
+				<td><a class="btn btn-success" href="{{route('chat.index',$task->id)}}">Chat</a></td>
 				<td><a class="btn btn-secondary" href="{{route('show task annotation',['task'=>$task])}}">mostrar anotación</a></td>
 				<td>
 					<form action="{{route('update task state',['task'=>$task])}}" method="POST" id="form 1 {{$task->id}}">

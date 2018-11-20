@@ -34,12 +34,12 @@
 		Route::get('/tareas/create','TaskController@create')->name('tasks.create');
 		Route::get('/tareas/historial','TaskController@history')->name('tasks.history');
 		Route::delete('/tareas/historial/destroy/{task_log}','TaskLogController@destroy')->name('task_logs.destroy');
-
-
 	});
 
 	Route::group(['middleware'=>['check.boss.role']], function(){
 		//rutas del jefe
 		Route::get('/inicio-jefe','BossController@index')->name('boss index');
 	});
+	Route::get('/chat/{task}','TaskMessageController@index')->name('chat.index');
+	Route::post('/chat/store','TaskMessageController@store')->name('chat.store');
 ?>

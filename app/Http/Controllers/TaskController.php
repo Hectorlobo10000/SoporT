@@ -117,6 +117,13 @@ class TaskController extends Controller
         $task->save();
         return redirect()->route('tasks.index');
     }
+    public function showChat(Task $task) {
+        /* if($task->technician_id==Auth::id()){ */
+          return view('chat.chat', compact('task'));
+        /* }else{
+          return abort(404);
+        } */
+    }
 
     /**
      * Remove the specified resource from storage.
