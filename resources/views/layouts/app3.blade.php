@@ -37,7 +37,7 @@
         <div id="page-content-wrapper" >
             <div class="row">
                     <div class="col">
-                        <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">&#9776;</a>
+                        <a href="#menu-toggle" class="btn btn-normal" id="menu-toggle">&#9776;</a>
                     </div>
                     <div class="col">
                         <br>

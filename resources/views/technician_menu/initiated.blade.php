@@ -30,14 +30,14 @@
 				<td>{{$task->client->place->municipality}}</td>
 				<td>{{$task->client->place->address}}</td>
 				<td>{{$task->created_at}}</td>
-				<td><a class="btn btn-success" href="{{route('chat.index',$task->id)}}">Chat</a></td>
-				<td><a class="btn btn-secondary" href="{{route('show task annotation',['task'=>$task])}}">mostrar anotación</a></td>
+				<td><a class="btn btn-normal" href="{{route('chat.index',$task->id)}}">Chat</a></td>
+				<td><a class="btn btn-info" href="{{route('show task annotation',['task'=>$task])}}">mostrar anotación</a></td>
 				<td>
 					<form action="{{route('update task state',['task'=>$task])}}" method="POST" id="form 1 {{$task->id}}">
 						{{method_field('PATCH')}}
 	    				{{ csrf_field() }}
 						<input type="hidden" name="task_state_id" value="1">
-						<a class="btn btn-info" href="javascript:{}" onclick="document.getElementById('form 1 {{$task->id}}').submit(); return false;">Mover a pendientes</a>
+						<a class="btn btn-success" href="javascript:{}" onclick="document.getElementById('form 1 {{$task->id}}').submit(); return false;">Mover a pendientes</a>
 					</form>
 				</td>
 				<td>
@@ -45,7 +45,7 @@
 						{{method_field('PATCH')}}
 	    				{{ csrf_field() }}
 						<input type="hidden" name="task_state_id" value="3">
-						<a class="btn btn-info" href="javascript:{}" onclick="document.getElementById('form 2 {{$task->id}}').submit(); return false;">Mover a finalizadas</a>
+						<a class="btn btn-success" href="javascript:{}" onclick="document.getElementById('form 2 {{$task->id}}').submit(); return false;">Mover a finalizadas</a>
 					</form>
 				</td>
 			</tr>

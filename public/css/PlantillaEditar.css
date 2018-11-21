@@ -11,11 +11,7 @@ body
 	padding: 25px;
 	border :1px solid rgba(0,0,0,0);
 }
-.area-escribir-chat{
-  margin: 1px auto;
-  height: auto;
-  border :1px solid rgba(0,0,0,0);
-}
+
 h1
 {
 	text-align: center;
@@ -81,71 +77,7 @@ h1
 	border : 2px solid #CCCCCC;
 	background: #FFFFFF;
 }
-.form2{
-  display: block;
-  padding: 5px;
-  width: 100%;
-  border-radius: 10px;
-  border : 2px solid #CCCCCC;
-  background: #FFFFFF;
-}
-.chat{
-  width: 100%;
-  height: 500px;
-  float: center;
-  background-color: #F0F8FF;
-  overflow: auto;
-}
-.text{
-    width: 100%;
 
-}
-.message-container-sender{
-  text-align: right;
-}
-.message-div-sender{
-  display: inline-block;
-  background-color: #87CEEB;
-  border-radius: 10px;
-  margin: 5px;
-  width: auto;
-  border : 2px solid #CCCCCC;
-  left: 0;
-}
-.message-div-receiver{
-  display: inline-block;
-  background-color: white;
-  border-radius: 10px;
-  margin: 5px;
-  width: auto;
-  border : 2px solid #CCCCCC;
-}
-.chatting-with{
-  width: 100%;
-  background-color: transparent;
-}
-.message{
-  margin: 10px;
-}
-.btn-enviar{
-  background: url("../images/enviar.png");
-  background-size: 100%;
-  margin-top: 5px;
-  margin-left: 20px;
-  height: 50px;
-  width: 50px;
-  background-color: transparent;
-  color: #000000;
-  display: block;
-
-}
-.btn-enviar:hover {
-  border: 1px solid grey;
-}
-.btn-enviar:active{
-    background-image: url(../images/enviar-hover.png);
-
-}
 
 label
 {
@@ -175,4 +107,24 @@ select
   border-radius: 10px;
   border : 2px solid #CCCCCC;
   background: #FFFFFF;
+}
+.btn{
+  background-color: #5F9EA0;
+  border-color: #5F9EA0;
+  color: #ffffff;
+}
+.btn:hover{
+  background-color: #008080;
+  border-color: #008080;
+  color: #ffffff;
+}
+.btn:focus{
+  background-color: #008080;
+  border-color: #00664d;
+  color: #ffffff;
+}
+.btn:active{
+  background-color: #008080;
+  border-color: #00664d;
+  color: #ffffff;
 }
