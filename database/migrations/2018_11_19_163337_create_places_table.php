@@ -18,6 +18,7 @@ class CreatePlacesTable extends Migration {
 			$table->string('domain', 50);
 			$table->string('municipality', 50);
 			$table->string('address', 50);
+			$table->softDeletes();
 			$table->timestamps();
 		});
 	}

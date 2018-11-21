@@ -8,6 +8,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Place
@@ -27,6 +28,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Place extends Model
 {
+	use SoftDeletes;
+
 
 	protected $fillable = [
 		'domain',

@@ -9,6 +9,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class User
@@ -56,6 +57,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $dates = ['deleted_at'];
+
 
 
 	public function department()
@@ -69,7 +72,7 @@ class User extends Authenticatable
 
 	public function place()
 	{
-		return $this->belongsTo(\App\Place::class);
+		return $this->belongsTo(\App\Place::class)-> withTrashed ( );
 	}
 
 	public function task_messages()
