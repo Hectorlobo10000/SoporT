@@ -46,7 +46,7 @@
 				<td>{{$task->description}}</td>
 				<td>{{$task->created_at}}</td>
 				<td>{{$task->task_state->name}}</td>
-				<td><a class="btn btn-info" href="{{route('chat.index',$task->id)}}">Chat</a></td>
+				<td><a class="btn btn-normal" href="{{route('chat.index',$task->id)}}">Chat</a></td>
 				@if($task->task_state_id == 1)
 					<td><a class="btn btn-warning" href="{{route('tasks.edit',$task->id)}}">Modificar</a></td>
 					<td>
@@ -66,7 +66,7 @@
 	@endforeach
 @endsection
 @section('btn add')
-<a class="btn btn-primary" href="{{route('tasks.create')}}">Crear Solicitud</a>
+<a class="btn btn-normal" href="{{route('tasks.create')}}">Crear Solicitud</a>
 @endsection
 
 

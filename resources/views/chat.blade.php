@@ -1,7 +1,7 @@
 @extends('layouts/app4')
 @section('title','Chat')
 @section('content')
-
+<link rel="stylesheet" type="text/css" href="{{asset('css/chat.css')}}">
 <h1>Tarea {{'000'.$task->id}}</h1>
 <div class="container" style="background-color:#5F9EA0; border-radius: 10px;
   border : 2px solid grey;">

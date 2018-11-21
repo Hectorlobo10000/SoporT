@@ -29,8 +29,8 @@
 				<td>{{$task->client->place->municipality}}</td>
 				<td>{{$task->client->place->address}}</td>
 				<td>{{$task->created_at}}</td>
-				<td><a class="btn btn-info" href="{{route('chat.index',$task->id)}}">Chat</a></td>
-				<td><a class="btn btn-secondary" href="{{route('show task annotation',['task'=>$task])}}">Mostrar</a></td>
+				<td><a class="btn btn-normal" href="{{route('chat.index',$task->id)}}">Chat</a></td>
+				<td><a class="btn btn-info" href="{{route('show task annotation',['task'=>$task])}}">Mostrar</a></td>
 				<td>
 					{{-- formulario que envia el nuevo estado de la tarea...se utiliza una id con cuyo nombre utiliza la id del task para identificar el formulario --}}
 					<form action="{{route('update task state',['task'=>$task])}}" method="POST" id="form {{$task->id}}">
