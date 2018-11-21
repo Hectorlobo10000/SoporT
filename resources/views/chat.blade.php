@@ -1,28 +1,45 @@
 @extends('layouts/app4')
 @section('title','Chat')
 @section('content')
+
 <h1>Tarea {{'000'.$task->id}}</h1>
-<div class="container" style="background-color: #CCCCCC;border-radius: 10px;
+<div class="container" style="background-color:#5F9EA0; border-radius: 10px;
   border : 2px solid grey;">
 	@if(Auth::user()->role_id==2)
-		<div class="chatting-with"><h4 style="margin: 5px; color: #696969">Chateando con {{$task->client->name}}</h4></div>
+		<div class="chatting-with"><h4 style="margin: 5px; color: #FFFFFF">Chateando con {{$task->client->name}}</h4></div>
 	@elseif(Auth::user()->role_id==3)
-		<div class="chatting-with"><h4 style="margin: 5px; color: #696969">Chateando con {{$task->technician->name}}</h4></div>
+		<div class="chatting-with"><h4 style="margin: 5px; color: #FFFFFF">Chateando con {{$task->technician->name}}</h4></div>
 	@endif
-	<div class="chat">
+	<div class="chat" id="chat" onLoad="window.scroll(0, 150)">
 		@foreach($task_messages as $task_message)
 			@if($task_message->task_id == $task->id)
 				@if(Auth::id()==$task_message->user_id)
 					<div class="message-container-sender">
 						<div class="message-div-sender">
-							<p  class="message">{{$task_message->content}}</p>
+							<div class="row">
+								<div class="col">
+									<p  class="message">{{$task_message->content}}</p>
+								</div>
+								<div class="col-1">
+									<span class="time-sender">{{substr($task_message->created_at,11,-3)}}</span>
+								</div>
+								<span class="message-triangle-sender"></span>
+							</div>
 						</div>
 						<br>
 					</div>
 				@elseif(Auth::id()==$task_message->task->technician_id || Auth::id()==$task_message->task->client_id)
 					<div class="message-container-receiver">
 						<div class="message-div-receiver">
-							<p  class="message">{{$task_message->content}}</p>
+							<div class="row">
+								<span class="message-triangle-receiver"></span>
+								<div class="col">
+									<p  class="message">{{$task_message->content}}</p>
+								</div>
+								<div class="col-1">
+									<span class="time-receiver">{{substr($task_message->created_at,11,-3)}}</span>
+								</div>
+							</div>
 						</div>
 						<br>
 					</div>
@@ -35,7 +52,7 @@
 			@csrf
 			<div class="row">
 				<div class="col-11" style="margin-right:  -20px">
-					<textarea  class="form2" name="content" placeholder="Escribe un mensaje aqui..."></textarea>
+					<textarea  class="form2" maxlength="1000" name="content" placeholder="Escribe un mensaje aqui..."></textarea>
 				</div>
 				<div class="col-1">
 					<input type="hidden" name="task_id" value="{{$task->id}}">
@@ -45,4 +62,8 @@
 		</form>
 	</div>
 </div>
+<script type="text/javascript">
+	var objDiv = document.getElementById("chat");
+objDiv.scrollTop = objDiv.scrollHeight;
+</script>
 @endsection

@@ -8,6 +8,10 @@ use App\TaskMessage;
 
 class TaskMessageController extends Controller
 {
+    public function __construct()
+    {
+        date_default_timezone_set('US/Central');
+    }
     public function index(Task $task){
     	$task_messages = TaskMessage::all();
         return view('chat',compact('task','task_messages'));
