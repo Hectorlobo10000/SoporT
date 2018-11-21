@@ -3,8 +3,7 @@
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('css/chat.css')}}">
 <h1>Tarea {{'000'.$task->id}}</h1>
-<div class="container" style="background-color:#5F9EA0; border-radius: 10px;
-  border : 2px solid grey;">
+<div class="container container-chat">
 	@if(Auth::user()->role_id==2)
 		<div class="chatting-with"><h4 style="margin: 5px; color: #FFFFFF">Chateando con {{$task->client->name}}</h4></div>
 	@elseif(Auth::user()->role_id==3)
