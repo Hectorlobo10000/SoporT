@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/menu_empleado.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/menu_empleado_tabla.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/side-bar-horizontal.css')}}">
+    <link href="{{ asset('css/boss_menu.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Anton|Righteous|Source+Code+Pro" rel="stylesheet">
 </head>
 <body id="me">

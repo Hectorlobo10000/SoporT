@@ -15,7 +15,7 @@
         <span>{{ $errors->first('name')}}</span>
     </div>
     @endif
-    <button type="submit" class="btn btn-info">Modificar</button>
+    <button type="submit" class="btn btn-normal">Modificar</button>
    </form>
 
 @endsection

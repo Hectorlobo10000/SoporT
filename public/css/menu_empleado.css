@@ -99,3 +99,7 @@
 .active a{
     color: white;
 }
+
+.btn{
+    margin: 2px;
+}

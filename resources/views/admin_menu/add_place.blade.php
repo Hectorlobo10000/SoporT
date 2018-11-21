@@ -30,6 +30,6 @@
     </div>
     @endif
 
-    <button type="submit" class="btn btn-primary">Crear</button>
+    <button type="submit" class="btn btn-normal">Crear</button>
 </form>
 @endsection

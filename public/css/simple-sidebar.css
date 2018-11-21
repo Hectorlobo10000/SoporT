@@ -180,23 +180,3 @@ h1
   margin-bottom: 5px;
 }
 
-.btn-normal{
-  background-color: #5F9EA0;
-  border-color: #5F9EA0;
-  color: #ffffff;
-}
-.btn-normal:hover{
-  background-color: #008080;
-  border-color: #008080;
-  color: #ffffff;
-}
-.btn-normal:focus{
-  background-color: #008080;
-  border-color: #00664d;
-  color: #ffffff;
-}
-.btn-normal:active{
-  background-color: #008080;
-  border-color: #00664d;
-  color: #ffffff;
-}

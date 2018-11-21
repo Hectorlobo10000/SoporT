@@ -71,7 +71,7 @@
     </label>
     @endforeach
 
-    <button class="btn btn-primary" type="submit">Crear</button>
+    <button class="btn btn-normal" type="submit">Crear</button>
 </form>
 
 @endsection

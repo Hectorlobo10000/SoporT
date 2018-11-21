@@ -35,7 +35,7 @@
     </div>
     @endif
 
-    <button class="btn btn-primary" type="submit">Crear</button>
+    <button class="btn btn-normal" type="submit">Modificar</button>
 </form>
 
 @endsection
