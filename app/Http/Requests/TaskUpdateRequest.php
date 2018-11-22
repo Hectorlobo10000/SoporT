@@ -25,7 +25,6 @@ class TaskUpdateRequest extends FormRequest
     {
         return [
                     'description'=>'required',
-                    // 'technician_id' =>'required'
                ];
     }
 
@@ -34,7 +33,6 @@ class TaskUpdateRequest extends FormRequest
     {
         return [
             'description.required' => 'La descripción es obligatoria',
-            // 'technician_id.required' => 'No hay un técnico disponible en este momento. Intente mas tarde.',
         ];
     }
 }
