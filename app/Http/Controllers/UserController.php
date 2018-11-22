@@ -66,33 +66,24 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-        $places = explode(',', $request->input('lugares'));
-
-        $idlugar = Place::where(['domain' => $places[0],
-                               'municipality' => $places[1],
-                               'address' => $places[2]])->get();
-
-        $iddepto = Department::where('name', $request->input('dept'))->get();
-
-        $idrol= Role::where('name', $request->input('roles'))->get();
-
-        if ($idrol[0]->name == 2)
+        $role_id= $request->input('role_id');
+        if ($role_id == 2)
         {
-            $usuario = new User(['department_id'=>$iddepto[0]->id,
-                                 'role_id'=>$idrol[0]->id,
-                                 'place_id'=>$idlugar[0]->id,
+            $user = new User(['department_id'=>$request->input('department_id'),
+                                 'role_id'=>$role_id,
+                                 'place_id'=>$request->input('place_id'),
                                  'name'=>$request->input('name'),
                                  'email'=>$request->input('email'),
                                  'password'=>Hash::make($request->input('pass')),
                                  'phone'=>$request->input('phone')]);
-            $usuario->save();
+            $user->save();
 
-            $iduser = $usuario->id;
+            $user_id = $user->id;
 
             $tipact = $request->input('tipoact');
 
             for ($i=0; $i < count($tipact) ; $i++) {
-                $tp_x_us = new UsersXTaskType(['task_type_id'=>$tipact[$i],'user_id'=>$iduser]);
+                $tp_x_us = new UsersXTaskType(['task_type_id'=>$tipact[$i],'user_id'=>$user_id]);
                 $tp_x_us->save();
             }
 
@@ -101,14 +92,14 @@ class UserController extends Controller
 
         else
         {
-            $usuario = new User(['department_id'=>$iddepto[0]->id,
-                                 'role_id'=>$idrol[0]->id,
-                                 'place_id'=>$idlugar[0]->id,
+            $user = new User(['department_id'=>$request->input('department_id'),
+                                 'role_id'=>$role_id,
+                                 'place_id'=>$request->input('place_id'),
                                  'name'=>$request->input('name'),
                                  'email'=>$request->input('email'),
                                  'password'=>Hash::make($request->input('pass')),
                                  'phone'=>$request->input('phone')]);
-            $usuario->save();
+            $user->save();
             return redirect()->route('usuarios.index');
         }
     }

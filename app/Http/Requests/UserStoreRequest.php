@@ -25,17 +25,19 @@ class UserStoreRequest extends FormRequest
     {
         return ['name'=>'required',
                 'email'=>'required|unique:users,email',
-                'phone'=>'required'
+                'phone'=>'required',
+                'pass' => 'required'
                ];
     }
 
-    
+
     public function messages()
     {
-        return ['name.required' => 'Nombre es obligatorio',
-                'email.required' => 'Correo es obligatorio',
-                'email.unique' => 'El correo ya existe',
-                'phone.required' => 'El telefono es obligatorio'
+        return ['name.required' => 'El nombre es obligatorio',
+                'email.required' => 'El correo es obligatorio',
+                'email.unique' => 'El correo ya esta en uso',
+                'phone.required' => 'El telefono es obligatorio',
+                'pass.required' => 'La contraseña es obligatoria'
                ];
     }
 }

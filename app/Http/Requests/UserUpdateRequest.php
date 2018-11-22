@@ -24,8 +24,9 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
          return ['name'=>'required',
-                'email'=>'required',
-                'phone'=>'required'
+                'email'=>'required|unique:users,email',
+                'phone'=>'required',
+                'pass' => 'required'
                ];
     }
 
@@ -33,7 +34,9 @@ class UserUpdateRequest extends FormRequest
     {
         return ['name.required' => 'Nombre es obligatorio',
                 'email.required' => 'Correo es obligatorio'. $this->tag,
-                'phone.required' => 'El telefono es obligatorio'
+                'email.unique' => 'Este correo ya esta en uso',
+                'phone.required' => 'El telefono es obligatorio',
+                'pass.required' => 'La contraseña es obligatoria'
                ];
     }
 }

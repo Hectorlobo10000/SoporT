@@ -3,6 +3,18 @@
 @section('title','Agregar usuario')
 
 @section('content')
+<script type="text/javascript">
+ $(document).ready(function(){
+    $("#role").change(function(){
+        if ($('#role_id').val() == '2' || $('#role_id').val() == 2 ) {
+            $("#tipos-actividad").show("fast"); //Slide Down Effect
+        }
+        else {
+            $("#tipos-actividad").hide("fast");    //Slide Up Effect
+        }
+    });
+});
+</script>
   <form class="form" method="post" action="{{route('usuarios.store')}}">
 	@csrf
 	<h1>Agregar Usuario</h1>
@@ -37,41 +49,40 @@
 	<label>Contraseña:</label>
 	<input type="password" name="pass" class="formulario">
 
-     @if($errors->has('password'))
+     @if($errors->has('pass'))
     <div class="alert alert-danger">
-        <span>{{ $errors->first('password')}}</span>
+        <span>{{ $errors->first('pass')}}</span>
     </div>
     @endif
 
 	<label>Lugar:</label>
-	<select class="form-control" name="lugares">
+	<select class="form-control" name="place_id">
     @foreach($lugares as $lugar)
-     <option>{{$lugar->domain}},{{$lugar->municipality}},{{$lugar->address}}</option>
+     <option value="{{$lugar->id}}" >{{$lugar->domain.' | '.$lugar->municipality.' | '.$lugar->address}}</option>
     @endforeach
     </select>
 
     <label>Rol:</label>
-    <select class="form-control" name="roles">
+    <select class="form-control" id="role_id" name="role_id">
     @foreach($roles as $role)
-     <option>{{$role->name}}</option>
+     <option value="{{$role->id}}" >{{$role->name}}</option>
     @endforeach
     </select>
 
     <label>Departamento:</label>
-	<select class="form-control" name="dept">
+	<select class="form-control" name="department_id">
 	@foreach($departamentos as $departamento)
-     <option>{{$departamento->name}}</option>
+     <option value="{{$departamento->id}}">{{$departamento->name}}</option>
     @endforeach
     </select>
-
-    <label>Tipos de actividades (Solo para técnicos):</label>
-    @foreach($tipos as $tipo)
-    <label>
-    	<input type="checkbox" name="tipoact[]" class="tp" value="{{$tipo->id}}">  {{$tipo->name}}
-    </label>
-    @endforeach
-
+    <div id="tipos-actividad">
+        <label>Tipos de actividades (Solo para técnicos):</label>
+        @foreach($tipos as $tipo)
+        <label>
+            <input type="checkbox" name="tipoact[]" class="tp" value="{{$tipo->id}}">  {{$tipo->name}}
+        </label>
+        @endforeach
+    </div>
     <button class="btn btn-normal" type="submit">Crear</button>
 </form>
-
 @endsection

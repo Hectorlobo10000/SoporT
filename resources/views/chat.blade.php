@@ -64,5 +64,39 @@
 <script type="text/javascript">
 	var objDiv = document.getElementById("chat");
 objDiv.scrollTop = objDiv.scrollHeight;
+// $('#form-message').on('submit', function(e){
+//     e.preventDefault();
+//     var $this = $(this);
+
+//     $.ajax({
+//         url: $this.prop('action'),
+//         method: 'POST',
+//         data: $this.serialize(),
+//     }).done(function(response){
+
+//     }).error(function(err){
+
+//     });
+// });
+$( "#form-message" ).submit(function( event ) {
+
+        // Stop form from submitting normally
+        event.preventDefault();
+
+        // Get some values from elements on the page:
+        var $form = $( this ),
+            term1= $form.find( "input[name='task_id']" ).val(),
+            term2= $form.find( "input[name='content']" ).val(),
+            url = $form.attr( "action" );
+
+        // Send the data using post
+        var posting = $.post( url, { s: term1 } );
+        var posting = $.post( url, { s: term2 } );
+        // Put the results in a div
+        posting.done(function( data ) {
+            var content = $( data ).find( "#content" );
+            $( "#chat" ).empty().append( content );
+        });
+    });
 </script>
 @endsection
