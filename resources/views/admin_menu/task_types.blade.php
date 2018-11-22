@@ -24,7 +24,7 @@
 @section('header')
 <tr>
 	<th>#</th>
-	<th>Tipo Actvidad</th>
+	<th>Actvidad</th>
 	<th>Modificar</th>
 	<th>Eliminar</th>
 </tr>

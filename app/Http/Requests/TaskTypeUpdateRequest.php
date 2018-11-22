@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TaskUpdateRequest extends FormRequest
+class TaskTypeUpdateRequest extends FormRequest
 {
     public function authorize()
     {
@@ -13,16 +13,15 @@ class TaskUpdateRequest extends FormRequest
 
     public function rules()
     {
-        return [
-                    'description'=>'required',
-               ];
+        return ['name'=>'required|unique:task_types,name'];
     }
 
 
     public function messages()
     {
         return [
-            'description.required' => 'La descripción es obligatoria',
+            'name.required' => 'Nombre es obligatorio',
+            'name.unique' => 'Este tipo de actividad ya fue agregado'
         ];
     }
 }

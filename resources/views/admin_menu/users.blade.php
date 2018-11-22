@@ -39,6 +39,7 @@
 @section('content')
 <?php $counter = 0; ?>
 @foreach($usuarios as $usuario)
+@if($usuario->id != Auth::id())
 <?php
 	$counter = $counter +1;
 ?>
@@ -61,6 +62,7 @@
 	    </form>
 	</td>
 </tr>
+@endif
 @endforeach
 
 @endsection

@@ -3,22 +3,10 @@
 @section('title','Agregar usuario')
 
 @section('content')
-<script type="text/javascript">
- $(document).ready(function(){
-    $("#role").change(function(){
-        if ($('#role_id').val() == '2' || $('#role_id').val() == 2 ) {
-            $("#tipos-actividad").show("fast"); //Slide Down Effect
-        }
-        else {
-            $("#tipos-actividad").hide("fast");    //Slide Up Effect
-        }
-    });
-});
+<h1>Agregar usuario</h1>
 </script>
   <form class="form" method="post" action="{{route('usuarios.store')}}">
 	@csrf
-	<h1>Agregar Usuario</h1>
-
 	<label>Nombre:</label>
 	<input type="text" name="name" class="formulario" value="{{old('name')}}">
 
@@ -49,7 +37,7 @@
 	<label>Contraseña:</label>
 	<input type="password" name="pass" class="formulario">
 
-     @if($errors->has('pass'))
+    @if($errors->has('pass'))
     <div class="alert alert-danger">
         <span>{{ $errors->first('pass')}}</span>
     </div>
@@ -61,6 +49,11 @@
      <option value="{{$lugar->id}}" >{{$lugar->domain.' | '.$lugar->municipality.' | '.$lugar->address}}</option>
     @endforeach
     </select>
+    @if($errors->has('place_id'))
+    <div class="alert alert-danger">
+        <span>{{ $errors->first('place_id')}}</span>
+    </div>
+    @endif
 
     <label>Rol:</label>
     <select class="form-control" id="role_id" name="role_id">
@@ -68,6 +61,11 @@
      <option value="{{$role->id}}" >{{$role->name}}</option>
     @endforeach
     </select>
+    @if($errors->has('role_id'))
+    <div class="alert alert-danger">
+        <span>{{ $errors->first('role_id')}}</span>
+    </div>
+    @endif
 
     <label>Departamento:</label>
 	<select class="form-control" name="department_id">
@@ -75,6 +73,11 @@
      <option value="{{$departamento->id}}">{{$departamento->name}}</option>
     @endforeach
     </select>
+    @if($errors->has('department_id'))
+    <div class="alert alert-danger">
+        <span>{{ $errors->first('department_id')}}</span>
+    </div>
+    @endif
     <div id="tipos-actividad">
         <label>Tipos de actividades (Solo para técnicos):</label>
         @foreach($tipos as $tipo)
@@ -82,6 +85,11 @@
             <input type="checkbox" name="tipoact[]" class="tp" value="{{$tipo->id}}">  {{$tipo->name}}
         </label>
         @endforeach
+         @if($errors->has('tipoact[]'))
+        <div class="alert alert-danger">
+            <span>{{ $errors->first('tipoact[]')}}</span>
+        </div>
+        @endif
     </div>
     <button class="btn btn-normal" type="submit">Crear</button>
 </form>

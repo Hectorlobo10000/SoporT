@@ -29,7 +29,8 @@
                 <div class="dropdown">
                     <a href="#" class="drop-link" style="text-decoration: none; color: #333">{{Auth::User()->name}} ▼</a>
                     <div class="dropdown-content">
-                        <a href="{{ url('/logout') }}">Cerrar Sesión</a>
+                        <a href="{{ route('edit.profile',Auth::id()) }}">Editar perfil</a>
+                        <a style="border-top: 1px solid #d3d3d3" href="{{ url('/logout') }}">Cerrar sesión</a>
                     </div>
                 </div>
             </div>

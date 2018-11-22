@@ -10,11 +10,7 @@ use App\TaskType;
 use App\TaskLog;
 use Illuminate\Support\Facades\DB;
 class TaskController extends Controller{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function __construct()
     {
         date_default_timezone_set('US/Central');
@@ -28,23 +24,13 @@ class TaskController extends Controller{
       $task_logs = TaskLog::all();
       return view('/client_menu/task_history',compact('task_logs'));
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
       $task_types = TaskType::all();
       return view('client_menu.add_task',compact('task_types'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(TaskStoreRequest $request)
     {
         $task_type_id = $request->input('task_type_id');
@@ -73,36 +59,17 @@ class TaskController extends Controller{
         return redirect()->route('tasks.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Task $task)
     {
         $task_types = TaskType::all();
         return view('client_menu.edit_task',compact('task','task_types'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(TaskUpdateRequest $request,Task $task)
     {
         $task_type_id = $request->input('task_type_id');
@@ -116,13 +83,6 @@ class TaskController extends Controller{
         return redirect()->route('tasks.index');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Task $task)
     {
         $task->delete();

@@ -3,9 +3,9 @@
 @section('title','Agregar usuario')
 
 @section('content')
+<h1>Agregar lugar</h1>
 <form class="form" method="post" action="{{route('lugares.store')}}">
     @csrf
-    <h1>Agregar Lugar</h1>
     <label>Departamento:</label>
     <input type="text" name="domain" class="formulario">
      @if($errors->has('domain'))

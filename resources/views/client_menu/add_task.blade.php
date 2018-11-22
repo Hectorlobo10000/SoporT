@@ -3,9 +3,9 @@
 @section('title','Crear Solicitud')
 
 @section('content')
+<h1>Crear solicitud</h1>
 <form method="post" action="{{route('tasks.store')}}">
     @csrf
-    <h1>Crear Solicitud</h1>
     @if($errors->has('description'))
     <div class="alert alert-danger">
         <span>{{ $errors->first('description')}}</span>

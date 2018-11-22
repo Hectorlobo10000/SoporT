@@ -3,9 +3,9 @@
 @section('title','Agregar usuario')
 
 @section('content')
+<h1>Agregar actividad</h1>
 <form class="form" method="post" action="{{route('actividades.store')}}">
     @csrf
-    <h1>Agregar Tipos De Actividades</h1>
     <label>Nombre:</label>
     <input type="text" name="name" class="formulario">
      @if($errors->has('name'))

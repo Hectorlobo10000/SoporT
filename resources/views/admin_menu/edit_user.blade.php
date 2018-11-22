@@ -3,10 +3,10 @@
 @section('title','Editar usuario')
 
 @section('content')
+<h1>Editar Usuario</h1>
   <form class="form" method="post" action="{{route('usuarios.update',$usuario->id)}}">
 	@csrf
 	@method('PUT')
-	<h1>Editar Usuario</h1>
 
 	<label>Nombre:</label>
 	<input type="text" name="name" class="formulario" value="{{$usuario->name}}">

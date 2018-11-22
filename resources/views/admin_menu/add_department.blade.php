@@ -3,9 +3,9 @@
 @section('title','Agregar usuario')
 
 @section('content')
+<h1>Agregar departamento</h1>
 <form class="form" method="post" action="{{route('departamentos.store')}}">
     @csrf
-    <h1>Agregar Departamento</h1>
      @if($errors->has('name'))
     <div class="alert alert-danger">
         <span>{{ $errors->first('name')}}</span>

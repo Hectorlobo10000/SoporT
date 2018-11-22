@@ -3,11 +3,10 @@
 @section('title','Editar solicitud')
 
 @section('content')
-
-  <form method="post" action="{{route('tasks.update',$task->id)}}">
+<h1>Editar solicitud</h1>
+<form method="post" action="{{route('tasks.update',$task->id)}}">
 	@csrf
 	@method('PUT')
-	<h1>Editar solicitud</h1>
 	@if($errors->has('technician_id') && !($errors->has('description')))
     <div class="alert alert-danger">
         <span>{{ $errors->first('technician_id')}}</span>

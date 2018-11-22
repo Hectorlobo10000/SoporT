@@ -7,7 +7,6 @@
   <form class="form" method="post" action="{{action('PlaceController@update',$lugare->id)}}">
 	@csrf
 	@method('PUT')
-        <h1>Editar Lugar</h1>
 	<label>Departamento:</label>
 	<input type="text" name="domain" value="{{$lugare->domain}}" class="formulario">
 	@if($errors->has('domain'))
