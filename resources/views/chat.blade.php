@@ -58,7 +58,7 @@
 				</div>
 				<div class="col-1">
 					<input type="hidden" name="task_id" value="{{$task->id}}">
-					<a href="javascript:{}" onclick="document.getElementById('form-message').submit(); return false;" class="btn-enviar"></a>
+					<button class="btn btn-link btn-enviar"></button>
 				</div>
 			</div>
 		</form>
@@ -67,20 +67,7 @@
 <script type="text/javascript">
 	var objDiv = document.getElementById("chat");
 objDiv.scrollTop = objDiv.scrollHeight;
-// $('#form-message').on('submit', function(e){
-//     e.preventDefault();
-//     var $this = $(this);
 
-//     $.ajax({
-//         url: $this.prop('action'),
-//         method: 'POST',
-//         data: $this.serialize(),
-//     }).done(function(response){
-
-//     }).error(function(err){
-
-//     });
-// });
 $( "#form-message" ).submit(function( event ) {
 
         // Stop form from submitting normally
