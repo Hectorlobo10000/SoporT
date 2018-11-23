@@ -1,7 +1,9 @@
 @extends('layouts.app4')
 
 @section('title','Editar lugar')
-
+@section('return')
+    {{route('lugares.index')}}
+@endsection
 @section('content')
 <h1>Editar lugar</h1>
   <form class="form" method="post" action="{{action('PlaceController@update',$lugare->id)}}">

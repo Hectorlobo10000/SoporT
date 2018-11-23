@@ -22,22 +22,49 @@ h1
 	margin-bottom: 5px;
 	color: rgba(0,0,0,0.5);
 }
+
+.back-link {
+    margin-top: 19px;
+    margin-left: 40px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.back-link:hover {
+    background-color: #ddd;
+    text-decoration: none;
+}
+
+.dropdown{
+    position : fixed;
+    top      : 24px;
+    right    : 40px;
+    display: inline-block;
+    background-color: #5F9EA0;
+    border-radius: 10px;
+}
+.dropdown:hover{
+    background-color: #008080;
+
+}
 .drop-link{
     padding: 16px;
     font-size: 16px;
     border: none;
-    cursor: pointer;
-}
-/* The container <div> - needed to position the dropdown content */
-.dropdown{
-    margin-top: 24px;
-    margin-right: 40px;
-    float: right;
-    display: inline-block;
+    color: white;
+
 }
 
-/* Dropdown Content (Hidden by Default) */
+.drop-link:hover{
+      text-decoration: none;
+          color: white;
+
+}
+
+
+
 .dropdown-content {
+    margin-top: 15px;
     display: none;
     position: absolute;
     background-color: #f1f1f1;
@@ -46,7 +73,6 @@ h1
     z-index: 1;
 }
 
-/* Links inside the dropdown */
 .dropdown-content a {
     text-align: center;
     color: black;
@@ -55,15 +81,12 @@ h1
     display: block;
 }
 
-/* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #ddd }
 
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
     color: black;
 }
@@ -112,21 +135,25 @@ select
   background: #FFFFFF;
 }
 .btn{
+      padding: 8px 16px;
+
+}
+.btn-normal{
   background-color: #5F9EA0;
   border-color: #5F9EA0;
   color: #ffffff;
 }
-.btn:hover{
+.btn-normal:hover{
   background-color: #008080;
   border-color: #008080;
   color: #ffffff;
 }
-.btn:focus{
+.btn-normal:focus{
   background-color: #008080;
   border-color: #00664d;
   color: #ffffff;
 }
-.btn:active{
+.btn-normal:active{
   background-color: #008080;
   border-color: #00664d;
   color: #ffffff;

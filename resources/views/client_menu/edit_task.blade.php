@@ -1,7 +1,9 @@
 @extends('layouts.app4')
 
 @section('title','Editar solicitud')
-
+@section('return')
+    {{route(tasks.index)}}
+@endsection
 @section('content')
 <h1>Editar solicitud</h1>
 <form method="post" action="{{route('tasks.update',$task->id)}}">

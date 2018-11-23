@@ -59,11 +59,22 @@ class TaskController extends Controller{
         return redirect()->route('tasks.index');
     }
 
-    public function show($id)
+    public function showDescription(Task $task)
     {
-        //
+      return view('show_task_description',compact('task'));
     }
-
+    public function editDescription(Task $task){
+      return view('client_menu/edit_task_description',compact('task'));
+    }
+     public function updateDescription(Request $request,Task $task){
+      $request->validate([
+        'description'=>'required'
+      ],[
+        'description.required' => 'La descripción es obligatoria'
+      ]);
+      $task->update($request->all());
+      return redirect()->route('show.description', $task->id);
+    }
     public function edit(Task $task)
     {
         $task_types = TaskType::all();

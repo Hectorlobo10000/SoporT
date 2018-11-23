@@ -39,11 +39,8 @@ class TechnicianController extends Controller
       }
     }
     public function updateAnnotation(Request $request,Task $task){
-      $request->validate([
-        'annotation'=>'required'
-      ]);
       $task->update($request->all());
-      return redirect()->route('pending');
+      return redirect()->route('show task annotation', $task->id);
     }
 
     public function updateState(Request $request,Task $task){

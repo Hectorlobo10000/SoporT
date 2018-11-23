@@ -12,9 +12,9 @@
 	@foreach($tasks as $task)
 		@if($task->task_state_id===1)
 			@section('extra fields')
-				<th>Chat</th>
 				<th>Anotación</th>
-				<th>-----></th>
+				<th>Chat</th>
+				<th style="font-size: 30px;">⟼</th>
 			@endsection
 			<tr>
 				<?php
@@ -24,13 +24,13 @@
 				<td>{{'000'.$task->id}}</td>
 				<td>{{$task->client->name}}</td>
 				<td>{{$task->task_type->name}}</td>
-				<td>{{$task->description}}</td>
+				<td><a href="{{route('show.description',$task->id)}}">Mostrar</a></td>
 				<td>{{$task->client->place->domain}}</td>
 				<td>{{$task->client->place->municipality}}</td>
 				<td>{{$task->client->place->address}}</td>
 				<td>{{$task->created_at}}</td>
+				<td><a href="{{route('show task annotation',['task'=>$task])}}">Mostrar</a></td>
 				<td><a class="btn btn-normal" href="{{route('chat.index',$task->id)}}">Chat</a></td>
-				<td><a class="btn btn-info" href="{{route('show task annotation',['task'=>$task])}}">Mostrar</a></td>
 				<td>
 					{{-- formulario que envia el nuevo estado de la tarea...se utiliza una id con cuyo nombre utiliza la id del task para identificar el formulario --}}
 					<form action="{{route('update task state',['task'=>$task])}}" method="POST" id="form {{$task->id}}">

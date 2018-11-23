@@ -1,7 +1,9 @@
 @extends('layouts.app4')
 
 @section('title','Editar departamento')
-
+@section('return')
+    {{route('departamentos.index')}}
+@endsection
 @section('content')
 <h1>Editar departamento</h1>
   <form class="form" method="post" action="{{action('DepartmentController@update',$departamento->id)}}">

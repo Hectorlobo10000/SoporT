@@ -21,35 +21,30 @@
 </head>
 
 <body>
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                        <h1>{{config('app.name', 'Laravel')}}</h1>
-                </li>
-                @yield('menu')
-                <br>
-                <li><a href="{{ url('/logout') }}">Cerrar Sesión</a></li>
-            </ul>
-        </div>
 
-        <div id="page-content-wrapper" >
-            <div class="row">
-                    <div class="col">
-                        <a href="#menu-toggle" class="btn btn-normal" id="menu-toggle">&#9776;</a>
-                    </div>
-                    <div class="col">
-                        <br>
-                        <div class="dropdown">
-                            <a class="drop-link" >{{Auth::User()->name}} ▼</a>
-                            <div class="dropdown-content">
-                                <a href="{{ route('show.profile',Auth::id()) }}">Ver perfil</a>
-                                <a style="border-top: 1px solid #d3d3d3" href="{{ url('/logout') }}">Cerrar sesión</a>
-                            </div>
-                        </div>
-                    </div>
+    <div id="wrapper" class="row">
+        <div class="col">
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                            <h1>{{config('app.name', 'Laravel')}}</h1>
+                    </li>
+                    @yield('menu')
+                    <br>
+                    <li><a href="{{ url('/logout') }}">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12">
+            <div id="page-content-wrapper" >
+            <a href="#menu-toggle" class="btn btn-normal" id="menu-toggle">&#9776;</a>
+            <div class="dropdown">
+                <a class="drop-link" >{{Auth::User()->name}} &#9660</a>
+                <div class="dropdown-content">
+                    <a href="{{ route('show.profile',Auth::id()) }}">Ver perfil</a>
+                    <a style="border-top: 1px solid #d3d3d3" href="{{ url('/logout') }}">Cerrar sesión</a>
                 </div>
+            </div>
             <div id="me-seccion-3">
                 <div class="table-responsive" >
                     <table>
@@ -68,6 +63,11 @@
                 @yield('btn add')
             </div>
         </div>
+        </div>
+        <!-- Sidebar -->
+
+
+
 
     </div>
 

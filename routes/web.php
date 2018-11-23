@@ -3,7 +3,7 @@
 
 	Auth::routes();
 	Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
-	Route::get('/','HomeController@index');
+	Route::get('/','HomeController@index')->name('home');
 	Route::group(['middleware'=>['check.admin.role','prevent-back-history']], function(){
 		//rutas del admin
 		Route::resource('usuarios','UserController');
@@ -35,6 +35,8 @@
 		Route::get('/tareas/historial','TaskController@history')->name('tasks.history');
 		Route::delete('/tareas/historial/destroy/{task_log}','TaskLogController@destroy')->name('task_logs.destroy');
 		Route::get('/chat/{task}','TaskMessageController@index')->name('chat.index');
+		Route::get('/editar-descripcion/{task}','TaskController@editDescription')->name('edit.description');
+		Route::patch('/actualizar-descripcion/{task}','TaskController@updateDescription')->name('update.description');
 	});
 
 	Route::group(['middleware'=>['check.boss.role','prevent-back-history']], function(){
@@ -45,6 +47,7 @@
 	//rutas para el tecnico y el cliente
 	Route::get('/chat/{task}','TaskMessageController@index')->name('chat.index');
 	Route::post('/chat/store','TaskMessageController@store')->name('chat.store');
+	Route::get('/mostrar-descripcion/{task}','TaskController@showDescription')->name('show.description');
 
 	//rutas para todos los roles
 	Route::get('/editar-perfil/{id}','UserController@editProfile')->name('edit.profile');

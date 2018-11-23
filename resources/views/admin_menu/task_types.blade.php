@@ -25,8 +25,8 @@
 <tr>
 	<th>#</th>
 	<th>Actvidad</th>
-	<th>Modificar</th>
-	<th>Eliminar</th>
+	<th>⚠</th>
+	<th>⚠</th>
 </tr>
 @endsection
 

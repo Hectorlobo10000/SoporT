@@ -8,23 +8,33 @@
 	<title>@yield('title')</title>
 </head>
 <body>
-	<div class="dropdown">
-        <a href="#" class="drop-link" style="text-decoration: none; color: #333">{{Auth::User()->name}} ▼</a>
-        <div class="dropdown-content">
-        	<a href="{{ route('show.profile',Auth::id()) }}">Ver perfil</a>
-            <a style="border-top: 1px solid #d3d3d3" href="{{ url('/logout') }}">Cerrar sesión</a>
-        </div>
-	</div>
-<br>
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-		    		@yield('content')
+	<div class="row">
+		<div class="col">
+			<a href="@yield('return')" class="btn btn-normal back-link">&laquo; Regresar</a>
+		</div>
+		<div class="col-9">
+			<br>
+			<div class="container">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
+			    		@yield('content')
+
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="dropdown">
+				<a href="#" class="drop-link" style="">{{Auth::User()->name}} &#9660</a>
+				<div class="dropdown-content">
+		        	<a href="{{ route('show.profile',Auth::id()) }}">Ver perfil</a>
+		            <a style="border-top: 1px solid #d3d3d3" href="{{ url('/logout') }}">Cerrar sesión</a>
+		        </div>
 			</div>
 		</div>
 	</div>
+
+
 	<script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
 </body>
 </html>

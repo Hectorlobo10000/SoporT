@@ -1,7 +1,9 @@
 @extends('layouts.app4')
 
 @section('title','Crear Solicitud')
-
+@section('return')
+    {{route(tasks.index)}}
+@endsection
 @section('content')
 <h1>Crear solicitud</h1>
 <form method="post" action="{{route('tasks.store')}}">

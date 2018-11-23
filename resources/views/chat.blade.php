@@ -1,5 +1,8 @@
 @extends('layouts/app4')
 @section('title','Chat')
+@section('return')
+    {{route('home')}}
+@endsection
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('css/chat.css')}}">
 <h1>Tarea {{'000'.$task->id}}</h1>

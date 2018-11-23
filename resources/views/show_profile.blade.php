@@ -1,7 +1,9 @@
 @extends('layouts.app4')
 
 @section('title','Mi perfil')
-
+@section('return')
+    {{'javascript:history.back()'}}
+@endsection
 @section('content')
 <h1>Mi perfil</h1>
 <div class="form">

@@ -1,7 +1,9 @@
 @extends('layouts.app4')
 
 @section('title','Agregar usuario')
-
+@section('return')
+    {{route('usuarios.index')}}
+@endsection
 @section('content')
 <h1>Agregar usuario</h1>
 </script>

@@ -1,7 +1,9 @@
 @extends('layouts.app4')
 
 @section('title','Agregar usuario')
-
+@section('return')
+    {{route('lugares.index')}}
+@endsection
 @section('content')
 <h1>Agregar lugar</h1>
 <form class="form" method="post" action="{{route('lugares.store')}}">

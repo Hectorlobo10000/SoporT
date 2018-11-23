@@ -12,26 +12,26 @@
 	@foreach($tasks as $task)
 		@if($task->task_state_id===2)
 		@section('extra fields')
-			<th>Chat</th>
 			<th>Anotación</th>
-			<th><-----</th>
-			<th>-----></th>
+			<th>Chat</th>
+			<th style="font-size: 30px">⟻</th>
+			<th style="font-size: 30px">⟼</th>
 		@endsection
 			<tr>
 				<?php
-					$counter = $counter +1
+					$counter = $counter +1;
 				?>
 				<td>{{$counter}}</td>
 				<td>{{'000'.$task->id}}</td>
 				<td>{{$task->client->name}}</td>
 				<td>{{$task->task_type->name}}</td>
-				<td>{{$task->description}}</td>
+				<td><a href="{{route('show.description',$task->id)}}">mostrar</a></td>
 				<td>{{$task->client->place->domain}}</td>
 				<td>{{$task->client->place->municipality}}</td>
 				<td>{{$task->client->place->address}}</td>
 				<td>{{$task->created_at}}</td>
+				<td><a href="{{route('show task annotation',['task'=>$task])}}">mostrar</a></td>
 				<td><a class="btn btn-normal" href="{{route('chat.index',$task->id)}}">Chat</a></td>
-				<td><a class="btn btn-info" href="{{route('show task annotation',['task'=>$task])}}">mostrar anotación</a></td>
 				<td>
 					<form action="{{route('update task state',['task'=>$task])}}" method="POST" id="form 1 {{$task->id}}">
 						{{method_field('PATCH')}}

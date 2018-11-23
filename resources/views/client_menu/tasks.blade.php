@@ -43,7 +43,7 @@
 				<td>{{$task->technician->phone}}</td>
 				<td>{{$task->technician->email}}</td>
 				<td>{{$task->task_type->name}}</td>
-				<td>{{$task->description}}</td>
+				<td><a href="{{route('show.description',$task->id)}}">mostrar</a></td>
 				<td>{{$task->created_at}}</td>
 				<td>{{$task->task_state->name}}</td>
 				<td><a class="btn btn-normal" href="{{route('chat.index',$task->id)}}">Chat</a></td>
@@ -57,8 +57,8 @@
 					    </form>
 					</td>
 				@else
-					<td></td>
-					<td></td>
+					<td><div class="action-denied"><span>Bloqueado</span></div></td>
+					<td><div class="action-denied"><span>Bloqueado</span></div></td>
 				@endif
 
 			</tr>
