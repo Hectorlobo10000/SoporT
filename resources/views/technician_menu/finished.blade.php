@@ -14,7 +14,7 @@
 		@if($task->task_state_id===3)
 			@section('extra fields')
 				<th>Chat</th>
-				<th style="font-size: 30px">⟻</th>
+				<th style="font-size: 30px">🡸</th>
 				<th>⚠</th>
 			@endsection
 			<tr>

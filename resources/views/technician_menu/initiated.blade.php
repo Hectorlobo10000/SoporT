@@ -14,8 +14,8 @@
 		@section('extra fields')
 			<th>Anotación</th>
 			<th>Chat</th>
-			<th style="font-size: 30px">⟻</th>
-			<th style="font-size: 30px">⟼</th>
+			<th style="font-size: 30px">🡸</th>
+			<th style="font-size: 30px">🡺</th>
 		@endsection
 			<tr>
 				<?php
