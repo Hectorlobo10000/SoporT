@@ -14,8 +14,8 @@
 		@section('extra fields')
 			<th>Anotación</th>
 			<th>Chat</th>
-			<th style="font-size: 30px">🡸</th>
-			<th style="font-size: 30px">🡺</th>
+			<th>Mover a pendientes</th>
+			<th >Mover a finalizadas</th>
 		@endsection
 			<tr>
 				<?php
@@ -37,7 +37,7 @@
 						{{method_field('PATCH')}}
 	    				{{ csrf_field() }}
 						<input type="hidden" name="task_state_id" value="1">
-						<a class="btn btn-success" href="javascript:{}" onclick="document.getElementById('form 1 {{$task->id}}').submit(); return false;">Mover a pendientes</a>
+						<a class="btn btn-success" href="javascript:{}" onclick="document.getElementById('form 1 {{$task->id}}').submit(); return false;">🡸</a>
 					</form>
 				</td>
 				<td>
@@ -45,7 +45,7 @@
 						{{method_field('PATCH')}}
 	    				{{ csrf_field() }}
 						<input type="hidden" name="task_state_id" value="3">
-						<a class="btn btn-success" href="javascript:{}" onclick="document.getElementById('form 2 {{$task->id}}').submit(); return false;">Mover a finalizadas</a>
+						<a class="btn btn-success" href="javascript:{}" onclick="document.getElementById('form 2 {{$task->id}}').submit(); return false;">🡺</a>
 					</form>
 				</td>
 			</tr>

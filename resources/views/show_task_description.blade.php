@@ -2,7 +2,7 @@
 @section('title','Mostrar descripción')
 @section('return')
 	@if(Auth::user()->role_id == 2)
-    {{route('pending')}}
+    {{'javascript: history.go(-1)'}}
     @else
     {{route('tasks.index')}}
     @endif

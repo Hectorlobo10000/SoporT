@@ -13,8 +13,9 @@
 
 		@if($task->task_state_id===3)
 			@section('extra fields')
+				<th>Anotación</th>
 				<th>Chat</th>
-				<th style="font-size: 30px">🡸</th>
+				<th>Mover a iniciadas</th>
 				<th>⚠</th>
 			@endsection
 			<tr>
@@ -30,13 +31,14 @@
 				<td>{{$task->client->place->municipality}}</td>
 				<td>{{$task->client->place->address}}</td>
 				<td>{{$task->created_at}}</td>
+				<td><a href="{{route('show task annotation',['task'=>$task])}}">mostrar</a></td>
 				<td><a class="btn btn-normal" href="{{route('chat.index',$task->id)}}">Chat</a></td>
 				<td>
 					<form action="{{route('update task state',['task'=>$task])}}" method="POST" id="form {{$task->id}}">
 						{{method_field('PATCH')}}
 	    				{{ csrf_field() }}
 						<input type="hidden" name="task_state_id" value="2">
-						<a  class="btn btn-success" href="javascript:{}" onclick="document.getElementById('form {{$task->id}}').submit(); return false;">Mover a iniciadas</a>
+						<a  class="btn btn-success" href="javascript:{}" onclick="document.getElementById('form {{$task->id}}').submit(); return false;">🡸</a>
 					</form>
 				</td>
 				<td><a class="btn btn-warning" href="">Confirmar finalización</a></td>

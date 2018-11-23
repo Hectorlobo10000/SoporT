@@ -14,7 +14,7 @@
 			@section('extra fields')
 				<th>Anotación</th>
 				<th>Chat</th>
-				<th style="font-size: 30px;">🡺</th>
+				<th>Mover a iniciadas</th>
 			@endsection
 			<tr>
 				<?php
@@ -37,7 +37,7 @@
 						{{method_field('PATCH')}}
 	    				{{ csrf_field() }}
 						<input type="hidden" name="task_state_id" value="2">
-						<a class="btn btn-success" href="javascript:{}" onclick="document.getElementById('form {{$task->id}}').submit(); return false;">Mover a iniciadas</a>
+						<a class="btn btn-success" href="javascript:{}" onclick="document.getElementById('form {{$task->id}}').submit(); return false;">🡺</a>
 					</form>
 				</td>
 			</tr>
