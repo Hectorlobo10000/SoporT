@@ -90,9 +90,20 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $lugares = Place::all();
         $usuario=User::find($id);
-        return view('admin_menu.edit_user',compact('usuario','lugares'));
+        return view('admin_menu.edit_user',compact('usuario'));
+    }
+
+    public function editProfile($id)
+    {
+        $usuario=User::find($id);
+        return view('edit_profile',compact('usuario'));
+    }
+
+    public function show($id)
+    {
+        $usuario=User::find($id);
+        return view('show_profile',compact('usuario','lugares'));
     }
 
     public function update(UserUpdateRequest $request, $id)

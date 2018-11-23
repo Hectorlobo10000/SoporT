@@ -11,7 +11,10 @@ body
 	padding: 25px;
 	border :1px solid rgba(0,0,0,0);
 }
-
+.edit-link{
+  font-size: 15px;
+  position: absolute;
+}
 h1
 {
 	text-align: center;

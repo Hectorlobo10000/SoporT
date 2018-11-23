@@ -4,7 +4,7 @@
 	Auth::routes();
 	Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 	Route::get('/','HomeController@index');
-	Route::group(['middleware'=>['check.admin.role']], function(){
+	Route::group(['middleware'=>['check.admin.role','prevent-back-history']], function(){
 		//rutas del admin
 		Route::resource('usuarios','UserController');
 		Route::resource('departamentos','DepartmentController');
@@ -12,7 +12,7 @@
 		Route::resource('lugares','PlaceController');
 	});
 
-	Route::group(['middleware'=>['check.technician.role']], function(){
+	Route::group(['middleware'=>['check.technician.role','prevent-back-history']], function(){
 		//rutas del tecnico
 		Route::get('/tareas-pendientes','TechnicianController@pending')->name('pending');
 		Route::get('/tareas-iniciadas','TechnicianController@initiated')->name('initiated');
@@ -24,7 +24,7 @@
 		Route::patch('/actualizar-estado/{task}','TechnicianController@updateState')->where('task', '\d+')->name('update task state');
 	});
 
-	Route::group(['middleware'=>['check.client.role']], function(){
+	Route::group(['middleware'=>['check.client.role','prevent-back-history']], function(){
 		//rutas del cliente
 		Route::get('/tareas','TaskController@index')->name('tasks.index');
 		Route::get('/tareas/edit/{task}','TaskController@edit')->name('tasks.edit');
@@ -37,15 +37,16 @@
 		Route::get('/chat/{task}','TaskMessageController@index')->name('chat.index');
 	});
 
-	Route::group(['middleware'=>['check.boss.role']], function(){
+	Route::group(['middleware'=>['check.boss.role','prevent-back-history']], function(){
 		//rutas del jefe
 		Route::get('/inicio-jefe','BossController@index')->name('boss index');
 	});
 
-	//rutas para el cat ente el tecnico y el cliente
+	//rutas para el tecnico y el cliente
 	Route::get('/chat/{task}','TaskMessageController@index')->name('chat.index');
 	Route::post('/chat/store','TaskMessageController@store')->name('chat.store');
 
-	//ruta para editar perfil
-	Route::get('/editar-perfil/{id}','UserController@edit')->name('edit.profile')
+	//rutas para todos los roles
+	Route::get('/editar-perfil/{id}','UserController@editProfile')->name('edit.profile');
+	Route::get('/mostrar-perfil/{id}','UserController@show')->name('show.profile');
 ?>

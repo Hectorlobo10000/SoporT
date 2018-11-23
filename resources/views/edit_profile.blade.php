@@ -1,9 +1,9 @@
 @extends('layouts.app4')
 
-@section('title','Editar usuario')
+@section('title','Editar perfil')
 
 @section('content')
-<h1>Editar usuario</h1>
+<h1>Editar perfil</h1>
   <form class="form" method="post" action="{{route('usuarios.update',$usuario->id)}}">
 	@csrf
 	@method('PUT')

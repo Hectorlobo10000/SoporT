@@ -10,9 +10,6 @@
 @section('records')
 <?php $counter = 0; ?>
 	@foreach($tasks as $task)
-<?php
-	$counter = $counter +1;
-?>
 		@if($task->task_state_id===1)
 			@section('extra fields')
 				<th>Chat</th>
@@ -20,6 +17,9 @@
 				<th>-----></th>
 			@endsection
 			<tr>
+				<?php
+					$counter = $counter +1;
+				?>
 				<td>{{$counter}}</td>
 				<td>{{'000'.$task->id}}</td>
 				<td>{{$task->client->name}}</td>
