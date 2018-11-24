@@ -50,7 +50,7 @@
 		@endforeach
 	</div>
 	<div>
-		@if($task_state_id != 4)
+		@if($task->task_state_id != 4)
 		<form id="form-message" class="chat-write-area" action="{{route('chat.store')}}" method="post">
 			@csrf
 			<div class="row">
