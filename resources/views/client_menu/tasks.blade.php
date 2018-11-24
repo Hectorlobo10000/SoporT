@@ -49,7 +49,7 @@
 				<td>{{$task->task_state->name}}</td>
 				<td><a class="btn btn-normal" href="{{route('chat.index',$task->id)}}">Chat</a></td>
 				@if($task->task_state_id==3)
-				<td>
+				<td style="width: 50px">
 					<form action="{{route('verify.task',['task'=>$task])}}" method="POST" id="form {{$task->id}}">
 						{{method_field('PATCH')}}
 	    				{{ csrf_field() }}
@@ -58,9 +58,9 @@
 					</form>
 				</td>
 				@else
-					<td><div class="action-denied"><span>Bloqueado</span></div></td>
+					<td style="width: 100px"><div class="action-denied"><span>Acción bloqueada</span></div></td>
 				@endif
-				@if($task->task_state_id == 1 || $task->task_state_id == 4)
+				@if($task->task_state_id == 1)
 					<td><a class="btn btn-warning" href="{{route('tasks.edit',$task->id)}}">Modificar</a></td>
 					<td>
 						<form method="post" action="{{route('tasks.destroy',$task->id)}}">
@@ -70,8 +70,8 @@
 					    </form>
 					</td>
 				@else
-					<td><div class="action-denied"><span>Bloqueado</span></div></td>
-					<td><div class="action-denied"><span>Bloqueado</span></div></td>
+					<td style="width: 100px"><div class="action-denied"><span>Acción bloqueada</span></div></td>
+					<td style="width: 100px"><div class="action-denied"><span>Acción bloqueada</span></div></td>
 				@endif
 
 			</tr>

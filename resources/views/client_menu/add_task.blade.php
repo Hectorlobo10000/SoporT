@@ -2,7 +2,7 @@
 
 @section('title','Crear Solicitud')
 @section('return')
-    {{route(tasks.index)}}
+    {{route('tasks.index')}}
 @endsection
 @section('content')
 <h1>Crear solicitud</h1>

@@ -2,7 +2,7 @@
 
 @section('title','Editar solicitud')
 @section('return')
-    {{route(tasks.index)}}
+    {{route('tasks.index')}}
 @endsection
 @section('content')
 <h1>Editar solicitud</h1>
