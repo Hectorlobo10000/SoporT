@@ -11,12 +11,12 @@
 <?php $counter = 0; ?>
 	@foreach($tasks as $task)
 
-		@if($task->task_state_id===3)
+		@if($task->task_state_id===3 || $task->task_state_id===4)
 			@section('extra fields')
+				<th>Estado</th>
 				<th>Anotación</th>
 				<th>Chat</th>
 				<th>Mover a iniciadas</th>
-				<th>⚠</th>
 			@endsection
 			<tr>
 				<?php
@@ -31,6 +31,11 @@
 				<td>{{$task->client->place->municipality}}</td>
 				<td>{{$task->client->place->address}}</td>
 				<td>{{$task->created_at}}</td>
+				@if($task->task_state_id== 4)
+				<td>Verificada</td>
+				@else
+				<td>Por verificar</td>
+				@endif
 				<td><a href="{{route('show task annotation',['task'=>$task])}}">mostrar</a></td>
 				<td><a class="btn btn-normal" href="{{route('chat.index',$task->id)}}">Chat</a></td>
 				<td>
@@ -41,7 +46,7 @@
 						<a  class="btn btn-success" href="javascript:{}" onclick="document.getElementById('form {{$task->id}}').submit(); return false;">🡸</a>
 					</form>
 				</td>
-				<td><a class="btn btn-warning" href="">Confirmar finalización</a></td>
+
 			</tr>
 		@endif
 	@endforeach

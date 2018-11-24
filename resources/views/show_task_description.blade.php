@@ -2,7 +2,7 @@
 @section('title','Mostrar descripción')
 @section('return')
 	@if(Auth::user()->role_id == 2)
-    {{'javascript: history.go(-1)'}}
+    {{url()->previous()}}
     @else
     {{route('tasks.index')}}
     @endif
@@ -11,7 +11,7 @@
 	<h1>Descripción de la tarea {{'000'.$task->id}}</h1>
 
 <div class="form">
-	@if(Auth::user()->role_id == 3)
+	@if(Auth::user()->role_id == 3 && $task->task_state_id == 1)
 	<div style="float: right">
     	<a class="edit-link" href="{{route('edit.description',$task->id)}}">Editar</a>
     </div>

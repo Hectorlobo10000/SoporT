@@ -1,4 +1,4 @@
-
+@if($task_state_id != 4)
 @extends('layouts.app4')
 @section('title','Editar anotaciones')
 @section('return')
@@ -15,3 +15,6 @@
     <button class="btn btn-normal" type="submit">Modificar</button>
 </form>
 @endsection
+@else
+<div>Acceso denegado</div>
+@endif

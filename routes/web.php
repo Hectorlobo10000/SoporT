@@ -20,7 +20,6 @@
 		Route::patch('/actualizar-anotacion/{task}','TechnicianController@updateAnnotation')->where('task', '\d+')->name('update task annotation');
 		Route::get('/editar-anotacion/{task}','TechnicianController@editAnnotation')->name('edit task annotation');
 		Route::get('/mostrar-anotacion/{task}','TechnicianController@showAnnotation')->name('show task annotation');
-		Route::get('/editar-estado/{task}','TechnicianController@editState')->name('edit task state');
 		Route::patch('/actualizar-estado/{task}','TechnicianController@updateState')->where('task', '\d+')->name('update task state');
 	});
 
@@ -37,6 +36,7 @@
 		Route::get('/chat/{task}','TaskMessageController@index')->name('chat.index');
 		Route::get('/editar-descripcion/{task}','TaskController@editDescription')->name('edit.description');
 		Route::patch('/actualizar-descripcion/{task}','TaskController@updateDescription')->name('update.description');
+		Route::patch('/verificar-tarea/{task}','TechnicianController@updateState')->where('task', '\d+')->name('verify.task');
 	});
 
 	Route::group(['middleware'=>['check.boss.role','prevent-back-history']], function(){

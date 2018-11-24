@@ -2,7 +2,11 @@
 
 @section('title','Mi perfil')
 @section('return')
-    {{'javascript:history.back()'}}
+@if(url()->previous()== route('edit.profile',Auth::id()))
+    {{route('home')}}
+@else
+    {{url()->previous()}}
+@endif
 @endsection
 @section('content')
 <h1>Mi perfil</h1>
