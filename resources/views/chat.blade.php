@@ -63,6 +63,17 @@
 				</div>
 			</div>
 		</form>
+		@else
+			<div id="form-message" class="chat-write-area">
+			<div class="row">
+				<div class="col-11" style="margin-right:  -20px">
+					<textarea  class="form2" maxlength="1000" style="background-color: #fffff0; text-align: center;" placeholder="Inhabilitado" readonly></textarea>
+				</div>
+				<div class="col-1">
+					<label class="btn btn-link btn-enviar"></label>
+				</div>
+			</div>
+		</div>
 		@endif
 	</div>
 </div>
