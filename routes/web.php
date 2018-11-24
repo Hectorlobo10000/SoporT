@@ -2,8 +2,7 @@
 
 
 	Auth::routes();
-	Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
-	Route::get('/','HomeController@index')->name('home');
+
 	Route::group(['middleware'=>['check.admin.role','prevent-back-history']], function(){
 		//rutas del admin
 		Route::resource('usuarios','UserController');
@@ -44,12 +43,21 @@
 		Route::get('/inicio-jefe','BossController@index')->name('boss index');
 	});
 
-	//rutas para el tecnico y el cliente
-	Route::get('/chat/{task}','TaskMessageController@index')->name('chat.index');
-	Route::post('/chat/store','TaskMessageController@store')->name('chat.store');
-	Route::get('/mostrar-descripcion/{task}','TaskController@showDescription')->name('show.description');
+	Route::group(['middleware'=>['check.client_or_technician.role','prevent-back-history']], function(){
+		//rutas para el tecnico y el cliente
+		Route::get('/chat/{task}','TaskMessageController@index')->name('chat.index');
+		Route::post('/chat/store','TaskMessageController@store')->name('chat.store');
+		Route::get('/mostrar-descripcion/{task}','TaskController@showDescription')->name('show.description');
+	});
 
-	//rutas para todos los roles
-	Route::get('/editar-perfil/{id}','UserController@editProfile')->name('edit.profile');
-	Route::get('/mostrar-perfil/{id}','UserController@show')->name('show.profile');
+	Route::group(['middleware'=>['auth','prevent-back-history']], function(){
+		//rutas para todos los roles
+		Route::get('/editar-perfil/{id}','UserController@editProfile')->name('edit.profile');
+		Route::get('/mostrar-perfil/{id}','UserController@show')->name('show.profile');
+		Route::get('/home','HomeController@index')->name('home');
+
+	});
+		Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+		Route::get('/','HomeController@index')->name('root');
+
 ?>

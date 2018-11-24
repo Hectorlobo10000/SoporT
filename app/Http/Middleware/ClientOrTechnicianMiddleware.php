@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware
+class ClientOrTechnicianMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
 
-        if (Auth::check() && Auth::user()->role_id==1 ){
+        if (Auth::check() && (Auth::user()->role_id==3 || Auth::user()->role_id==2)){
             return $next($request);
         }
         return redirect()->route('login');

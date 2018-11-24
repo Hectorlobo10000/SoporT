@@ -20,6 +20,6 @@ class ClientMiddleware
         if (Auth::check() && Auth::user()->role_id==3 ){
             return $next($request);
         }
-        return abort(404);
+        return redirect()->route('login');
     }
 }

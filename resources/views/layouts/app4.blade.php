@@ -10,10 +10,10 @@
 <body>
 
 	<div class="row">
-		<div class="col">
+		<div class="col-2">
 			<a href="@yield('return')" class="btn btn-normal back-link">&laquo; Regresar</a>
 		</div>
-		<div class="col-9">
+		<div class="col-8">
 			<br>
 			<div class="container">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -23,13 +23,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="col">
-			<div class="dropdown">
-				<a href="#" class="drop-link" style="">{{Auth::User()->name}} &#9660</a>
-				<div class="dropdown-content">
-		        	<a href="{{ route('show.profile',Auth::id()) }}">Ver perfil</a>
-		            <a style="border-top: 1px solid #d3d3d3" href="{{ url('/logout') }}">Cerrar sesión</a>
-		        </div>
+		<div class="col-lg-12" style="position: absolute; right: 0">
+			<div  id="dropdown">
+				<a href="#" class="drop-link" >{{Auth::User()->name}} &#9660</a>
+				<div id="dropdown-content">
+			    	<a href="{{ route('show.profile',Auth::id()) }}">Ver perfil</a>
+			        <a style="border-top: 1px solid #d3d3d3" href="{{ url('/logout') }}">Cerrar sesión</a>
+			    </div>
 			</div>
 		</div>
 	</div>

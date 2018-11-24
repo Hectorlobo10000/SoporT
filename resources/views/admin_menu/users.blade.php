@@ -32,7 +32,7 @@
 	<th>Direccion</th>
 	<th>Depto. Trabaja</th>
 	<th>Rol</th>
-	<th>⚠</th>
+	<th>Acciones</th>
 </tr>
 @endsection
 

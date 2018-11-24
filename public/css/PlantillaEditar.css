@@ -35,24 +35,28 @@ h1
     text-decoration: none;
 }
 
-.dropdown{
-    position : fixed;
+#dropdown{
+    position : absolute;
     top      : 24px;
     right    : 40px;
     display: inline-block;
     background-color: #5F9EA0;
     border-radius: 10px;
+    z-index: 2;
+    text-align: center;
+    color: white;
 }
-.dropdown:hover{
+#dropdown:hover{
     background-color: #008080;
 
 }
 .drop-link{
-    padding: 16px;
     font-size: 16px;
     border: none;
     color: white;
-
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 16px;
 }
 
 .drop-link:hover{
@@ -63,17 +67,16 @@ h1
 
 
 
-.dropdown-content {
-    margin-top: 15px;
+#dropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 3;
 }
 
-.dropdown-content a {
+#dropdown-content a {
     text-align: center;
     color: black;
     padding: 12px 16px;
@@ -81,16 +84,16 @@ h1
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd }
+#dropdown-content a:hover {background-color: #ddd }
 
-.dropdown:hover .dropdown-content {
+#dropdown:hover #dropdown-content {
     display: block;
 }
 
-.dropdown:hover .dropbtn {
+#dropdown:hover .dropbtn {
     color: black;
 }
-.dropdown-content {
+#dropdown-content {
     right: 0;
 }
 .formulario

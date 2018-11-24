@@ -20,6 +20,6 @@ class BossMiddleware
         if (Auth::check() && Auth::user()->role_id==4 ){
             return $next($request);
         }
-        return abort(404);
+        return redirect()->route('login');
     }
 }

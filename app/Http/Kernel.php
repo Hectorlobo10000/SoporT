@@ -64,6 +64,7 @@ class Kernel extends HttpKernel
         'check.technician.role' => \App\Http\Middleware\TechnicianMiddleware::class,
         'check.client.role' => \App\Http\Middleware\ClientMiddleware::class,
         'check.boss.role' => \App\Http\Middleware\BossMiddleware::class,
+        'check.client_or_technician.role' => \App\Http\Middleware\ClientOrTechnicianMiddleware::class,
         'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
 
     ];

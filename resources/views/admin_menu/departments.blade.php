@@ -25,8 +25,8 @@
 <tr>
 	<th>#</th>
 	<th>Nombre</th>
-	<th>⚠</th>
-	<th>⚠</th>
+	<th>Modificar</th>
+	<th>Eliminar</th>
 </tr>
 @endsection
 

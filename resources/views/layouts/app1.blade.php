@@ -15,17 +15,14 @@
     <link href="{{ asset('css/boss_menu.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Anton|Righteous|Source+Code+Pro" rel="stylesheet">
 </head>
-<body id="me">
+<body >
+    <div id="me">
         <div class="row" id="me-seccion-1">
             <div class="col" style="float: left">
-                        <br>
-                        <a id="me-titulo" href="#">
-                            <h1>
-                                {{ config('app.name', 'Laravel') }}
-                            </h1>
-                        </a>
+                <br>
+                <h1 id="me-titulo" >{{ config('app.name', 'Laravel') }}</h1>
                     </div>
-            <div class="col" >
+            <div class="col" style="position: absolute;right: 0; top: 0;">
                 <div class="dropdown">
                     <a href="#" class="drop-link">{{Auth::User()->name}} ▼</a>
                     <div class="dropdown-content">
@@ -35,7 +32,8 @@
                 </div>
             </div>
         </div>
-	@yield('content')
+        @yield('content')
+    </div>
 </body>
 
 </html>

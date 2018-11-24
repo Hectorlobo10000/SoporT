@@ -27,8 +27,8 @@
 	<th>Departamento</th>
 	<th>Municipio</th>
 	<th>Dirección</th>
-	<th>⚠</th>
-	<th>⚠</th>
+	<th>Modificar</th>
+	<th>Eliminar</th>
 </tr>
 @endsection
 
