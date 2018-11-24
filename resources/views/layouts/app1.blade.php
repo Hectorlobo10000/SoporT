@@ -13,9 +13,11 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/menu_empleado_tabla.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/side-bar-horizontal.css')}}">
     <link href="{{ asset('css/boss_menu.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Anton|Righteous|Source+Code+Pro" rel="stylesheet">
+    <style>
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+</style>
 </head>
-<body >
+<body>
     <div id="me">
         <div class="row" id="me-seccion-1">
             <div class="col" style="float: left">

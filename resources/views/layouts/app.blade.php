@@ -14,15 +14,20 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/menu_empleado.css')}}">
+    <link href="{{asset('css/fonts/Pacifico.ttf')}}" type="text/css">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/menu_empleado.css')}}">
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Pacifico');
+    </style>
 </head>
 <body style="background-image: url('../images/background.jpg');"></style>>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-color: #5F9EA0;">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}" style="color: white">
+                <a class="navbar-brand" href="{{ url('/') }}" style="color: white;   text-shadow: -1px 0 #008080, 0 1px #008080, 1px 0 #008080, 0 -1px #008080;font-family: 'Pacifico', cursive;">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

@@ -23,8 +23,14 @@ body{
     height: 500px;
 }
 #me-titulo{
-	color: black;
+  width: 100%;
+  text-align: center;
+	color: white;
+  margin-left: 16px;
 	text-decoration: none;
+  font-family: 'Pacifico', cursive;
+  text-shadow: -2px 0 #008080, 0 2px #008080, 2px 0 #008080, 0 -2px #008080;
+
 }
 #link{
     color: white;

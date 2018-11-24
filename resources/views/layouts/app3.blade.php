@@ -17,7 +17,9 @@
     <link href="{{ asset('css/simple-sidebar.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/menu_empleado_tabla.css') }}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/menu_empleado.css')}}">
-
+<style>
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+</style>
 </head>
 
 <body>

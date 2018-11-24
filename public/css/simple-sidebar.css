@@ -4,9 +4,10 @@ body {
 
 h1
 {
-  margin-left: 20px;
   margin-top: 10px;
-  color: rgb(232,231,231);
+  color: white;
+  font-family: 'Pacifico', cursive;
+  text-shadow: -2px 0 #008080, 0 2px #008080, 2px 0 #008080, 0 -2px #008080;
 }
 
 

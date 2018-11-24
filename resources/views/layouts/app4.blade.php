@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/PlantillaEditar.css') }}" rel="stylesheet">
+    <style>
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+</style>
 	<title>@yield('title')</title>
 </head>
 <body>
