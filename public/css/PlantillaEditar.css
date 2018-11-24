@@ -21,8 +21,9 @@ h1
 }
 
 .back-link {
-    margin-top: 19px;
-    margin-left: 40px;
+  position: relative;
+    top: 25px;
+    left: 40px;
     text-decoration: none;
     display: inline-block;
 }
@@ -34,7 +35,7 @@ h1
 
 #dropdown{
     position: absolute;
-    top      : 24px;
+    top      : 25px;
     right    : 40px;
     display: inline-block;
     background-color: #5F9EA0;
@@ -100,17 +101,7 @@ h1
 }
 
 
-label
-{
-	display: block;
-	margin:1px;
-}
-button
-{
-	margin: 10px 0;
-	padding: 10px;
-	width: 20%;
-}
+
 
 textarea
 {
@@ -158,6 +149,6 @@ select
   background-size: 80%;
   background-repeat: no-repeat;
   background-position: center;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }

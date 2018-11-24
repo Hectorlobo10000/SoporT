@@ -14,7 +14,7 @@
 <div class="form">
 	@if($task->task_state_id != 4)
 	<div style="float: right">
-    	<a class="edit-link" href="{{route('edit task annotation',$task->id)}}">Editar</a>
+    	<a class="btn-edit btn btn-success" href="{{route('edit task annotation',$task->id)}}"></a>
     </div>
         <br>
     @endif

@@ -12,7 +12,7 @@
 @section('content')
 <div class="form">
     <div style="float: right">
-    <a class="edit-link" href="{{route('edit.profile',$usuario->id)}}">Editar</a>
+    <a class="btn-edit btn btn-success" href="{{route('edit.profile',$usuario->id)}}"></a>
     </div>
         <br>
 
