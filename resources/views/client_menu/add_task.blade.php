@@ -4,9 +4,9 @@
 @section('return')
     {{route('tasks.index')}}
 @endsection
+@section('header','Crear solicitud')
 @section('content')
-<h1>Crear solicitud</h1>
-<form method="post" action="{{route('tasks.store')}}">
+<form class="form" method="post" action="{{route('tasks.store')}}">
     @csrf
     @if($errors->has('description'))
     <div class="alert alert-danger">
@@ -26,8 +26,8 @@
     </select>
     <input type="hidden" name="client_id" value={{Auth::id()}}>
     <label>Descripción:</label>
-    <textarea maxlength="1000" name="description" class="formulario" style="height: 400px; "></textarea>
-    <button type="submit" class="btn btn-primary">Crear</button>
+    <textarea maxlength="1000" name="description" class="formulario" style="height: 500px; "></textarea>
+    <button type="submit" class="btn btn-normal">Crear</button>
 </form>
 
 @endsection

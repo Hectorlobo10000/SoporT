@@ -27,8 +27,8 @@
 	<th>Departamento</th>
 	<th>Municipio</th>
 	<th>Dirección</th>
-	<th>Modificar</th>
-	<th>Eliminar</th>
+	<th width="80px">Modificar</th>
+	<th width="80px">Eliminar</th>
 </tr>
 @endsection
 
@@ -43,14 +43,14 @@
 	<td>{{$lugare->domain}}</td>
 	<td>{{$lugare->municipality}}</td>
 	<td>{{$lugare->address}}</td>
-	<td  width="100px">
-		<a class="btn btn-warning" style="width: 100px" href="{{route('lugares.edit',$lugare->id)}}">Modificar</a>
+	<td>
+		<a class="btn-edit btn btn-success" href="{{route('lugares.edit',$lugare->id)}}"></a>
 	</td>
 	<td  width="100px">
 		<form method="post" action="{{action('PlaceController@destroy',$lugare->id)}}" >
 		@csrf
 		@method('DELETE')
-		<button  style="width: 100px" type="submit" class="btn btn-danger">Eliminar</button>
+		<button type="submit" class="btn-delete btn btn-danger"></button>
 	    </form>
 	</td>
 </tr>

@@ -4,9 +4,8 @@
 @section('return')
     {{route('show task annotation',$task->id)}}
 @endsection
+@section('header','Editar anotaciones de la tarea 000'.$task->id)
 @section('content')
-
-<h1>Editar anotaciones de la tarea {{'000'.$task->id}}</h1>
 <form class="form" action="{{route('update task annotation',['task'=>$task])}}" method="POST">
     {{method_field('PATCH')}}
     {{ csrf_field() }}

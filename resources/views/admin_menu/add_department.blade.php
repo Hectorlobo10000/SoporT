@@ -4,8 +4,8 @@
 @section('return')
     {{route('departamentos.index')}}
 @endsection
+@section('header','Agregar departamento')
 @section('content')
-<h1>Agregar departamento</h1>
 <form class="form" method="post" action="{{route('departamentos.store')}}">
     @csrf
      @if($errors->has('name'))

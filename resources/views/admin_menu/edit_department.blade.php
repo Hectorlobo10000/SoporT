@@ -4,8 +4,8 @@
 @section('return')
     {{route('departamentos.index')}}
 @endsection
+@section('header','Editar departamento')
 @section('content')
-<h1>Editar departamento</h1>
   <form class="form" method="post" action="{{action('DepartmentController@update',$departamento->id)}}">
 	@csrf
 	@method('PUT')

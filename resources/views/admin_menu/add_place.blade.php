@@ -4,8 +4,8 @@
 @section('return')
     {{route('lugares.index')}}
 @endsection
+@section('header','Agregar lugar')
 @section('content')
-<h1>Agregar lugar</h1>
 <form class="form" method="post" action="{{route('lugares.store')}}">
     @csrf
     <label>Departamento:</label>

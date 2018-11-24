@@ -8,8 +8,8 @@
     {{url()->previous()}}
 @endif
 @endsection
+@section('header','Mi perfil')
 @section('content')
-<h1>Mi perfil</h1>
 <div class="form">
     <div style="float: right">
     <a class="edit-link" href="{{route('edit.profile',$usuario->id)}}">Editar</a>

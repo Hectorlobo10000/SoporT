@@ -4,8 +4,8 @@
 @section('return')
     {{route('actividades.index')}}
 @endsection
+@section('header','Agregar actividad')
 @section('content')
-<h1>Agregar actividad</h1>
 <form class="form" method="post" action="{{route('actividades.store')}}">
     @csrf
     <label>Nombre:</label>

@@ -32,7 +32,8 @@
 	<th>Direccion</th>
 	<th>Depto. Trabaja</th>
 	<th>Rol</th>
-	<th>Acciones</th>
+	<th width="80px">Modificar</th>
+	<th width="80px">Eliminar</th>
 </tr>
 @endsection
 
@@ -53,12 +54,14 @@
 	<td>{{$usuario->place->address}}</td>
 	<td>{{$usuario->department->name}}</td>
 	<td>{{$usuario->role->name}}</td>
-	<td  width="100px">
-		<a class="btn btn-warning" style="width: 100px" href="{{route('usuarios.edit',$usuario->id)}}">Modificar</a>
+	<td>
+		<a class="btn-edit btn btn-success" href="{{route('usuarios.edit',$usuario->id)}}"></a>
+	</td>
+	<td>
 		<form method="post" action="{{route('usuarios.destroy',$usuario->id)}}">
 			@csrf
 			@method('DELETE')
-			<button type="submit" class="btn btn-danger" style="width: 100px">Eliminar</button>
+			<button type="submit" class="btn-delete btn btn-danger"></button>
 	    </form>
 	</td>
 </tr>

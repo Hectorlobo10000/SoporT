@@ -7,9 +7,8 @@
     {{route('tasks.index')}}
     @endif
 @endsection
+@section('header','Descripción de la tarea 000'.$task->id)
 @section('content')
-	<h1>Descripción de la tarea {{'000'.$task->id}}</h1>
-
 <div class="form">
 	@if(Auth::user()->role_id == 3 && $task->task_state_id == 1)
 	<div style="float: right">

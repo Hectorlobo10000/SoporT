@@ -13,9 +13,9 @@
 		@if($task->task_state_id===2)
 		@section('extra fields')
 			<th>Anotación</th>
-			<th>Chat</th>
-			<th>Mover a pendientes</th>
-			<th >Mover a finalizadas</th>
+			<th width="50px">Chat</th>
+			<th width="80px">Mover a pendientes</th>
+			<th width="80px">Mover a finalizadas</th>
 		@endsection
 			<tr>
 				<?php
@@ -31,21 +31,21 @@
 				<td>{{$task->client->place->address}}</td>
 				<td>{{$task->created_at}}</td>
 				<td><a href="{{route('show task annotation',['task'=>$task])}}">mostrar</a></td>
-				<td><a class="btn btn-normal" href="{{route('chat.index',$task->id)}}">Chat</a></td>
+				<td><a class="btn-chat btn btn-success" href="{{route('chat.index',$task->id)}}"></a></td>
 				<td>
 					<form action="{{route('update task state',['task'=>$task])}}" method="POST" id="form 1 {{$task->id}}">
 						{{method_field('PATCH')}}
 	    				{{ csrf_field() }}
 						<input type="hidden" name="task_state_id" value="1">
-						<a class="btn btn-success" href="javascript:{}" onclick="document.getElementById('form 1 {{$task->id}}').submit(); return false;">🡸</a>
+						<a style="font-size: 20px;height: 50px; width: 50px;" class="btn-left btn btn-success" href="javascript:{}" onclick="document.getElementById('form 1 {{$task->id}}').submit(); return false;"></a>
 					</form>
 				</td>
-				<td>
+				<td >
 					<form action="{{route('update task state',['task'=>$task])}}" method="POST" id="form 2 {{$task->id}}">
 						{{method_field('PATCH')}}
 	    				{{ csrf_field() }}
 						<input type="hidden" name="task_state_id" value="3">
-						<a class="btn btn-success" href="javascript:{}" onclick="document.getElementById('form 2 {{$task->id}}').submit(); return false;">🡺</a>
+						<a style="font-size: 20px;height: 50px; width: 50px;" class="btn-right btn btn-success" href="javascript:{}" onclick="document.getElementById('form 2 {{$task->id}}').submit(); return false;"></a>
 					</form>
 				</td>
 			</tr>

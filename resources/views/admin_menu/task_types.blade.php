@@ -25,8 +25,8 @@
 <tr>
 	<th>#</th>
 	<th>Actvidad</th>
-	<th>Modificar</th>
-	<th>Eliminar</th>
+	<th width="80px">Modificar</th>
+	<th width="80px">Eliminar</th>
 </tr>
 @endsection
 
@@ -39,14 +39,14 @@
 <tr>
 	<td>{{$counter}}</td>
 	<td>{{$tipo->name}}</td>
-	<td  width="100px">
-		<a class="btn btn-warning" style="width: 100px;" href="{{route('actividades.edit',$tipo->id)}}">Modificar</a>
+	<td>
+		<a class="btn-edit btn btn-success" href="{{route('actividades.edit',$tipo->id)}}"></a>
 	</td>
-	<td  width="100px">
+	<td>
 		<form method="post" action="{{action('TaskTypeController@destroy',$tipo->id)}}">
 		@csrf
 		@method('DELETE')
-		<button type="submit" class="btn btn-danger" style="width: 100px">Eliminar</button>
+		<button type="submit" class="btn-delete btn btn-danger"></button>
 	    </form>
 	</td>
 </tr>

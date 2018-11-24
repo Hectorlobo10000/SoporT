@@ -4,8 +4,8 @@
 @section('return')
     {{route('lugares.index')}}
 @endsection
+@section('header','Editar lugar')
 @section('content')
-<h1>Editar lugar</h1>
   <form class="form" method="post" action="{{action('PlaceController@update',$lugare->id)}}">
 	@csrf
 	@method('PUT')

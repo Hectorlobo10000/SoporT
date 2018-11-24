@@ -4,8 +4,8 @@
 @section('return')
     {{route('usuarios.index')}}
 @endsection
+@section('header','Editar usuario')
 @section('content')
-<h1>Editar usuario</h1>
   <form class="form" method="post" action="{{route('usuarios.update',$usuario->id)}}">
 	@csrf
 	@method('PUT')

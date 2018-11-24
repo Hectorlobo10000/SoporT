@@ -1,5 +1,6 @@
 @extends('layouts.app4')
 @section('title','Mostrar anotaciones')
+@section('header','Anotaciones de la tarea 000'.$task->id)
 @section('return')
 @if($task->task_state_id == 1)
     {{route('pending')}}
@@ -10,7 +11,6 @@
 @endif
 @endsection
 @section('content')
-	<h1>Anotaciones de la tarea {{'000'.$task->id}}</h1>
 <div class="form">
 	@if($task->task_state_id != 4)
 	<div style="float: right">

@@ -22,14 +22,15 @@
 	<th>Descripción</th>
 	<th>Fecha de la solicitud</th>
 	<th>Estado</th>
-	<th>Chat</th>
-	<th>Verificar</th>
-	<th>Modificar</th>
-	<th>Eliminar</th>
+	<th width="50px">Chat</th>
+	<th width="80px">Verificar</th>
+	<th width="80px">Modificar</th>
+	<th width="80px">Eliminar</th>
 </tr>
 @endsection
 
 @section('content')
+
 <?php $counter = 0; ?>
 	@foreach($tasks as $task)
 
@@ -47,31 +48,31 @@
 				<td><a href="{{route('show.description',$task->id)}}">mostrar</a></td>
 				<td>{{$task->created_at}}</td>
 				<td>{{$task->task_state->name}}</td>
-				<td><a class="btn btn-normal" href="{{route('chat.index',$task->id)}}">Chat</a></td>
+				<td><a class="btn-chat btn btn-success" href="{{route('chat.index',$task->id)}}"></a></td>
 				@if($task->task_state_id==3)
-				<td style="width: 50px">
+				<td>
 					<form action="{{route('verify.task',['task'=>$task])}}" method="POST" id="form {{$task->id}}">
 						{{method_field('PATCH')}}
 	    				{{ csrf_field() }}
 						<input type="hidden" name="task_state_id" value="4">
-						<a class="btn btn-success" href="javascript:{}" style="font-size: 20px" onclick="document.getElementById('form {{$task->id}}').submit(); return false;"> 🗹</a>
+						<a class="btn-verify btn btn-success" href="javascript:{}" onclick="AlertaVerificar()"></a>
 					</form>
 				</td>
 				@else
-					<td style="width: 100px"><div class="action-denied"><span>Acción bloqueada</span></div></td>
+					<td><div class="action-denied"></div></td>
 				@endif
 				@if($task->task_state_id == 1)
-					<td><a class="btn btn-warning" href="{{route('tasks.edit',$task->id)}}">Modificar</a></td>
+					<td><a class="btn-edit btn btn-success" href="{{route('tasks.edit',$task->id)}}"></a></td>
 					<td>
 						<form method="post" action="{{route('tasks.destroy',$task->id)}}">
 							@csrf
 							@method('DELETE')
-							<button type="submit" class="btn btn-danger">Eliminar</button>
+							<button type="submit" class="btn-delete btn btn-danger"></button>
 					    </form>
 					</td>
 				@else
-					<td style="width: 100px"><div class="action-denied"><span>Acción bloqueada</span></div></td>
-					<td style="width: 100px"><div class="action-denied"><span>Acción bloqueada</span></div></td>
+					<td><div class="action-denied"></div></td>
+					<td><div class="action-denied"></div></td>
 				@endif
 
 			</tr>
@@ -80,6 +81,13 @@
 @endsection
 @section('btn add')
 <a class="btn btn-normal" href="{{route('tasks.create')}}">Crear Solicitud</a>
+<script type="text/javascript">
+function AlertaVerificar() {
+	var answer = confirm ("Esta acción no se puede revertir. Seguro que quiere verificar esta tarea?")
+	if (answer)
+	document.getElementById('form {{$task->id}}').submit(); return false;
+}
+</script>
 @endsection
 
 

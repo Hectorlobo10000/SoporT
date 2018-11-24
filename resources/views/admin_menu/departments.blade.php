@@ -25,8 +25,8 @@
 <tr>
 	<th>#</th>
 	<th>Nombre</th>
-	<th>Modificar</th>
-	<th>Eliminar</th>
+	<th width="80px">Modificar</th>
+	<th width="80px">Eliminar</th>
 </tr>
 @endsection
 
@@ -40,12 +40,12 @@
 	<td>{{$counter}}</td>
 	<td>{{$departamento->name}}</td>
 	<td width="100px">
-		<a class="btn btn-warning"href="{{route('departamentos.edit',$departamento->id)}}" style="width: 100px">Modificar</a></td>
+		<a class="btn-edit btn btn-success"href="{{route('departamentos.edit',$departamento->id)}}"></a></td>
 	<td width="100px">
 		<form method="post" action="{{action('DepartmentController@destroy',$departamento->id)}}">
 		@csrf
 		@method('DELETE')
-		<button type="submit" style="width: 100px" class="btn btn-danger">Eliminar</button>
+		<button type="submit" class="btn-delete btn btn-danger"></button>
 	    </form>
 	</td>
 </tr>

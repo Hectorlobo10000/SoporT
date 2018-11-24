@@ -13,8 +13,8 @@
 		@if($task->task_state_id===1)
 			@section('extra fields')
 				<th>Anotación</th>
-				<th>Chat</th>
-				<th>Mover a iniciadas</th>
+				<th width="50px">Chat</th>
+				<th width="80px">Mover a iniciadas</th>
 			@endsection
 			<tr>
 				<?php
@@ -30,14 +30,14 @@
 				<td>{{$task->client->place->address}}</td>
 				<td>{{$task->created_at}}</td>
 				<td><a href="{{route('show task annotation',['task'=>$task])}}">Mostrar</a></td>
-				<td><a class="btn btn-normal" href="{{route('chat.index',$task->id)}}">Chat</a></td>
+				<td><a class="btn-chat btn btn-success" href="{{route('chat.index',$task->id)}}"></a></td>
 				<td>
 					{{-- formulario que envia el nuevo estado de la tarea...se utiliza una id con cuyo nombre utiliza la id del task para identificar el formulario --}}
 					<form action="{{route('update task state',['task'=>$task])}}" method="POST" id="form {{$task->id}}">
 						{{method_field('PATCH')}}
 	    				{{ csrf_field() }}
 						<input type="hidden" name="task_state_id" value="2">
-						<a class="btn btn-success" href="javascript:{}" onclick="document.getElementById('form {{$task->id}}').submit(); return false;">🡺</a>
+						<a class="btn-right btn btn-success" href="javascript:{}" onclick="document.getElementById('form {{$task->id}}').submit(); return false;"></a>
 					</form>
 				</td>
 			</tr>

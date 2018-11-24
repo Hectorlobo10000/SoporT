@@ -15,8 +15,8 @@
 			@section('extra fields')
 				<th>Estado</th>
 				<th>Anotación</th>
-				<th>Chat</th>
-				<th>Mover a iniciadas</th>
+				<th width="50px">Chat</th>
+				<th width="80px">Mover a iniciadas</th>
 			@endsection
 			<tr>
 				<?php
@@ -37,18 +37,18 @@
 				<td>Por verificar</td>
 				@endif
 				<td><a href="{{route('show task annotation',['task'=>$task])}}">mostrar</a></td>
-				<td><a class="btn btn-normal" href="{{route('chat.index',$task->id)}}">Chat</a></td>
+				<td><a class="btn-chat btn btn-success" href="{{route('chat.index',$task->id)}}"></a></td>
 				@if($task->task_state_id==3)
 				<td>
 					<form action="{{route('update task state',['task'=>$task])}}" method="POST" id="form {{$task->id}}">
 						{{method_field('PATCH')}}
 	    				{{ csrf_field() }}
 						<input type="hidden" name="task_state_id" value="2">
-						<a class="btn btn-success" href="javascript:{}" style="font-size: 20px" onclick="document.getElementById('form {{$task->id}}').submit(); return false;">🡸</a>
+						<a class="btn-left btn btn-success" href="javascript:{}" style="font-size: 20px; height: 50px; width: 50px;" onclick="document.getElementById('form {{$task->id}}').submit(); return false;"></a>
 					</form>
 				</td>
 				@else
-					<td><div class="action-denied"><span>Acción bloqueada</span></div></td>
+					<td><div class="action-denied"></div></td>
 				@endif
 
 

@@ -26,7 +26,7 @@
                 <div class="dropdown">
                     <a href="#" class="drop-link">{{Auth::User()->name}} ▼</a>
                     <div class="dropdown-content">
-                        <a href="{{ route('show.profile',Auth::id()) }}">Ver perfil</a>
+                        <a href="{{ route('show.profile',Auth::id()) }}">Mi perfil</a>
                         <a style="border-top: 1px solid #d3d3d3" href="{{ url('/logout') }}">Cerrar sesión</a>
                     </div>
                 </div>

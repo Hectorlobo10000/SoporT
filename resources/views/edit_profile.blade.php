@@ -1,11 +1,12 @@
 @extends('layouts.app4')
 
 @section('title','Editar perfil')
+
 @section('return')
     {{route('show.profile',$usuario->id)}}
 @endsection
+@section('header','Editar perfil')
 @section('content')
-<h1>Editar perfil</h1>
   <form class="form" method="post" action="{{route('usuarios.update',$usuario->id)}}">
 	@csrf
 	@method('PUT')

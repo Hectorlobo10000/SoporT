@@ -13,7 +13,7 @@
 @section('header')
 <tr>
 	<th>Historial de solicitudes</th>
-	<th>Borrar</th>
+	<th width="80px">Borrar</th>
 </tr>
 @endsection
 
@@ -28,7 +28,7 @@
 					<form method="post" action="{{route('task_logs.destroy',$task_log->id)}}">
 						@csrf
 						@method('DELETE')
-						<button type="submit" style="width: 100%">X</button>
+						<button type="submit" class="btn-delete btn btn-danger"></button>
 				    </form>
 				</td>
 			</tr>

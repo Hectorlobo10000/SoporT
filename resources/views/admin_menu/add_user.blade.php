@@ -4,8 +4,8 @@
 @section('return')
     {{route('usuarios.index')}}
 @endsection
+@section('header','Agregar usuario')
 @section('content')
-<h1>Agregar usuario</h1>
 </script>
   <form class="form" method="post" action="{{route('usuarios.store')}}">
 	@csrf
