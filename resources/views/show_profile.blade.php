@@ -11,10 +11,6 @@
 @section('header','Mi perfil')
 @section('content')
 <div class="form">
-    <div style="float: right">
-    <a class="btn-edit btn btn-success" href="{{route('edit.profile',$usuario->id)}}"></a>
-    </div>
-        <br>
 
     <label>Nombre:</label>
     <text  class="formulario" readonly >{{$usuario->name}}</text>
@@ -36,7 +32,9 @@
     <label>Rol:</label>
     <text  class="formulario" readonly >{{$usuario->role->name}}</text>
 
-
+    <div style="float: right">
+        <a class="btn-edit btn btn-success" href="{{route('edit.profile',$usuario->id)}}"></a>
+    </div>
 
 </div>
 

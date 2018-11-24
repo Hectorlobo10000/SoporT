@@ -6,7 +6,7 @@
 @endsection
 @section('header','Editar anotaciones de la tarea 000'.$task->id)
 @section('content')
-<form class="form" action="{{route('update task annotation',['task'=>$task])}}" method="POST">
+<form class="form" style="width: 100%" action="{{route('update task annotation',['task'=>$task])}}" method="POST">
     {{method_field('PATCH')}}
     {{ csrf_field() }}
     <textarea maxlength="1000" name="annotation" class="formulario" style="height: 400px;">{{$task->annotation}}</textarea>

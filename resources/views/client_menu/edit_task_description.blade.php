@@ -4,9 +4,9 @@
 @section('return')
     {{route('show task annotation',$task->id)}}
 @endsection
-@section('header','Editar descripción de la tarea 000'.$task->id)
+@section('header','Editar descripción de la solicitud 000'.$task->id)
 @section('content')
-<form class="form" action="{{route('update.description',['task'=>$task])}}" method="POST">
+<form class="form" style="width: 100%" action="{{route('update.description',['task'=>$task])}}" method="POST">
     {{method_field('PATCH')}}
     {{ csrf_field() }}
     <textarea maxlength="1000" name="description" class="formulario" style="height: 400px;">{{$task->description}}</textarea>

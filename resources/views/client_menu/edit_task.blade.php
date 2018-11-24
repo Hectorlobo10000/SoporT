@@ -4,9 +4,9 @@
 @section('return')
     {{route('tasks.index')}}
 @endsection
+@section('header','Editar solicitud')
 @section('content')
-<h1>Editar solicitud</h1>
-<form method="post" action="{{route('tasks.update',$task->id)}}">
+<form style="width: 100%" method="post" action="{{route('tasks.update',$task->id)}}">
 	@csrf
 	@method('PUT')
 	@if($errors->has('technician_id') && !($errors->has('description')))
@@ -27,7 +27,7 @@
         <span>{{ $errors->first('description')}}</span>
     </div>
     @endif
-    <button type="submit" class="btn btn-info">Modificar</button>
+    <button type="submit" class="btn btn-normal">Modificar</button>
 </form>
 
 @endsection
