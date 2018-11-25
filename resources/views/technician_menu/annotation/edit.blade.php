@@ -1,4 +1,4 @@
-@if($task_state_id != 4)
+@if($task->task_state_id != 4)
 @extends('layouts.app4')
 @section('title','Editar anotaciones')
 @section('return')
