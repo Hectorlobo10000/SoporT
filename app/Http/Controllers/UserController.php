@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\UserUpdateProfileRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Department;
 use App\User;
@@ -107,6 +108,13 @@ class UserController extends Controller
     }
 
     public function update(UserUpdateRequest $request, $id)
+    {
+        User::find($id)->update($request->except(['depto','muni','addres']));
+
+        return redirect()->route('usuarios.index');
+    }
+
+    public function update(UserUpdateProfileRequest $request, $id)
     {
         User::find($id)->update($request->except(['depto','muni','addres']));
 
