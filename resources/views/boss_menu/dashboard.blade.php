@@ -10,13 +10,15 @@
 </div>
 	<div class="row" style="height: 95%">
 		<div class="form-container">
+              <br><br>
+
       <fieldset>
       <legend>Filtrado por fecha</legend>
 		  <br>
       <div>
         <form action="{{route('boss index')}}" method="GET" id="dates">
           <label for="date1">Desde: </label>
-          <input type="date" id="date1" name="date1"  value="{{$date1}}">
+          <input type="date" id="date1"  max="{{date('Y-m-d')}}" name="date1"  value="{{$date1}}">
           <br><br>
           <label for="date2">Hasta: </label>
           <input type="date" id="date2" name="date2"  max="{{date('Y-m-d')}}" value="{{$date2}}">
@@ -87,7 +89,7 @@ $(function(){
         elements[i].oninvalid = function(e) {
             e.target.setCustomValidity("");
             if (!e.target.validity.valid) {
-                e.target.setCustomValidity("Ingrese una fecha coherente!");
+                e.target.setCustomValidity("Ingrese una fecha coherente.");
             }
         };
         elements[i].oninput = function(e) {
