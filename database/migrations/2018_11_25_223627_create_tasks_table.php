@@ -22,6 +22,7 @@ class CreateTasksTable extends Migration {
 			$table->string('description', 50)->nullable();
 			$table->string('annotation', 1000)->nullable();
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

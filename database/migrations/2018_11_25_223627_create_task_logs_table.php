@@ -17,6 +17,7 @@ class CreateTaskLogsTable extends Migration {
 			$table->increments('id');
 			$table->integer('task_id')->unsigned()->index('FK_task_logs_tasks_idx');
 			$table->integer('task_state_id')->unsigned()->index('FK_task_logs_task_states_idx');
+			$table->integer('user_id')->unsigned()->index('FK_task_logs_users');
 			$table->timestamps();
 		});
 	}
