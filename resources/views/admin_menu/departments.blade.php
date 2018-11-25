@@ -33,13 +33,17 @@
 	<td>{{ $departamento->name }}</td>
 	<td width="100px">
 		<a class="btn-edit btn btn-success"href="{{ route('departamentos.edit',$departamento->id) }}"></a></td>
-		<td width="100px">
+		@if($departamento->users()->exists())
+		<td class="action-denied"></td>
+		@else
+		<td>
 			<form method="post" action="{{ action('DepartmentController@destroy',$departamento->id) }}">
 				@csrf
 				@method('DELETE')
 				<button type="submit" class="btn-delete btn btn-danger"></button>
 			</form>
 		</td>
+		@endif
 	</tr>
 	@endforeach
 	@endsection

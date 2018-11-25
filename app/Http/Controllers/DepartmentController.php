@@ -44,8 +44,9 @@ class DepartmentController extends Controller
         return view('admin_menu.edit_department',compact('departamento'));
     }
 
-    public function update(DepartmentUpdateRequest $request,Department $departamento)
+    public function update(DepartmentUpdateRequest $request, $id)
     {
+        $departamento = Department::find($id);
         $departamento->name =$request->input('name');
         $departamento->save();
         return redirect()->route('departamentos.index');

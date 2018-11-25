@@ -28,8 +28,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Place extends Model
 {
-	use SoftDeletes;
-
 
 	protected $fillable = [
 		'domain',

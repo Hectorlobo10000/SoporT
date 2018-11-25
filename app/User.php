@@ -36,6 +36,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class User extends Authenticatable
 {
 	use Notifiable;
+	use SoftDeletes;
 
 
 	protected $fillable = [
@@ -71,7 +72,7 @@ class User extends Authenticatable
 
 	public function place()
 	{
-		return $this->belongsTo(\App\Place::class)-> withTrashed ( );
+		return $this->belongsTo(\App\Place::class);
 	}
 
 	public function task_messages()

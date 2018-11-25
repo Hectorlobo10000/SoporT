@@ -31,4 +31,5 @@ class TaskState extends Model
 	{
 		return $this->hasMany(\App\Task::class);
 	}
+
 }

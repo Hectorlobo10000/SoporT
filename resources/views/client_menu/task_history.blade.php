@@ -18,9 +18,15 @@
 @foreach($task_logs as $task_log)
 @if(Auth::id()==$task_log->task->client_id)
 <tr>
+	@if(Auth::id()==$task_log->user_id)
 	<td>
-		La solicitud {{ '000'.$task_log->task_id }} paso a estar {{ $task_log->task_state->name }}. Fecha: {{ $task_log->created_at }}
+		Has creado la solicitud {{ '000'.$task_log->task_id }}. Fecha: {{ $task_log->created_at }}
 	</td>
+	@else
+	<td>
+		{{ $task_log->user->name }} cambió el estado de la solicitud {{ '000'.$task_log->task_id }} a {{ $task_log->task_state->name }}. Fecha: {{ $task_log->created_at }}
+	</td>
+	@endif
 	<td>
 		<form method="post" action="{{ route('task_logs.destroy',$task_log->id) }}">
 			@csrf

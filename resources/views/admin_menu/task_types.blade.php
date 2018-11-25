@@ -34,6 +34,9 @@
 	<td>
 		<a class="btn-edit btn btn-success" href="{{ route('actividades.edit',$tipo->id) }}"></a>
 	</td>
+	@if($tipo->users()->exists())
+	<td class="action-denied"></td>
+	@else
 	<td>
 		<form method="post" action="{{ action('TaskTypeController@destroy',$tipo->id) }}">
 			@csrf
@@ -41,6 +44,7 @@
 			<button type="submit" class="btn-delete btn btn-danger"></button>
 		</form>
 	</td>
+	@endif
 </tr>
 @endforeach
 @endsection

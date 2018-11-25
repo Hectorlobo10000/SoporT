@@ -47,7 +47,7 @@ Tareas finalizadas
 		</form>
 	</td>
 	@else
-	<td><div class="action-denied"></div></td>
+	<td class="action-denied"></td>
 	@endif
 </tr>
 @endif

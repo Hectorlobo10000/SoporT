@@ -51,7 +51,8 @@ class TechnicianController extends Controller
       $task->save();
       $task_log = new TaskLog([
         'task_id' => $task->id,
-        'task_state_id' => $task->task_state_id
+        'task_state_id' => $task->task_state_id,
+        'user_id' => Auth::id()
       ]);
       $task_log->save();
       return redirect()->back();

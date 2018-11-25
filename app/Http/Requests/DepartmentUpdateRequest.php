@@ -13,7 +13,12 @@ class DepartmentUpdateRequest extends FormRequest
 
     public function rules()
     {
-        return ['name'=>'required|unique:departments,name'];
+        return [
+            'name' => [
+                'required',
+                'unique:departments,name,' . $this->departamento
+            ],
+        ];
     }
 
     public function messages()

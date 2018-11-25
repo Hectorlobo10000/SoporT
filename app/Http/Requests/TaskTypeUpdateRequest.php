@@ -13,7 +13,7 @@ class TaskTypeUpdateRequest extends FormRequest
 
     public function rules()
     {
-        return ['name'=>'required|unique:task_types,name'];
+        return ['name'=>'required|unique:task_types,name,'.$this->actividade];
     }
 
 

@@ -38,13 +38,17 @@
 	<td>
 		<a class="btn-edit btn btn-success" href="{{ route('lugares.edit',$lugare->id) }}"></a>
 	</td>
-	<td  width="100px">
-		<form method="post" action="{{ action('PlaceController@destroy',$lugare->id) }}" >
+	@if($lugare->users()->exists())
+	<td class="action-denied"></td>
+	@else
+	<td>
+		<form method="post" action="{{ action('PlaceController@destroy',$lugare->id) }}">
 			@csrf
 			@method('DELETE')
 			<button type="submit" class="btn-delete btn btn-danger"></button>
 		</form>
 	</td>
+	@endif
 </tr>
 @endforeach
 @endsection

@@ -15,8 +15,8 @@ class UserUpdateRequest extends FormRequest
     {
          return [
             'name'=>'required',
-            'email'=>'required|unique:users,email',
             'phone'=>'required',
+            'email'=>'required|unique:users,email, '.$this->usuario
         ];
     }
 

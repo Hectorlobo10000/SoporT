@@ -16,7 +16,6 @@ class DepartmentStoreRequest extends FormRequest
         return ['name'=>'required|unique:departments,name'];
     }
 
-
     public function messages()
     {
         return [

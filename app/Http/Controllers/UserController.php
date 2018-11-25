@@ -52,41 +52,49 @@ class UserController extends Controller
     public function store(UserStoreRequest $request)
     {
         $role_id= $request->input('role_id');
-        if ($role_id == 2)
-        {
-            $user = new User(['department_id'=>$request->input('department_id'),
-                                 'role_id'=>$role_id,
-                                 'place_id'=>$request->input('place_id'),
-                                 'name'=>$request->input('name'),
-                                 'email'=>$request->input('email'),
-                                 'password'=>Hash::make($request->input('pass')),
-                                 'phone'=>$request->input('phone')]);
-            $user->save();
+        $email = $request->input('email');
+        $user_deleted = User::onlyTrashed()->where('email',$email)->first();
+        if($user_deleted == NULL){
+            if ($role_id == 2)
+            {
+                $user = new User(['department_id'=>$request->input('department_id'),
+                                     'role_id'=>$role_id,
+                                     'place_id'=>$request->input('place_id'),
+                                     'name'=>$request->input('name'),
+                                     'email'=>$request->input('email'),
+                                     'password'=>Hash::make($request->input('pass')),
+                                     'phone'=>$request->input('phone')]);
+                $user->save();
 
-            $user_id = $user->id;
+                $user_id = $user->id;
 
-            $tipact = $request->input('tipoact');
+                $tipact = $request->input('tipoact');
 
-            for ($i=0; $i < count($tipact) ; $i++) {
-                $tp_x_us = new UsersXTaskType(['task_type_id'=>$tipact[$i],'user_id'=>$user_id]);
-                $tp_x_us->save();
+                for ($i=0; $i < count($tipact) ; $i++) {
+                    $tp_x_us = new UsersXTaskType(['task_type_id'=>$tipact[$i],'user_id'=>$user_id]);
+                    $tp_x_us->save();
+                }
+
+                return redirect()->route('usuarios.index');
             }
 
+            else
+            {
+                $user = new User(['department_id'=>$request->input('department_id'),
+                                     'role_id'=>$role_id,
+                                     'place_id'=>$request->input('place_id'),
+                                     'name'=>$request->input('name'),
+                                     'email'=>$request->input('email'),
+                                     'password'=>Hash::make($request->input('pass')),
+                                     'phone'=>$request->input('phone')]);
+                $user->save();
+                return redirect()->route('usuarios.index');
+            }
+        }else{
+            $user_deleted->restore();
             return redirect()->route('usuarios.index');
         }
 
-        else
-        {
-            $user = new User(['department_id'=>$request->input('department_id'),
-                                 'role_id'=>$role_id,
-                                 'place_id'=>$request->input('place_id'),
-                                 'name'=>$request->input('name'),
-                                 'email'=>$request->input('email'),
-                                 'password'=>Hash::make($request->input('pass')),
-                                 'phone'=>$request->input('phone')]);
-            $user->save();
-            return redirect()->route('usuarios.index');
-        }
     }
 
     public function edit($id)
