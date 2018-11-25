@@ -114,7 +114,7 @@ class UserController extends Controller
         return redirect()->route('usuarios.index');
     }
 
-    public function update(UserUpdateProfileRequest $request, $id)
+    public function updateProfile(UserUpdateProfileRequest $request, $id)
     {
         User::find($id)->update($request->except(['depto','muni','addres']));
 
