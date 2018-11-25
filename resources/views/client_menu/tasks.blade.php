@@ -10,7 +10,7 @@
 @endsection
 @section('header')
 <tr>
-	<th>#</th>
+	<th width="10px">#</th>
 	<th>Código</th>
 	<th>Técnico encargado</th>
 	<th>Teléfono</th>
@@ -50,7 +50,6 @@
 			{{ csrf_field() }}
 			<input type="hidden" name="task_state_id" value="4">
 			<a class="btn-verify btn btn-success" href="javascript:{}" onclick="AlertaVerificar(document.getElementById('form {{ $task->id }}'))"></a>
-
 		</form>
 	</td>
 	@else
@@ -59,10 +58,19 @@
 	@if($task->task_state_id == 1)
 	<td><a class="btn-edit btn btn-success" href="{{ route('tasks.edit',$task->id) }}"></a></td>
 	<td>
-		<form method="post" action="{{ route('tasks.destroy',$task->id) }}">
+		<form action="{{ route('tasks.destroy',$task->id) }}" method="POST" id="form-delete {{ $task->id }}">
 			@csrf
 			@method('DELETE')
-			<button type="submit" class="btn-delete btn btn-danger"></button>
+			<button form="form-delete {{ $task->id }}" type="submit" class="btn-delete btn btn-danger"></button>
+		</form>
+	</td>
+	@elseif($task->task_state_id == 4)
+	<td><div class="action-denied"></div></td>
+	<td>
+		<form method="POST" id="form-delete {{ $task->id }}" action="{{ route('tasks.destroy',$task->id) }}" >
+			@csrf
+			@method('DELETE')
+			<button form="form-delete {{ $task->id }}" type="submit" class="btn-delete btn btn-danger"></button>
 		</form>
 	</td>
 	@else
@@ -78,7 +86,7 @@
 @endsection
 <script type="text/javascript">
 function AlertaVerificar(form_id) {
-	var answer = confirm ("Esta acción no se puede revertir. Seguro que quiere verificar esta tarea?")
+	var answer = confirm ("Esta acción no se puede revertir. ¿Seguro que quiere verificar esta tarea?")
 	if (answer)
 	form_id.submit(); return false;
 }

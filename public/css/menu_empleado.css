@@ -139,9 +139,6 @@ body{
     color: white;
 }
 
-.btn{
-    margin: 2px;
-}
 
 .action-denied{
   background-image: url('../images/block.png');
@@ -149,16 +146,16 @@ body{
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
-  height: 50px;
+  height: 45px;
 }
 
 .btn-verify{
   background-image: url('../images/btn-verify.png');
-  background-size: 80%;
+  background-size: 60%;
   background-repeat: no-repeat;
   background-position: center;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
 }
 
 .btn-chat{
@@ -189,19 +186,19 @@ body{
 
 .btn-delete{
   background-image: url('../images/btn-delete.png');
-  background-size: 80%;
+  background-size: 70%;
   background-repeat: no-repeat;
   background-position: center;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
 }
 .btn-edit{
   background-image: url('../images/btn-edit.png');
-  background-size: 80%;
+  background-size: 60%;
   background-repeat: no-repeat;
   background-position: center;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
 }
 
 .btn-agregar{

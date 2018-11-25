@@ -23,15 +23,17 @@ table {
 }
 th {
     border: 2px  solid   #d3d3d3;
-    height: 50px;
+    min-height: 50px;
     text-align: center;
     padding:10px;
     background-color: #B0E0E6;
 }
 td{
     border: 2px solid #d3d3d3;
-    padding: 5px;
     text-align: center;
+    min-height: 100px;
+    padding: 5px;
+    min-height: 50px;
 }
 tr:nth-child(even) {background-color: #F0FFFF;}
 tr:nth-child(odd) {background-color: #FFFFFF;}
