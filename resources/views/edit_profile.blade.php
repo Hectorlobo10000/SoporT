@@ -7,7 +7,7 @@
 @endsection
 @section('header','Editar perfil')
 @section('content')
-  <form class="form" method="post" action="{{route('usuarios.update',$usuario->id)}}">
+  <form class="form" method="post" action="{{route('profile.update',$usuario->id)}}">
 	@csrf
 	@method('PUT')
 
