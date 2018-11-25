@@ -6,7 +6,7 @@
 @endsection
 @section('header','Crear solicitud')
 @section('content')
-<form class="form" style="width: 100%; method="post" action="{{route('tasks.store')}}">
+<form class="form" style="width: 100%;" method="post" action="{{route('tasks.store')}}">
     @csrf
     @if($errors->has('description'))
     <div class="alert alert-danger">

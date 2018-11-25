@@ -15,7 +15,7 @@
     @endif
     <label>Nombre de departamento:</label>
     <input type="text" name="name" class="formulario">
-    <button type="submit" class="btn btn-normal" style="float: right;">Crear</button>
+    <button type="submit" class="btn-agregar btn btn-normal">Crear</button>
     <br><br>
 </form>
 
