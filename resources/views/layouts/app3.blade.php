@@ -54,6 +54,7 @@
                         <br>
                         @yield('paginar')
                         @yield('btn add')
+                        <br><br><br><br><br>
                     </div>
                 </div>
             </div>

@@ -20,7 +20,8 @@ class TaskController extends Controller{
         $tasks = Task::all();
         return view('client_menu.tasks',compact('tasks'));
     }
-    public function history(){
+    public function history()
+    {
       $task_logs = TaskLog::all();
       return view('/client_menu/task_history',compact('task_logs'));
     }
@@ -63,10 +64,12 @@ class TaskController extends Controller{
     {
       return view('show_task_description',compact('task'));
     }
-    public function editDescription(Task $task){
+    public function editDescription(Task $task)
+    {
       return view('client_menu/edit_task_description',compact('task'));
     }
-     public function updateDescription(Request $request,Task $task){
+     public function updateDescription(Request $request,Task $task)
+     {
       $request->validate([
         'description'=>'required'
       ],[
@@ -100,102 +103,49 @@ class TaskController extends Controller{
         return redirect()->route('tasks.index');
     }
 
-    private function getTechnicianId(int $task_type_id, int $place_id){
-     //busca el tecnico con menos tareas pendientes que tenga el mismo tipo de actividad de la tarea y que pertenezca al mismo lugar que el cliente
+    private function getTechnicianId(int $task_type_id, int $place_id)
+    {
+
+     //busca el tecnico con menos tareas pendientes o iniciadas que tenga el mismo tipo de actividad de la tarea y que pertenezca al mismo lugar que el cliente
       $data = DB::Select(
         DB::raw(
             "
-            SELECT b.technician_id AS id,
-                   b.username,
-                   b.task_type,
-                   count(a.task_state_id) AS cantidad_pendientes
-            FROM tasks AS a
-            INNER JOIN
-              ( SELECT a.id AS technician_id ,
-                       a.name AS username,
-                       c.name AS task_type
-               FROM users AS a
-               INNER JOIN users_x_task_types AS b ON (a.id = b.user_id)
-               INNER JOIN task_types AS c ON (b.task_type_id = c.id)
-               WHERE (c.id= $task_type_id && a.place_id=$place_id && a.role_id=2) ) AS b ON (a.technician_id = b.technician_id)
-            WHERE a.task_state_id=1
-            GROUP BY a.technician_id
-            ORDER BY cantidad_pendientes ASC LIMIT 1;
+            SELECT a.id,
+                   count(c.task_state_id) AS cantidad
+            FROM users AS a
+            INNER JOIN users_x_task_types AS b ON (a.id = b.user_id)
+            LEFT OUTER JOIN tasks AS c ON (a.id = c.technician_id) where(a.place_id = $place_id && a.role_id = 2 && b.task_type_id = $task_type_id && ((c.task_state_id != 3 && c.task_state_id != 4)|| c.task_state_id IS NULL))
+            GROUP BY a.id
+            ORDER BY cantidad ASC LIMIT 1;
             "
         )
       );
-      //busca el tecnico con menos tareas iniciadas que tenga el mismo tipo de actividad de la tarea y que pertenezca al mismo lugar que el cliente
+      //busca el tecnico con menos tareas pendientes o iniciadas que pertenezca al mismo lugar que el cliente
       if (!$data){
         $data = DB::Select(
             DB::raw(
-                "
-                SELECT b.technician_id AS id,
-                       b.username,
-                       b.task_type,
-                       count(a.task_state_id) AS cantidad_iniciadas
-                FROM tasks AS a
-                INNER JOIN
-                  ( SELECT a.id AS technician_id ,
-                           a.name AS username,
-                           c.name AS task_type
-                   FROM users AS a
-                   INNER JOIN users_x_task_types AS b ON (a.id = b.user_id)
-                   INNER JOIN task_types AS c ON (b.task_type_id = c.id)
-                   WHERE (c.id= $task_type_id && a.place_id=$place_id && a.role_id=2) ) AS b ON (a.technician_id = b.technician_id)
-                WHERE a.task_state_id=2
-                GROUP BY a.technician_id
-                ORDER BY cantidad_iniciadas ASC LIMIT 1;"
+            "
+            SELECT a.id,
+                   count(c.task_state_id) AS cantidad
+            FROM users AS a
+            INNER JOIN users_x_task_types AS b ON (a.id = b.user_id)
+            LEFT OUTER JOIN tasks AS c ON (a.id = c.technician_id) where(a.place_id = $place_id && a.role_id = 2 && ((c.task_state_id != 3 && c.task_state_id != 4)|| c.task_state_id IS NULL))
+            GROUP BY a.id
+            ORDER BY cantidad ASC LIMIT 1;
+            "
+
         )
         );
       }
-      //busca a un tecnico que tenga el mismo tipo de tarea (sin que importe la cantidad de tareas asignadas) que pertenezca al mismo lugar que el cliente aleatoriamente
-      if(!$data){
-        $data = DB::Select(
-          DB::raw(
-              "
-              SELECT b.technician_id AS id,
-                     b.username,
-                     b.task_type
-              FROM tasks AS a
-              INNER JOIN
-                ( SELECT a.id AS technician_id ,
-                         a.name AS username,
-                         c.name AS task_type
-                 FROM users AS a
-                 INNER JOIN users_x_task_types AS b ON (a.id = b.user_id)
-                 INNER JOIN task_types AS c ON (b.task_type_id = c.id)
-                 WHERE (c.id= $task_type_id && a.place_id=$place_id && a.role_id=2) ) AS b ON (a.technician_id = b.technician_id)
-              ORDER BY RAND() LIMIT 1;
-              "
-          )
-        );
-      }
 
-      //busca al tecnico con menos tareas pendientes (sin que importe el tipo de tarea) que pertenezca al mismo lugar que el cliente
 
-      //busca al tecnico con menos tareas iniciadas (sin que importe el tipo de tarea) que pertenezca al mismo lugar que el cliente
+        if(!$data){
+            return null;
+        }
 
-      //busca un tecnico que pertenezca al mismo lugar que el cliente aleatoriamente(sin que importe el tipo de tarea ni la cantidad de tareas)
-      if(!$data){
-        $data = DB::Select(
-            DB::raw(
-                "
-                SELECT id
-                FROM users
-                WHERE place_id = $place_id && role_id=2
-                ORDER BY RAND() LIMIT 1;
-                "
-            )
-        );
-      }
-
-      if(!$data){
-          return null;
-      }
-
-      $query = json_decode(json_encode($data[0]),true);
-      $technician_id = $query['id'];
-      return $technician_id;
+        $query = json_decode(json_encode($data[0]),true);
+        $technician_id = $query['id'];
+        return $technician_id;
     }
 }
 ?>
