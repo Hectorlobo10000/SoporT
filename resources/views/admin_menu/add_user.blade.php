@@ -93,6 +93,7 @@
         </div>
         @endif
     </div>
-    <button class="btn btn-normal" type="submit">Crear</button>
+    <button class="btn-agregar btn btn-normal" type="submit">Crear</button>
+    <br><br>
 </form>
 @endsection

@@ -20,7 +20,7 @@
 	<th>E-mail</th>
 	<th>Asunto</th>
 	<th>Descripción</th>
-	<th>Fecha de la solicitud</th>
+	<th>Fecha de creación</th>
 	<th>Estado</th>
 	<th width="50px">Chat</th>
 	<th width="80px">Verificar</th>
@@ -80,7 +80,7 @@
 	@endforeach
 @endsection
 @section('btn add')
-<a class="btn btn-normal" href="{{route('tasks.create')}}">Crear Solicitud</a>
+<a class="btn-agregar btn btn-normal" href="{{route('tasks.create')}}">Crear Solicitud</a>
 <script type="text/javascript">
 function AlertaVerificar() {
 	var answer = confirm ("Esta acción no se puede revertir. Seguro que quiere verificar esta tarea?")

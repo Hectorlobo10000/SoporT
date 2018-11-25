@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/menu_empleado.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/menu_empleado_tabla.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/side-bar-horizontal.css')}}">
-    <link href="{{ asset('css/boss_menu.css') }}" rel="stylesheet">
     <style>
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 </style>
@@ -35,6 +34,7 @@
             </div>
         </div>
         @yield('content')
+        @yield('login')
     </div>
 </body>
 

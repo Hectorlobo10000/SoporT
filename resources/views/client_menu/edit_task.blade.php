@@ -6,7 +6,7 @@
 @endsection
 @section('header','Editar solicitud')
 @section('content')
-<form style="width: 100%" method="post" action="{{route('tasks.update',$task->id)}}">
+<form class="form" style="width: 100%" method="post" action="{{route('tasks.update',$task->id)}}">
 	@csrf
 	@method('PUT')
 	@if($errors->has('technician_id') && !($errors->has('description')))
@@ -15,7 +15,7 @@
     </div>
     @endif
 	<label>Tipo de solicitud:</label>
-	<select class="form-control" name="task_type_id">
+	<select name="task_type_id">
 		@foreach($task_types as $task_type)
 			<option value="{{$task_type->id}}" >{{$task_type->name}}</option>
 		@endforeach
@@ -27,7 +27,8 @@
         <span>{{ $errors->first('description')}}</span>
     </div>
     @endif
-    <button type="submit" class="btn btn-normal">Modificar</button>
+    <button type="submit" class="btn-agregar btn btn-normal" >Modificar</button>
+    <br><br>
 </form>
 
 @endsection

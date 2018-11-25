@@ -1,23 +1,54 @@
+@font-face {
+    font-family: Pacifico;
+    src: url(../fonts/Pacifico/Pacifico-Regular.ttf);
+}
+
+@font-face {
+    font-family: Lobster;
+    src: url(../fonts/Lobster/Lobster-Regular.ttf);
+}
+
+@font-face {
+    font-family: Anton;
+    src: url(../fonts/Anton/Anton-Regular.ttf);
+}
+@font-face {
+    font-family: Tillium Web;
+    src: url(../fonts/Tillium_Web/Tillium_Web-Regular.ttf);
+}
 body
 {
-	background: #FFFFFF;
-  background-image: url(../images/menu.jpg);
-  background-size: 100%;
+	 background: #FFFFFF;
+    min-height: 900px;
+    font-family: 'Tillium Web', sans-serif;
+    background-color: #F0FFFF;
+    background-image: url('../images/menu.jpg');
+    background-size: 100%;
 }
 
 .form
 {
-	margin: 1px auto;
+  padding: 10px 10px 10px 10px;
 	min-width: 590px;
+  width: 100%;
 	height: auto;
-	border :1px solid rgba(0,0,0,0);
+	border: 2px solid #008080;
+  border-radius: 0px 30px 0px 30px;
+  background-color:   #a0dade;
+  background-size: 100%;
 }
+
 
 h1
 {
-	text-align: center;
-	margin-top: 20px;
-	color: rgba(0,0,0,0.5);
+  font-family: 'Tillium Web', sans-serif;
+  text-align: center;
+  color: black;
+  font-size: 30px;
+  padding: 10px 10px;
+}
+label{
+  color: black;
 }
 
 .back-link {
@@ -96,8 +127,8 @@ h1
 	padding: 5px;
 	width: 100%;
 	border-radius: 10px;
-	border : 2px solid #CCCCCC;
-	background: #FFFFFF;
+	border : 2px solid #008080;
+  background-color: #F0FFFF;
 }
 
 
@@ -117,8 +148,9 @@ select
   padding: 5px;
   width: 100%;
   border-radius: 10px;
-  border : 2px solid #CCCCCC;
-  background: #FFFFFF;
+  border : 2px solid #008080;
+  background-color: #F0FFFF;
+
 }
 .btn{
       padding: 8px 16px;
@@ -126,12 +158,10 @@ select
 }
 .btn-normal{
   background-color: #5F9EA0;
-  border-color: #5F9EA0;
   color: #ffffff;
 }
 .btn-normal:hover{
   background-color: #008080;
-  border-color: #008080;
   color: #ffffff;
 }
 .btn-normal:focus{
@@ -151,4 +181,12 @@ select
   background-position: center;
   width: 30px;
   height: 30px;
+}
+.btn-crear{
+  float: right;
+}
+
+.btn-agregar{
+  float: right;
+  border-color: #008080;
 }

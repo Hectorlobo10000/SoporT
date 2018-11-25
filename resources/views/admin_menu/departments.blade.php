@@ -60,6 +60,6 @@
 @endsection
 
 @section('btn add')
-<a class="btn btn-normal" href="{{route('departamentos.create')}}">Agregar</a>
+<a class="btn-agregar btn btn-normal" href="{{route('departamentos.create')}}">Agregar</a>
 @endsection
 

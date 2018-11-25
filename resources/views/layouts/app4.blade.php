@@ -6,14 +6,15 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/PlantillaEditar.css') }}" rel="stylesheet">
     <style>
-@import url('https://fonts.googleapis.com/css?family=Pacifico');
-</style>
+		@import url('https://fonts.googleapis.com/css?family=Pacifico');
+		@import url('https://fonts.googleapis.com/css?family=Nunito');
+	</style>
 	<title>@yield('title')</title>
 </head>
 <body>
 		<div class="row"  style="width:101%;background-color: transparent;">
 			<div class="col" style="width: 20%"><a href="@yield('return')" class="btn btn-normal back-link">&laquo; Regresar</a></div>
-			<div class="col" style="width: 60%">
+			<div class="col" style="width: 1110px; float: center;">
 				<h1>@yield('header')</h1>
 			</div>
 			<div class="col" style="width: 20%;">
@@ -29,7 +30,6 @@
 
 
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<br>
 		<div class="container">
 			<div>
 

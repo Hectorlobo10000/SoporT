@@ -35,6 +35,7 @@
     <div style="float: right">
         <a class="btn-edit btn btn-success" href="{{route('edit.profile',$usuario->id)}}"></a>
     </div>
+    <br>
 
 </div>
 

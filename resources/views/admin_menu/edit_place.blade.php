@@ -34,7 +34,8 @@
     </div>
     @endif
 
-    <button type="submit" class="btn btn-normal">Modificar</button>
+    <button type="submit" class="btn-agregar btn btn-normal">Modificar</button>
+    <br><br>
    </form>
 
 @endsection

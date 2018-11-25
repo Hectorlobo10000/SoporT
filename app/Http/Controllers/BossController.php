@@ -28,7 +28,7 @@ class BossController extends Controller
 				on (tasks.client_id = users.id)
 				inner join departments
 				on (users.department_id = departments.id)
-				where (tasks.created_at BETWEEN '$datetime1' AND '$datetime2' && tasks.task_state_id = 3)
+				where (tasks.created_at BETWEEN '$datetime1' AND '$datetime2' && tasks.task_state_id = 4)
 				group by departments.name
 				having count(departments.name)
 				order by count(departments.name) desc;"

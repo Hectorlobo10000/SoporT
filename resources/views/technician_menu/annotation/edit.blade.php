@@ -10,8 +10,8 @@
     {{method_field('PATCH')}}
     {{ csrf_field() }}
     <textarea maxlength="1000" name="annotation" class="formulario" style="height: 400px;">{{$task->annotation}}</textarea>
-    <br>
-    <button class="btn btn-normal" type="submit">Modificar</button>
+    <button class="btn-agregar btn btn-normal" type="submit">Modificar</button>
+        <br><br>
 </form>
 @endsection
 @else

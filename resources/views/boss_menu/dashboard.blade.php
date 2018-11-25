@@ -1,5 +1,41 @@
-@extends('layouts.app1')
+@extends('layouts.app')
 @section('content')
+    <link href="{{ asset('css/boss_menu.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/menu_empleado.css') }}" rel="stylesheet">
+    <br>
+    <div class="container">
+          <h5 style="margin-bottom: -30px; text-align: left">Tareas verificadas por departamento</h5>
+
+    </div>
+
+
+
+<div class="main">
+
+	<div class="row" style="height: 100%">
+		<div class="form-container">
+      <fieldset>
+      <legend>Filtrado por fecha</legend>
+		  <br>
+      <div>
+        <form action="{{route('boss index')}}" method="GET" id="dates">
+          <label for="date1">Desde: </label>
+          <input type="date" id="date1" name="date1"  value="{{$date1}}">
+          <br><br>
+          <label for="date2">Hasta: </label>
+          <input type="date" id="date2" name="date2"  max="{{date('Y-m-d')}}" value="{{$date2}}">
+          <br><br>
+          <button type="submit" class="btn btn-normal">Buscar</button>
+        </form>
+      </div>
+      </fieldset>
+		</div>
+		<div class="col" id="chartPie" style="height: 550px; overflow: auto; margin-bottom: 30px">
+</div>
+	</div>
+</div>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
 <script>
@@ -10,12 +46,12 @@ $(function(){
     name: 'Departamentos',
     type: 'pie',
     radius: '80%',
-    center: ['50%', '57.5%'],
+    center: ['49%', '50.5%'],
     data: <?php echo json_encode($Data); ?>,
     label: {
       normal: {
-        fontFamily: 'Roboto, sans-serif',
-        fontSize: 11
+        fontFamily: 'Tillium Web, sans-serif',
+        fontSize: 20
       }
     },
     labelLine: {
@@ -34,10 +70,10 @@ $(function(){
   var pieOption = {
     tooltip: {
       trigger: 'item',
-      formatter: '{a} <br/>{b}: {c} ({d}%)',
+      formatter: '{b}: {c} ({d}%)',
       textStyle: {
-        fontSize: 11,
-        fontFamily: 'Roboto, sans-serif'
+        fontSize: 16,
+        fontFamily: 'Tillium Web, sans-serif'
       }
     },
     legend: {},
@@ -64,28 +100,4 @@ $(function(){
     }
 })
 </script>
-
-<div class="container-fluid">
-	<div style="margin: 20px;" class="row">
-		<div class="col" style="width: 300px; ">
-      <fieldset>
-      <legend>Filtrado por fecha</legend>
-		  <br>
-      <div class="form-container">
-        <form action="{{route('boss index')}}" method="GET" id="dates">
-          <label for="date1">Desde: </label>
-          <input type="date" id="date1" name="date1"  value="{{$date1}}">
-          <br><br>
-          <label for="date2">Hasta: </label>
-          <input type="date" id="date2" name="date2"  max="{{date('Y-m-d')}}" value="{{$date2}}">
-          <br><br>
-          <button type="submit">Buscar</button>
-        </form>
-      </div>
-      </fieldset>
-		</div>
-		<div  class="col-10" id="chartPie" style="height: 500px; "></div>
-	</div>
-</div>
-
 @endsection

@@ -77,5 +77,5 @@
 @endsection
 
 @section('btn add')
-<a class="btn btn-normal" href="{{route('usuarios.create')}}">Agregar</a>
+<a class="btn-agregarbtn btn-normal" href="{{route('usuarios.create')}}">Agregar</a>
 @endsection

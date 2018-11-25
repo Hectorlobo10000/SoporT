@@ -1,3 +1,21 @@
+@font-face {
+    font-family: Pacifico;
+    src: url(../fonts/Pacifico/Pacifico-Regular.ttf);
+}
+
+@font-face {
+    font-family: Lobster;
+    src: url(../fonts/Lobster/Lobster-Regular.ttf);
+}
+
+@font-face {
+    font-family: Anton;
+    src: url(../fonts/Anton/Anton-Regular.ttf);
+}
+@font-face {
+    font-family: Tillium Web;
+    src: url(../fonts/Tillium_Web/Tillium_Web-Regular.ttf);
+}
 .form2{
   display: block;
   padding: 5px;
@@ -7,6 +25,7 @@
   margin: 10px;
 }
 .container-chat{
+  font-family: 'Tillium Web', sans-serif;
   background-color:#5F9EA0;
   border-radius: 10px;
   border : 2px solid grey;

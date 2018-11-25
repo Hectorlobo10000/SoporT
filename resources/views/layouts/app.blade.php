@@ -14,20 +14,15 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    <link href="{{asset('css/fonts/Pacifico.ttf')}}" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/menu_empleado.css')}}">
-    <style>
-    @import url('https://fonts.googleapis.com/css?family=Pacifico');
-    </style>
 </head>
-<body style="background-image: url('../images/background.jpg');"></style>>
+<body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-color: #5F9EA0;">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}" style="color: white;   text-shadow: -1px 0 #008080, 0 1px #008080, 1px 0 #008080, 0 -1px #008080;font-family: 'Pacifico', cursive;">
+                <a class="navbar-brand" href="{{ url('/') }}" style="color: white;   text-shadow: -1px 0 orange, 0 1px orange, 1px 0 orange, 0 -1px orange;font-family: 'Pacifico', cursive;">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -35,10 +30,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
 
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -47,31 +39,24 @@
 
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                    <a href="#" class="drop-link">{{Auth::User()->name}} ▼</a>
+                    <div class="dropdown-content">
+                        <a href="{{ route('show.profile',Auth::id()) }}">Mi perfil</a>
+                        <a style="border-top: 1px solid #d3d3d3" href="{{ url('/logout') }}">Cerrar sesión</a>
+                    </div>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
+
                             </li>
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
+        @guest
+        <br><br><br><br>
+        @endguest
             @yield('content')
-        </main>
     </div>
 </body>
 </html>

@@ -1,7 +1,23 @@
+@font-face {
+    font-family: Pacifico;
+    src: url(../fonts/Pacifico/Pacifico-Regular.ttf);
+}
+
+@font-face {
+    font-family: Lobster;
+    src: url(../fonts/Lobster/Lobster-Regular.ttf);
+}
+
+@font-face {
+    font-family: Anton;
+    src: url(../fonts/Anton/Anton-Regular.ttf);
+}
 body{
   background: #FFFFFF;
   background-image: url(../images/menu.jpg);
   background-size: 100%;
+    font-family: 'Tillium Web', sans-serif;
+
 }
 #me{
   margin-left: 40px;
@@ -29,7 +45,7 @@ body{
   margin-left: 16px;
 	text-decoration: none;
   font-family: 'Pacifico', cursive;
-  text-shadow: -2px 0 #008080, 0 2px #008080, 2px 0 #008080, 0 -2px #008080;
+  text-shadow: -2px 0 orange, 0 2px orange, 2px 0 orange, 0 -2px orange;
 
 }
 #link{
@@ -186,4 +202,8 @@ body{
   background-position: center;
   width: 45px;
   height: 45px;
+}
+
+.btn-agregar{
+  float: right;
 }
