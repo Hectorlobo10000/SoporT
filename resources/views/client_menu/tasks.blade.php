@@ -49,14 +49,8 @@
 			{{ method_field('PATCH') }}
 			{{ csrf_field() }}
 			<input type="hidden" name="task_state_id" value="4">
-			<a class="btn-verify btn btn-success" href="javascript:{}" onclick="AlertaVerificar()"></a>
-			<script type="text/javascript">
-			function AlertaVerificar() {
-				var answer = confirm ("Esta acción no se puede revertir. Seguro que quiere verificar esta tarea?")
-				if (answer)
-				document.getElementById('form {{ $task->id }}').submit(); return false;
-			}
-			</script>
+			<a class="btn-verify btn btn-success" href="javascript:{}" onclick="AlertaVerificar(document.getElementById('form {{ $task->id }}'))"></a>
+
 		</form>
 	</td>
 	@else
@@ -82,3 +76,10 @@
 @section('btn add')
 <a class="btn-agregar btn btn-normal" href="{{ route('tasks.create') }}">Crear Solicitud</a>
 @endsection
+<script type="text/javascript">
+function AlertaVerificar(form_id) {
+	var answer = confirm ("Esta acción no se puede revertir. Seguro que quiere verificar esta tarea?")
+	if (answer)
+	form_id.submit(); return false;
+}
+</script>
