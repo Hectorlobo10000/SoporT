@@ -1,18 +1,17 @@
 @extends('layouts.app4')
-
 @section('title','Agregar usuario')
 @section('return')
-    {{route('actividades.index')}}
+{{ route('actividades.index') }}
 @endsection
 @section('header','Agregar actividad')
 @section('content')
-<form class="form" method="post" action="{{route('actividades.store')}}">
+<form class="form" method="post" action="{{ route('actividades.store') }}">
     @csrf
     <label>Nombre:</label>
     <input type="text" name="name" class="formulario">
-     @if($errors->has('name'))
+    @if($errors->has('name'))
     <div class="alert alert-danger">
-        <span>{{ $errors->first('name')}}</span>
+        <span>{{ $errors->first('name') }}</span>
     </div>
     @endif
     <button type="submit" class="btn-agregar btn btn-normal">Crear</button>

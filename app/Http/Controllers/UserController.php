@@ -116,9 +116,10 @@ class UserController extends Controller
 
     public function updateProfile(UserUpdateProfileRequest $request, $id)
     {
-        User::find($id)->update($request->except(['depto','muni','addres']));
+        $usuario=User::find($id);
+        $usuario->update($request->except(['depto','muni','addres']));
 
-        return redirect()->route('show.profile');
+        return redirect()->route('show.profile',compact('usuario'));
     }
 
     public function destroy(User $usuario)

@@ -3,24 +3,21 @@
 @section('header','Anotaciones de la tarea 000'.$task->id)
 @section('return')
 @if($task->task_state_id == 1)
-    {{route('pending')}}
+{{ route('pending') }}
 @elseif($task->task_state_id == 2)
-	{{route('initiated')}}
+{{ route('initiated') }}
 @else
-	{{route('finished')}}
+{{ route('finished') }}
 @endif
 @endsection
 @section('content')
 <div class="form" style="width: 100%">
-
-	<textarea readonly class="formulario" style="height: 500px;">{{$task->annotation}}</textarea>
+	<textarea readonly class="formulario" style="height: 500px;">{{ $task->annotation }}</textarea>
 	@if($task->task_state_id != 4)
 	<div style="float: right">
-    	<a class="btn-edit btn btn-success" href="{{route('edit task annotation',$task->id)}}"></a>
-    </div>
-        <br>
-    @endif
+		<a class="btn-edit btn btn-success" href="{{ route('edit task annotation',$task->id) }}"></a>
+	</div>
+	<br>
+	@endif
 </div>
-
-
 @endsection

@@ -1,16 +1,15 @@
 @extends('layouts.app4')
-
 @section('title','Agregar usuario')
 @section('return')
-    {{route('departamentos.index')}}
+{{ route('departamentos.index') }}
 @endsection
 @section('header','Agregar departamento')
 @section('content')
-<form class="form" method="post" action="{{route('departamentos.store')}}">
+<form class="form" method="post" action="{{ route('departamentos.store') }}">
     @csrf
-     @if($errors->has('name'))
+    @if($errors->has('name'))
     <div class="alert alert-danger">
-        <span>{{ $errors->first('name')}}</span>
+        <span>{{ $errors->first('name') }}</span>
     </div>
     @endif
     <label>Nombre de departamento:</label>
@@ -18,5 +17,4 @@
     <button type="submit" class="btn-agregar btn btn-normal">Crear</button>
     <br><br>
 </form>
-
 @endsection

@@ -104,65 +104,69 @@ class TaskController extends Controller{
      //busca el tecnico con menos tareas pendientes que tenga el mismo tipo de actividad de la tarea y que pertenezca al mismo lugar que el cliente
       $data = DB::Select(
         DB::raw(
-            "select b.technician_id as id, b.username, b.task_type, count(a.task_state_id) as cantidad_pendientes
-            from tasks as a
-            inner join (
-                select a.id as technician_id ,a.name as username, c.name as task_type
-                from users as a
-                inner join users_x_task_types as b
-                on (a.id = b.user_id)
-                inner join task_types as c
-                on (b.task_type_id = c.id)
-                where (c.id= $task_type_id && a.place_id=$place_id && a.role_id=2)
-            ) as b
-            on (a.technician_id = b.technician_id)
-            where a.task_state_id=1
-            group by a.technician_id
-            ORDER BY cantidad_pendientes asc
-            limit 1;"
+            "
+            SELECT b.technician_id AS id,
+                   b.username,
+                   b.task_type,
+                   count(a.task_state_id) AS cantidad_pendientes
+            FROM tasks AS a
+            INNER JOIN
+              ( SELECT a.id AS technician_id ,
+                       a.name AS username,
+                       c.name AS task_type
+               FROM users AS a
+               INNER JOIN users_x_task_types AS b ON (a.id = b.user_id)
+               INNER JOIN task_types AS c ON (b.task_type_id = c.id)
+               WHERE (c.id= $task_type_id && a.place_id=$place_id && a.role_id=2) ) AS b ON (a.technician_id = b.technician_id)
+            WHERE a.task_state_id=1
+            GROUP BY a.technician_id
+            ORDER BY cantidad_pendientes ASC LIMIT 1;
+            "
         )
       );
       //busca el tecnico con menos tareas iniciadas que tenga el mismo tipo de actividad de la tarea y que pertenezca al mismo lugar que el cliente
       if (!$data){
         $data = DB::Select(
             DB::raw(
-                "select b.technician_id as id, b.username, b.task_type, count(a.task_state_id) as cantidad_iniciadas
-                from tasks as a
-                inner join (
-                  select a.id as technician_id ,a.name as username, c.name as task_type
-                  from users as a
-                  inner join users_x_task_types as b
-                  on (a.id = b.user_id)
-                  inner join task_types as c
-                  on (b.task_type_id = c.id)
-                  where (c.id= $task_type_id && a.place_id=$place_id && a.role_id=2)
-                ) as b
-                on (a.technician_id = b.technician_id)
-                where a.task_state_id=2
-                group by a.technician_id
-                ORDER BY cantidad_iniciadas asc
-                limit 1;"
-          )
+                "
+                SELECT b.technician_id AS id,
+                       b.username,
+                       b.task_type,
+                       count(a.task_state_id) AS cantidad_iniciadas
+                FROM tasks AS a
+                INNER JOIN
+                  ( SELECT a.id AS technician_id ,
+                           a.name AS username,
+                           c.name AS task_type
+                   FROM users AS a
+                   INNER JOIN users_x_task_types AS b ON (a.id = b.user_id)
+                   INNER JOIN task_types AS c ON (b.task_type_id = c.id)
+                   WHERE (c.id= $task_type_id && a.place_id=$place_id && a.role_id=2) ) AS b ON (a.technician_id = b.technician_id)
+                WHERE a.task_state_id=2
+                GROUP BY a.technician_id
+                ORDER BY cantidad_iniciadas ASC LIMIT 1;"
+        )
         );
       }
       //busca a un tecnico que tenga el mismo tipo de tarea (sin que importe la cantidad de tareas asignadas) que pertenezca al mismo lugar que el cliente aleatoriamente
       if(!$data){
         $data = DB::Select(
           DB::raw(
-              "select b.technician_id as id, b.username, b.task_type
-              from tasks as a
-              inner join (
-                select a.id as technician_id ,a.name as username, c.name as task_type
-                from users as a
-                inner join users_x_task_types as b
-                on (a.id = b.user_id)
-                inner join task_types as c
-                on (b.task_type_id = c.id)
-                where (c.id= $task_type_id && a.place_id=$place_id && a.role_id=2)
-              ) as b
-              on (a.technician_id = b.technician_id)
-              ORDER BY RAND()
-              LIMIT 1;"
+              "
+              SELECT b.technician_id AS id,
+                     b.username,
+                     b.task_type
+              FROM tasks AS a
+              INNER JOIN
+                ( SELECT a.id AS technician_id ,
+                         a.name AS username,
+                         c.name AS task_type
+                 FROM users AS a
+                 INNER JOIN users_x_task_types AS b ON (a.id = b.user_id)
+                 INNER JOIN task_types AS c ON (b.task_type_id = c.id)
+                 WHERE (c.id= $task_type_id && a.place_id=$place_id && a.role_id=2) ) AS b ON (a.technician_id = b.technician_id)
+              ORDER BY RAND() LIMIT 1;
+              "
           )
         );
       }
@@ -175,11 +179,12 @@ class TaskController extends Controller{
       if(!$data){
         $data = DB::Select(
             DB::raw(
-                "select id
-                from users
-                where place_id = $place_id && role_id=2
-                ORDER BY RAND()
-                LIMIT 1;"
+                "
+                SELECT id
+                FROM users
+                WHERE place_id = $place_id && role_id=2
+                ORDER BY RAND() LIMIT 1;
+                "
             )
         );
       }
@@ -193,3 +198,4 @@ class TaskController extends Controller{
       return $technician_id;
     }
 }
+?>

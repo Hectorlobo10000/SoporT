@@ -1,45 +1,35 @@
 @extends('layouts.app4')
-
 @section('title','Editar perfil')
-
 @section('return')
-    {{route('show.profile',$usuario->id)}}
+{{ route('show.profile',$usuario->id) }}
 @endsection
 @section('header','Editar perfil')
 @section('content')
-  <form class="form" method="post" action="{{route('profile.update',$usuario->id)}}">
-	@csrf
-	@method('PUT')
-
-	<label>Nombre:</label>
-	<input type="text" name="name" class="formulario" value="{{$usuario->name}}">
-
+<form class="form" method="post" action="{{ route('update.profile',$usuario->id) }}">
+    @csrf
+    @method('PUT')
+    <label>Nombre:</label>
+    <input type="text" name="name" class="formulario" value="{{ $usuario->name }}">
     @if($errors->has('name'))
     <div class="alert alert-danger">
-        <span>{{ $errors->first('name')}}</span>
+        <span>{{ $errors->first('name') }}</span>
     </div>
     @endif
-
-	<label>Teléfono:</label>
-	<input type="text" name="phone" class="formulario" value="{{$usuario->phone}}">
-
+    <label>Teléfono:</label>
+    <input type="text" name="phone" class="formulario" value="{{ $usuario->phone }}">
     @if($errors->has('phone'))
     <div class="alert alert-danger">
-        <span>{{ $errors->first('phone')}}</span>
+        <span>{{ $errors->first('phone') }}</span>
     </div>
     @endif
-
-	<label>Correo:</label>
-	<input type="email" name="email" class="formulario" value="{{$usuario->email}}">
-
+    <label>Correo:</label>
+    <input type="email" name="email" class="formulario" value="{{ $usuario->email }}">
     @if($errors->has('email'))
     <div class="alert alert-danger">
-        <span>{{ $errors->first('email')}}</span>
+        <span>{{ $errors->first('email') }}</span>
     </div>
     @endif
-
     <button class="btn-agregar btn btn-normal" type="submit">Modificar</button>
     <br><br>
 </form>
-
 @endsection

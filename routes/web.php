@@ -54,7 +54,7 @@
 		//rutas para todos los roles
 		Route::get('/editar-perfil/{id}','UserController@editProfile')->name('edit.profile');
 		Route::get('/mostrar-perfil/{id}','UserController@show')->name('show.profile');
-		Route::put('/actualizar-perfil/{id}','UserController@updateProfile')->name('profile.update');
+		Route::put('/actualizar-perfil/{id}','UserController@updateProfile')->name('update.profile');
 		Route::get('/home','HomeController@index')->name('home');
 
 	});
