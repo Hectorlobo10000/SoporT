@@ -118,7 +118,7 @@ class UserController extends Controller
     {
         User::find($id)->update($request->except(['depto','muni','addres']));
 
-        return redirect()->route('usuarios.index');
+        return redirect()->route('show.profile');
     }
 
     public function destroy(User $usuario)
