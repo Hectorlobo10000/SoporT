@@ -53,29 +53,29 @@
 		</form>
 	</td>
 	@else
-	<td><div class="action-denied"></div></td>
+	<td class="action-denied"></td>
 	@endif
 	@if($task->task_state_id == 1)
 	<td><a class="btn-edit btn btn-success" href="{{ route('tasks.edit',$task->id) }}"></a></td>
 	<td>
-		<form action="{{ route('tasks.destroy',$task->id) }}" method="POST" id="form-delete {{ $task->id }}">
+		<form style=" margin: 0px" action="{{ route('tasks.destroy',$task->id) }}" method="POST" id="form-delete {{ $task->id }}">
 			@csrf
 			@method('DELETE')
 			<button form="form-delete {{ $task->id }}" type="submit" class="btn-delete btn btn-danger"></button>
 		</form>
 	</td>
 	@elseif($task->task_state_id == 4)
-	<td><div class="action-denied"></div></td>
+	<td class="action-denied"></td>
 	<td>
-		<form method="POST" id="form-delete {{ $task->id }}" action="{{ route('tasks.destroy',$task->id) }}" >
+		<form style=" margin: 0px" method="POST" id="form-delete {{ $task->id }}" action="{{ route('tasks.destroy',$task->id) }}" >
 			@csrf
 			@method('DELETE')
 			<button form="form-delete {{ $task->id }}" type="submit" class="btn-delete btn btn-danger"></button>
 		</form>
 	</td>
 	@else
-	<td><div class="action-denied"></div></td>
-	<td><div class="action-denied"></div></td>
+	<td class="action-denied"></td>
+	<td class="action-denied"></td>
 	@endif
 </tr>
 @endif
