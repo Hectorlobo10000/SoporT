@@ -56,6 +56,13 @@
 	    				{{ csrf_field() }}
 						<input type="hidden" name="task_state_id" value="4">
 						<a class="btn-verify btn btn-success" href="javascript:{}" onclick="AlertaVerificar()"></a>
+						<script type="text/javascript">
+						function AlertaVerificar() {
+							var answer = confirm ("Esta acción no se puede revertir. Seguro que quiere verificar esta tarea?")
+							if (answer)
+							document.getElementById('form {{$task->id}}').submit(); return false;
+						}
+						</script>
 					</form>
 				</td>
 				@else
@@ -81,13 +88,7 @@
 @endsection
 @section('btn add')
 <a class="btn-agregar btn btn-normal" href="{{route('tasks.create')}}">Crear Solicitud</a>
-<script type="text/javascript">
-function AlertaVerificar() {
-	var answer = confirm ("Esta acción no se puede revertir. Seguro que quiere verificar esta tarea?")
-	if (answer)
-	document.getElementById('form {{$task->id}}').submit(); return false;
-}
-</script>
+
 @endsection
 
 
