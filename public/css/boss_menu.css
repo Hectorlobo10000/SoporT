@@ -6,7 +6,19 @@
 	margin-top: 0px;
 	background-color: #a0dade;
 	color: black;
-	border-radius: 10px 0px 0px 10px;
+	border-radius: 0px 0px 0px 10px;
+}
+.row-header{
+	height: 5%;
+	width: 100%;
+	margin-left: 0px;
+	border-bottom: 2px solid #008080;
+	background-color: #008080;
+	color: white;
+}
+.header{
+	 margin-left: 20px;
+	 margin-top: 5px;
 }
 body{
 	background-image: none;
@@ -38,7 +50,7 @@ body{
 	background-color: #F0FFFF;
 	border: 2px solid #008080;
 	border-radius: 10px;
-	height: 550px;
+	height: 600px;
 	overflow: unset;
 }
 .submit{

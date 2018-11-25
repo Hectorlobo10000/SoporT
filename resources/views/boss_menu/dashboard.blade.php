@@ -2,17 +2,13 @@
 @section('content')
     <link href="{{ asset('css/boss_menu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/menu_empleado.css') }}" rel="stylesheet">
-    <br>
-    <div class="container">
-          <h5 style="margin-bottom: -30px; text-align: left">Tareas verificadas por departamento</h5>
-
-    </div>
 
 
 
 <div class="main">
-
-	<div class="row" style="height: 100%">
+  <div class="row row-header" style="">          <h5 class="header" style="">Tareas verificadas por departamento</h5>
+</div>
+	<div class="row" style="height: 95%">
 		<div class="form-container">
       <fieldset>
       <legend>Filtrado por fecha</legend>
