@@ -92,19 +92,13 @@
 
 <script>
 function showHide(elem) {
-    if(elem.selectedIndex != 2) {
-         //hide the divs
-         for(var i=0; i < divsO.length; i++) {
-             divsO[i].style.display = 'none';
-        }
-        //unhide the selected div
-        document.getElementById('div'+elem.value).style.display = 'block';
-    }
-}
+    if(elem.value == 2) {
 
-window.onload=function() {
-    //get the divs to show/hide
-    divsO = document.getElementById("form").getElementsByTagName('div');
+        document.getElementById('div2').style.display = 'block';
+    }else{
+        document.getElementById('div2').style.display = 'none';
+
+    }
 }
 </script>
 
