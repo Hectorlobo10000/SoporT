@@ -107,7 +107,6 @@ class UserController extends Controller
         $departments = Department::all();
 
         if ($role->isEmpty() || $user->role_id == 4) {
-
             $roles = Role::all();
             return view('admin_menu.edit_user',compact('user','task_types','places','roles','departments'));
         }else{

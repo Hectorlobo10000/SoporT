@@ -70,7 +70,7 @@
     </div>
     @endif
     <div id="task-types-div" style="display: none;">
-        <label>Tipos de actividades (solo para técnicos):</label>
+        <label>Tipos de actividades (sólo para técnicos):</label>
         <table  style="margin-left: 20px">
             @foreach($task_types as $task_type)
             <tr>
