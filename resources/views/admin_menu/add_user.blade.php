@@ -6,7 +6,7 @@
 @section('header','Agregar usuario')
 @section('content')
 </script>
-<form class="form-md" method="post" action="{{ route('usuarios.store') }}">
+<form class="form-md" method="post" action="{{ route('usuarios.store') }}" id="form">
     @csrf
     <label>Nombre:</label>
     <input type="text" name="name" class="formulario" value="{{ old('name') }}">
@@ -48,7 +48,7 @@
     </div>
     @endif
     <label>Rol:</label>
-    <select id="role_id" name="role_id">
+    <select id="roles" name="role_id" onchange="showHide(this)">
         @foreach($roles as $role)
         <option value="{{ $role->id }}" >{{ $role->name }}</option>
         @endforeach
@@ -59,7 +59,7 @@
     </div>
     @endif
     <label>Departamento:</label>
-    <select name="department_id">
+    <select name="department_id" style="margin-bottom: 30px">
         @foreach($departamentos as $departamento)
         <option value="{{ $departamento->id }}">{{ $departamento->name }}</option>
         @endforeach
@@ -69,10 +69,9 @@
         <span>{{ $errors->first('department_id') }}</span>
     </div>
     @endif
-    <div id="tipos-actividad">
+    <div id="div2" style="display: none">
         <label>Tipos de actividades (Solo para técnicos):</label>
         <table  style="margin-left: 20px">
-            <br>
             @foreach($tipos as $tipo)
             <tr>
                 <td>
@@ -90,4 +89,23 @@
     </div>
     <button class="btn-agregar btn btn-normal" type="submit">Crear</button>
 </form>
+
+<script>
+function showHide(elem) {
+    if(elem.selectedIndex != 2) {
+         //hide the divs
+         for(var i=0; i < divsO.length; i++) {
+             divsO[i].style.display = 'none';
+        }
+        //unhide the selected div
+        document.getElementById('div'+elem.value).style.display = 'block';
+    }
+}
+
+window.onload=function() {
+    //get the divs to show/hide
+    divsO = document.getElementById("form").getElementsByTagName('div');
+}
+</script>
+
 @endsection
