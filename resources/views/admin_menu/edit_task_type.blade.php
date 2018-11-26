@@ -16,6 +16,5 @@
 	</div>
 	@endif
 	<button type="submit" class="btn-agregar btn btn-normal">Modificar</button>
-	<br><br><br>
 </form>
 @endsection

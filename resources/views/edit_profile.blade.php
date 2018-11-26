@@ -30,6 +30,5 @@
     </div>
     @endif
     <button class="btn-agregar btn btn-normal" type="submit">Modificar</button>
-    <br><br><br>
 </form>
 @endsection

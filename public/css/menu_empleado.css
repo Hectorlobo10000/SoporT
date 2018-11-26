@@ -16,8 +16,8 @@ body{
   background: #FFFFFF;
   background-image: url(../images/menu.jpg);
   background-size: 100%;
-    font-family: 'Tillium Web', sans-serif;
-
+  font-family: 'Tillium Web', sans-serif;
+  padding-bottom: 200px;
 }
 #me{
   margin-left: 40px;

@@ -33,7 +33,6 @@
                 </div>
             </div>
             @yield('content')
-            @yield('login')
         </div>
     </body>
 </html>

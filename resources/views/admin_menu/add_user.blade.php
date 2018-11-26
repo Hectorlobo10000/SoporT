@@ -37,7 +37,7 @@
     </div>
     @endif
     <label>Lugar:</label>
-    <select class="form-control" name="place_id">
+    <select name="place_id">
         @foreach($lugares as $lugar)
         <option value="{{ $lugar->id }}" >{{ $lugar->domain.' | '.$lugar->municipality.' | '.$lugar->address }}</option>
         @endforeach
@@ -48,7 +48,7 @@
     </div>
     @endif
     <label>Rol:</label>
-    <select class="form-control" id="role_id" name="role_id">
+    <select id="role_id" name="role_id">
         @foreach($roles as $role)
         <option value="{{ $role->id }}" >{{ $role->name }}</option>
         @endforeach
@@ -59,7 +59,7 @@
     </div>
     @endif
     <label>Departamento:</label>
-    <select class="form-control" name="department_id">
+    <select name="department_id">
         @foreach($departamentos as $departamento)
         <option value="{{ $departamento->id }}">{{ $departamento->name }}</option>
         @endforeach
@@ -71,11 +71,17 @@
     @endif
     <div id="tipos-actividad">
         <label>Tipos de actividades (Solo para técnicos):</label>
-        @foreach($tipos as $tipo)
-        <label>
-            <input type="checkbox" name="tipoact[]" class="tp" value="{{ $tipo->id }}">  {{ $tipo->name }}
-        </label>
-        @endforeach
+        <table  style="margin-left: 20px">
+            <br>
+            @foreach($tipos as $tipo)
+            <tr>
+                <td>
+                    <input type="checkbox" name="tipoact[]" class="tp" value="{{ $tipo->id }}">
+                </td>
+                <td>{{ $tipo->name }}</td>
+            </tr>
+            @endforeach
+        </table>
         @if($errors->has('tipoact[]'))
         <div class="alert alert-danger">
             <span>{{ $errors->first('tipoact[]') }}</span>
@@ -83,6 +89,5 @@
         @endif
     </div>
     <button class="btn-agregar btn btn-normal" type="submit">Crear</button>
-    <br><br><br>
 </form>
 @endsection

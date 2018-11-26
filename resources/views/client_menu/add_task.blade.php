@@ -28,7 +28,6 @@
     <label>Descripción:</label>
     <textarea maxlength="1000" name="description" class="formulario" style="height: 400px; "></textarea>
     <button type="submit" class="btn-agregar btn-crear btn btn-normal" >Crear</button>
-    <br><br><br>
 </form>
 
 @endsection

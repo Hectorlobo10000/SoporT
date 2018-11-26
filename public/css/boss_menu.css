@@ -22,6 +22,7 @@
 }
 body{
 	background-image: none;
+	padding-bottom: 200px;
 }
 .form-container input {
   clear: both;

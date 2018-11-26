@@ -43,7 +43,7 @@
                 </div>
             </nav>
             @guest
-            <br><br><br><br>
+            <div style="height: 50px"></div>
             @endguest
             @yield('content')
         </div>

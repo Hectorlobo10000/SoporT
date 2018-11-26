@@ -34,7 +34,6 @@
 				</div>
 			</div>
 		</div>
-		<br><br><br><br><br>
 		<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
 	</body>
 </html>

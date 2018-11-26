@@ -17,7 +17,6 @@
 	<div style="float: right">
 		<a class="btn-edit btn btn-success" href="{{ route('edit task annotation',$task->id) }}"></a>
 	</div>
-	<br><br>
 	@endif
 </div>
 @endsection

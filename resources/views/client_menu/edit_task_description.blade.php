@@ -11,7 +11,6 @@
 	{{ csrf_field() }}
 	<textarea maxlength="1000" name="description" class="formulario" style="height: 500px; width: 100%">{{ $task->description }}</textarea>
 	<button class="btn-agregar btn btn-normal" type="submit">Modificar</button>
-	<br><br><br>
 </form>
 @endsection
 @else

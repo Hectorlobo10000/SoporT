@@ -11,7 +11,6 @@
 	{{ csrf_field() }}
 	<textarea maxlength="1000" name="annotation" class="formulario" style="height: 500px; width: 100%">{{ $task->annotation }}</textarea>
 	<button class="btn-agregar btn btn-normal" type="submit">Modificar</button>
-	<br><br><br>
 </form>
 @endsection
 @else
