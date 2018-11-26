@@ -16,8 +16,8 @@ class TaskTypeController extends Controller
 
     public function index()
     {
-        $tipos = TaskType::paginate(20);
-        return view('admin_menu.task_types',compact('tipos'));
+        $task_types = TaskType::paginate(20);
+        return view('admin_menu.task_types',compact('task_types'));
     }
 
     public function create()
@@ -27,23 +27,23 @@ class TaskTypeController extends Controller
 
     public function store(TaskTypeStoreRequest $request)
     {
-        $tipoact = new TaskType(['name'=>$request->input('name')]);
-        $tipoact->save();
+        $task_type = new TaskType(['name'=>$request->input('name')]);
+        $task_type->save();
 
         return redirect()->route('actividades.index');
     }
 
     public function edit($id)
     {
-        $tipo=TaskType::find($id);
-        return view('admin_menu.edit_task_type',compact('tipo'));
+        $task_type=TaskType::find($id);
+        return view('admin_menu.edit_task_type',compact('task_type'));
     }
 
     public function update(TaskTypeUpdateRequest $request, $id)
     {
-        $tipo = TaskType::find($id);
-        $tipo->name =$request->input('name');
-        $tipo->save();
+        $task_type = TaskType::find($id);
+        $task_type->name =$request->input('name');
+        $task_type->save();
         return redirect()->route('actividades.index');
     }
 

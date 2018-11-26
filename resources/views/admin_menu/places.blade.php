@@ -26,23 +26,23 @@
 @endsection
 @section('content')
 <?php $counter = 0; ?>
-@foreach($lugares as $lugare)
+@foreach($places as $place)
 <?php
 	$counter = $counter +1;
 ?>
 <tr>
 	<td>{{ $counter }}</td>
-	<td>{{ $lugare->domain }}</td>
-	<td>{{ $lugare->municipality }}</td>
-	<td>{{ $lugare->address }}</td>
+	<td>{{ $place->domain }}</td>
+	<td>{{ $place->municipality }}</td>
+	<td>{{ $place->address }}</td>
 	<td>
-		<a class="btn-edit btn btn-success" href="{{ route('lugares.edit',$lugare->id) }}"></a>
+		<a class="btn-edit btn btn-success" href="{{ route('lugares.edit',$place->id) }}"></a>
 	</td>
-	@if($lugare->users()->exists())
+	@if($place->users()->exists())
 	<td class="action-denied"></td>
 	@else
 	<td>
-		<form method="post" action="{{ action('PlaceController@destroy',$lugare->id) }}">
+		<form method="post" action="{{ action('PlaceController@destroy',$place->id) }}">
 			@csrf
 			@method('DELETE')
 			<button type="submit" class="btn-delete btn btn-danger"></button>
@@ -53,7 +53,7 @@
 @endforeach
 @endsection
 @section('paginar')
-{{ $lugares->links() }}
+{{ $places->links() }}
 @endsection
 @section('btn add')
 <a class="btn-agregar btn btn-normal" href="{{ route('lugares.create') }}">Agregar</a>

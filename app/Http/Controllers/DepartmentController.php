@@ -15,8 +15,8 @@ class DepartmentController extends Controller
     }
     public function index()
     {
-        $departamentos = Department::paginate(20);
-        return view('admin_menu.departments',compact('departamentos'));
+        $departments = Department::paginate(20);
+        return view('admin_menu.departments',compact('departments'));
     }
 
     public function create()
@@ -26,35 +26,32 @@ class DepartmentController extends Controller
 
     public function store(DepartmentStoreRequest $request)
     {
-        $departamento = new Department(
+        $department = new Department(
             ['name'=>$request->input('name')
         ]);
-        $departamento->save();
+        $department->save();
 
         return redirect()->route('departamentos.index');
     }
 
-    public function show($id)
+    public function edit($id)
     {
-        //
-    }
-
-    public function edit(Department $departamento)
-    {
-        return view('admin_menu.edit_department',compact('departamento'));
+        $department = Department::find($id);
+        return view('admin_menu.edit_department',compact('department'));
     }
 
     public function update(DepartmentUpdateRequest $request, $id)
     {
-        $departamento = Department::find($id);
-        $departamento->name =$request->input('name');
-        $departamento->save();
+        $department = Department::find($id);
+        $department->name =$request->input('name');
+        $department->save();
         return redirect()->route('departamentos.index');
     }
 
-    public function destroy(Department $departamento)
+    public function destroy($id)
     {
-        $departamento->delete();
+        $department = Department::find($id);
+        $department->delete();
         return redirect()->route('departamentos.index');
     }
 }

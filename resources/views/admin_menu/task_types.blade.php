@@ -24,21 +24,21 @@
 @endsection
 @section('content')
 <?php $counter = 0; ?>
-@foreach($tipos as $tipo)
+@foreach($task_types as $task_type)
 <?php
 	$counter = $counter +1;
 ?>
 <tr>
 	<td>{{ $counter }}</td>
-	<td>{{ $tipo->name }}</td>
+	<td>{{ $task_type->name }}</td>
 	<td>
-		<a class="btn-edit btn btn-success" href="{{ route('actividades.edit',$tipo->id) }}"></a>
+		<a class="btn-edit btn btn-success" href="{{ route('actividades.edit',$task_type->id) }}"></a>
 	</td>
-	@if($tipo->users()->exists())
+	@if($task_type->users()->exists())
 	<td class="action-denied"></td>
 	@else
 	<td>
-		<form method="post" action="{{ action('TaskTypeController@destroy',$tipo->id) }}">
+		<form method="post" action="{{ action('TaskTypeController@destroy',$task_type->id) }}">
 			@csrf
 			@method('DELETE')
 			<button type="submit" class="btn-delete btn btn-danger"></button>
@@ -49,7 +49,7 @@
 @endforeach
 @endsection
 @section('paginar')
-{{ $tipos->links() }}
+{{ $task_types->links() }}
 @endsection
 @section('btn add')
 <a class="btn-agregar btn btn-normal" href="{{ route('actividades.create') }}">Agregar</a>

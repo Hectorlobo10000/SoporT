@@ -11,19 +11,19 @@
 @section('content')
 <div class="form-md">
     <label>Nombre:</label>
-    <text  class="formulario" readonly >{{ $usuario->name }}</text>
+    <text  class="formulario" readonly >{{ $user->name }}</text>
     <label>Teléfono:</label>
-    <text  class="formulario" readonly >{{ $usuario->phone }}</text>
+    <text  class="formulario" readonly >{{ $user->phone }}</text>
     <label>Correo:</label>
-    <text  class="formulario" readonly >{{ $usuario->email }}</text>
+    <text  class="formulario" readonly >{{ $user->email }}</text>
     <label>Departamento:</label>
-    <text  class="formulario" readonly >{{ $usuario->email }}</text>
+    <text  class="formulario" readonly >{{ $user->email }}</text>
     <label>Lugar asignado:</label>
-    <text  class="formulario" readonly >{{ $usuario->place->domain.' | '.$usuario->place->municipality.' | '.$usuario->place->address }}</text>
+    <text  class="formulario" readonly >{{ $user->place->domain.' | '.$user->place->municipality.' | '.$user->place->address }}</text>
     <label>Rol:</label>
-    <text  class="formulario" readonly >{{ $usuario->role->name }}</text>
+    <text  class="formulario" readonly >{{ $user->role->name }}</text>
     <div style="float: right">
-        <a class="btn-edit btn btn-success" href="{{ route('edit.profile',$usuario->id) }}"></a>
+        <a class="btn-edit btn btn-success" href="{{ route('edit.profile',$user->id) }}"></a>
     </div>
 </div>
 @endsection

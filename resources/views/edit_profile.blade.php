@@ -1,29 +1,29 @@
 @extends('layouts.app4')
 @section('title','Editar perfil')
 @section('return')
-{{ route('show.profile',$usuario->id) }}
+{{ route('show.profile',$user->id) }}
 @endsection
 @section('header','Editar perfil')
 @section('content')
-<form class="form-md" method="post" action="{{ route('update.profile',$usuario->id) }}">
+<form class="form-md" method="post" action="{{ route('update.profile',$user->id) }}">
     @csrf
     @method('PUT')
     <label>Nombre:</label>
-    <input type="text" name="name" class="formulario" value="{{ $usuario->name }}">
+    <input type="text" name="name" class="formulario" value="{{ $user->name }}">
     @if($errors->has('name'))
     <div class="alert alert-danger">
         <span>{{ $errors->first('name') }}</span>
     </div>
     @endif
     <label>Teléfono:</label>
-    <input type="text" name="phone" class="formulario" value="{{ $usuario->phone }}">
+    <input type="text" name="phone" class="formulario" value="{{ $user->phone }}">
     @if($errors->has('phone'))
     <div class="alert alert-danger">
         <span>{{ $errors->first('phone') }}</span>
     </div>
     @endif
     <label>Correo:</label>
-    <input type="email" name="email" class="formulario" value="{{ $usuario->email }}">
+    <input type="email" name="email" class="formulario" value="{{ $user->email }}">
     @if($errors->has('email'))
     <div class="alert alert-danger">
         <span>{{ $errors->first('email') }}</span>

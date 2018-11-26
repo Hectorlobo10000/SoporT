@@ -22,30 +22,30 @@ class UserController extends Controller
     }
     public function index()
     {
-        $usuarios = User::paginate(20);
+        $users = User::paginate(20);
 
-        return view('admin_menu.users',compact('usuarios'));
+        return view('admin_menu.users',compact('users'));
     }
 
     public function create()
     {
-        $tipos = TaskType::all();
-        $lugares = Place::all();
+        $task_types = TaskType::all();
+        $places = Place::all();
 
-        $rol = User::where('role_id', 4)->get();
-        $departamentos = Department::all();
+        $role = User::where('role_id', 4)->get();
+        $departments = Department::all();
 
-        if ($rol->isEmpty()) {
+        if ($role->isEmpty()) {
 
             $roles = Role::all();
 
-            return view('admin_menu.add_user',compact('roles','departamentos','tipos','lugares'));
+            return view('admin_menu.add_user',compact('roles','departments','task_types','places'));
         }
         else
         {
             $roles = Role::find([1, 2, 3]);
 
-          return view('admin_menu.add_user',compact('roles','departamentos','tipos','lugares'));
+          return view('admin_menu.add_user',compact('roles','departments','task_types','places'));
         }
     }
 
@@ -68,11 +68,11 @@ class UserController extends Controller
 
                 $user_id = $user->id;
 
-                $tipact = $request->input('tipoact');
+                $task_types = $request->input('task_types');
 
-                for ($i=0; $i < count($tipact) ; $i++) {
-                    $tp_x_us = new UsersXTaskType(['task_type_id'=>$tipact[$i],'user_id'=>$user_id]);
-                    $tp_x_us->save();
+                for ($i=0; $i < count($task_types) ; $i++) {
+                    $user_x_task_type = new UsersXTaskType(['task_type_id'=>$task_types[$i],'user_id'=>$user_id]);
+                    $user_x_task_type->save();
                 }
 
                 return redirect()->route('usuarios.index');
@@ -99,40 +99,52 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $usuario=User::find($id);
-        return view('admin_menu.edit_user',compact('usuario'));
+        $user=User::find($id);
+        $task_types = TaskType::all();
+        $places = Place::all();
+
+        $role = User::where('role_id', 4)->get();
+        $departments = Department::all();
+
+        if ($role->isEmpty() || $user->role_id == 4) {
+
+            $roles = Role::all();
+            return view('admin_menu.edit_user',compact('user','task_types','places','roles','departments'));
+        }else{
+            $roles = Role::find([1, 2, 3]);
+            return view('admin_menu.edit_user',compact('user','task_types','places','roles','departments'));
+        }
     }
 
     public function editProfile($id)
     {
-        $usuario=User::find($id);
-        return view('edit_profile',compact('usuario'));
+        $user=User::find($id);
+        return view('edit_profile',compact('user'));
     }
 
     public function show($id)
     {
-        $usuario=User::find($id);
-        return view('show_profile',compact('usuario','lugares'));
+        $user=User::find($id);
+        return view('show_profile',compact('user'));
     }
 
     public function update(UserUpdateRequest $request, $id)
     {
-        User::find($id)->update($request->except(['depto','muni','addres']));
-
+        User::find($id)->update($request->except(['']));
         return redirect()->route('usuarios.index');
     }
 
     public function updateProfile(UserUpdateProfileRequest $request, $id)
     {
-        $usuario=User::find($id);
-        $usuario->update($request->except(['depto','muni','addres']));
-
-        return redirect()->route('show.profile',compact('usuario'));
+        $user=User::find($id);
+        $user->update($request->except(['']));
+        return redirect()->route('show.profile',compact('user'));
     }
 
-    public function destroy(User $usuario)
+    public function destroy(User $id)
     {
-        $usuario->delete();
+        $user=User::find($id);
+        $user->delete();
         return redirect()->route('usuarios.index');
     }
 }

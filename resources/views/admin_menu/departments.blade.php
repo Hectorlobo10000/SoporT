@@ -24,20 +24,20 @@
 @endsection
 @section('content')
 <?php $counter = 0; ?>
-@foreach($departamentos as $departamento)
+@foreach($departments as $department)
 <?php
 	$counter = $counter +1;
 ?>
 <tr>
 	<td>{{ $counter }}</td>
-	<td>{{ $departamento->name }}</td>
+	<td>{{ $department->name }}</td>
 	<td width="100px">
-		<a class="btn-edit btn btn-success"href="{{ route('departamentos.edit',$departamento->id) }}"></a></td>
-		@if($departamento->users()->exists())
+		<a class="btn-edit btn btn-success"href="{{ route('departamentos.edit',$department->id) }}"></a></td>
+		@if($department->users()->exists())
 		<td class="action-denied"></td>
 		@else
 		<td>
-			<form method="post" action="{{ action('DepartmentController@destroy',$departamento->id) }}">
+			<form method="post" action="{{ action('DepartmentController@destroy',$department->id) }}">
 				@csrf
 				@method('DELETE')
 				<button type="submit" class="btn-delete btn btn-danger"></button>
@@ -48,7 +48,7 @@
 	@endforeach
 	@endsection
 	@section('paginar')
-	{{ $departamentos->links() }}
+	{{ $departments->links() }}
 	@endsection
 	@section('btn add')
 	<a class="btn-agregar btn btn-normal" href="{{ route('departamentos.create') }}">Agregar</a>

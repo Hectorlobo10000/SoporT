@@ -38,8 +38,8 @@
     @endif
     <label>Lugar:</label>
     <select name="place_id">
-        @foreach($lugares as $lugar)
-        <option value="{{ $lugar->id }}" >{{ $lugar->domain.' | '.$lugar->municipality.' | '.$lugar->address }}</option>
+        @foreach($places as $place)
+        <option value="{{ $place->id }}" >{{ $place->domain.' | '.$place->municipality.' | '.$place->address }}</option>
         @endforeach
     </select>
     @if($errors->has('place_id'))
@@ -60,8 +60,8 @@
     @endif
     <label>Departamento:</label>
     <select name="department_id" style="margin-bottom: 30px">
-        @foreach($departamentos as $departamento)
-        <option value="{{ $departamento->id }}">{{ $departamento->name }}</option>
+        @foreach($departments as $department)
+        <option value="{{ $department->id }}">{{ $department->name }}</option>
         @endforeach
     </select>
     @if($errors->has('department_id'))
@@ -69,21 +69,21 @@
         <span>{{ $errors->first('department_id') }}</span>
     </div>
     @endif
-    <div id="div2" style="display: none;">
+    <div id="task-types-div" style="display: none;">
         <label>Tipos de actividades (solo para técnicos):</label>
         <table  style="margin-left: 20px">
-            @foreach($tipos as $tipo)
+            @foreach($task_types as $task_type)
             <tr>
                 <td>
-                    <input type="checkbox" name="tipoact[]" class="tp" value="{{ $tipo->id }}">
+                    <input type="checkbox" name="task_types[]" class="tp" value="{{ $task_type->id }}">
                 </td>
-                <td>{{ $tipo->name }}</td>
+                <td>{{ $task_type->name }}</td>
             </tr>
             @endforeach
         </table>
-        @if($errors->has('tipoact[]'))
+        @if($errors->has('task_types[]'))
         <div class="alert alert-danger">
-            <span>{{ $errors->first('tipoact[]') }}</span>
+            <span>{{ $errors->first('task_types[]') }}</span>
         </div>
         @endif
     </div>
@@ -94,9 +94,9 @@
 function showHide(elem) {
     if(elem.value == 2) {
 
-        document.getElementById('div2').style.display = 'block';
+        document.getElementById('task-types-div').style.display = 'block';
     }else{
-        document.getElementById('div2').style.display = 'none';
+        document.getElementById('task-types-div').style.display = 'none';
 
     }
 }

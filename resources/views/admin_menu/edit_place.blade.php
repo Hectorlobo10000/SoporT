@@ -5,25 +5,25 @@
 @endsection
 @section('header','Editar lugar')
 @section('content')
-<form class="form-md" method="post" action="{{ action('PlaceController@update',$lugare->id) }}">
+<form class="form-md" method="post" action="{{ action('PlaceController@update',$place->id) }}">
     @csrf
     @method('PUT')
     <label>Departamento:</label>
-    <input type="text" name="domain" value="{{ $lugare->domain }}" class="formulario">
+    <input type="text" name="domain" value="{{ $place->domain }}" class="formulario">
     @if($errors->has('domain'))
     <div class="alert alert-danger">
         <span>{{ $errors->first('domain') }}</span>
     </div>
     @endif
     <label for="municipality">Municipio:</label>
-    <input type="text" name="municipality" value="{{ $lugare->municipality }}" class="formulario">
+    <input type="text" name="municipality" value="{{ $place->municipality }}" class="formulario">
     @if($errors->has('municipality'))
     <div class="alert alert-danger">
         <span>{{ $errors->first('municipality') }}</span>
     </div>
     @endif
     <label>Dirección:</label>
-    <input type="text" name="address" value="{{ $lugare->address }}" class="formulario">
+    <input type="text" name="address" value="{{ $place->address }}" class="formulario">
     @if($errors->has('address'))
     <div class="alert alert-danger">
         <span>{{ $errors->first('addrees') }}</span>

@@ -15,8 +15,8 @@ class PlaceController extends Controller
     }
     public function index()
     {
-        $lugares = Place::paginate(20);
-        return view('admin_menu.places',compact('lugares'));
+        $places = Place::paginate(20);
+        return view('admin_menu.places',compact('places'));
     }
 
     public function create()
@@ -26,34 +26,36 @@ class PlaceController extends Controller
 
     public function store(PlaceStoreRequest $request)
     {
-
-        $lugar = new Place([
+        $place = new Place([
             'domain'=>$request->input('domain'),
             'municipality'=>$request->input('municipality'),
             'address'=>$request->input('address')
         ]);
-        $lugar->save();
+        $place->save();
 
         return redirect()->route('lugares.index');
     }
 
-    public function edit(Place $lugare)
+    public function edit($id)
     {
-        return view('admin_menu.edit_place',compact('lugare'));
+        $place = Place::find($id);
+        return view('admin_menu.edit_place',compact('place'));
     }
 
-    public function update(PlaceUpdateRequest $request, Place $lugare)
+    public function update(PlaceUpdateRequest $request, $id)
     {
-        $lugare->domain = $request->input('domain');
-        $lugare->municipality = $request->input('municipality');
-        $lugare->address = $request->input('address');
-        $lugare->save();
+        $place = Place::find($id);
+        $place->domain = $request->input('domain');
+        $place->municipality = $request->input('municipality');
+        $place->address = $request->input('address');
+        $place->save();
         return redirect()->route('lugares.index');
     }
 
-    public function destroy(Place $lugare)
+    public function destroy($id)
     {
-        $lugare->delete();
+        $place = Place::find($id);
+        $place->delete();
         return redirect()->route('lugares.index');
     }
 }

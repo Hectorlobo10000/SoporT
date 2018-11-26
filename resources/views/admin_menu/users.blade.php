@@ -31,24 +31,24 @@
 @endsection
 @section('content')
 <?php $counter = 0; ?>
-@foreach($usuarios as $usuario)
-@if($usuario->id != Auth::id())
+@foreach($users as $user)
+@if($user->id != Auth::id())
 <?php $counter = $counter +1; ?>
 <tr>
 	<td>{{ $counter }}</td>
-	<td>{{ $usuario->name }}</td>
-	<td>{{ $usuario->email }}</td>
-	<td>{{ $usuario->phone }}</td>
-	<td>{{ $usuario->place->domain }}</td>
-	<td>{{ $usuario->place->municipality }}</td>
-	<td>{{ $usuario->place->address }}</td>
-	<td>{{ $usuario->department->name }}</td>
-	<td>{{ $usuario->role->name }}</td>
+	<td>{{ $user->name }}</td>
+	<td>{{ $user->email }}</td>
+	<td>{{ $user->phone }}</td>
+	<td>{{ $user->place->domain }}</td>
+	<td>{{ $user->place->municipality }}</td>
+	<td>{{ $user->place->address }}</td>
+	<td>{{ $user->department->name }}</td>
+	<td>{{ $user->role->name }}</td>
 	<td>
-		<a class="btn-edit btn btn-success" href="{{ route('usuarios.edit',$usuario->id) }}"></a>
+		<a class="btn-edit btn btn-success" href="{{ route('usuarios.edit',$user->id) }}"></a>
 	</td>
 	<td>
-		<form method="post" action="{{ route('usuarios.destroy',$usuario->id) }}">
+		<form method="post" action="{{ route('usuarios.destroy',$user->id) }}">
 			@csrf
 			@method('DELETE')
 			<button type="submit" class="btn-delete btn btn-danger"></button>
@@ -59,7 +59,7 @@
 @endforeach
 @endsection
 @section('paginar')
-{{ $usuarios->links() }}
+{{ $users->links() }}
 @endsection
 @section('btn add')
 <a class="btn-agregar btn btn-normal" href="{{ route('usuarios.create') }}">Agregar</a>
