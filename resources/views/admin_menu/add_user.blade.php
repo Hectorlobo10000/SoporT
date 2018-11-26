@@ -69,8 +69,8 @@
         <span>{{ $errors->first('department_id') }}</span>
     </div>
     @endif
-    <div id="div2" style="display: none">
-        <label>Tipos de actividades (Solo para técnicos):</label>
+    <div id="div2" style="display: none;">
+        <label>Tipos de actividades (solo para técnicos):</label>
         <table  style="margin-left: 20px">
             @foreach($tipos as $tipo)
             <tr>
