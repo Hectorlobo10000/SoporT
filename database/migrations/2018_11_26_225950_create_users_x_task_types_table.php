@@ -17,8 +17,7 @@ class CreateUsersXTaskTypesTable extends Migration {
 			$table->increments('id');
 			$table->integer('task_type_id')->unsigned()->index('FK_users_x_task_types_task_types_idx');
 			$table->integer('user_id')->unsigned()->index('FK_users_x_task_types_users_idx');
-			$table->unique(['task_type_id','user_id'], 'uk_user_settings');
-			$table->index(['task_type_id','user_id'], 'unique_users_id_task_type_id');
+			$table->unique(['task_type_id','user_id'], 'uk_user_task_type');
 		});
 	}
 
