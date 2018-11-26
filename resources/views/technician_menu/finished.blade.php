@@ -10,7 +10,13 @@ Tareas finalizadas
 @section('records')
 <?php $counter = 0; ?>
 @foreach($tasks as $task)
-@if($task->task_state_id===3 || $task->task_state_id===4)
+@if(
+	($task->task_state_id===3
+	|| $task->task_state_id===4)
+	&& $task->deleted_at === null
+	&& $task->client->deleted_at===null
+	&& $task->client->role_id===3
+)
 @section('extra fields')
 <th>Estado</th>
 <th>Anotación</th>

@@ -58,7 +58,7 @@ protected $dates = ['deleted_at'];
 	}
 	public function client()
 	{
-		return $this->belongsTo(\App\User::class);
+		return $this->belongsTo(\App\User::class)->withTrashed();
 	}
 	public function task_messages()
 	{

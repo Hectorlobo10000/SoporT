@@ -30,7 +30,6 @@ class DepartmentController extends Controller
             ['name'=>$request->input('name')
         ]);
         $department->save();
-
         return redirect()->route('departamentos.index');
     }
 

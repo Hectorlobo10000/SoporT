@@ -20,7 +20,7 @@ class TaskLog extends Model
 
 	public function task()
 	{
-		return $this->belongsTo(\App\Task::class);
+		return $this->belongsTo(\App\Task::class)->withTrashed();
 	}
 
 	public function task_state()

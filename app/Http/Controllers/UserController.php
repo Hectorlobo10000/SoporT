@@ -140,7 +140,7 @@ class UserController extends Controller
         return redirect()->route('show.profile',compact('user'));
     }
 
-    public function destroy(User $id)
+    public function destroy($id)
     {
         $user=User::find($id);
         $user->delete();
