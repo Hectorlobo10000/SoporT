@@ -19,10 +19,10 @@
 	<th width="10px">#</th>
 	<th>Nombre</th>
 	<th>E-mail</th>
-	<th>Telefono</th>
+	<th>Teléfono</th>
 	<th>Departamento</th>
 	<th>Municipio</th>
-	<th>Direccion</th>
+	<th>Dirección</th>
 	<th>Depto. Trabaja</th>
 	<th>Rol</th>
 	<th width="80px">Modificar</th>

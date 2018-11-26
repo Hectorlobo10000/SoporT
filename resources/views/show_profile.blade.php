@@ -17,7 +17,7 @@
     <label>Correo:</label>
     <text  class="formulario" readonly >{{ $user->email }}</text>
     <label>Departamento:</label>
-    <text  class="formulario" readonly >{{ $user->email }}</text>
+    <text  class="formulario" readonly >{{ $user->department->name }}</text>
     <label>Lugar asignado:</label>
     <text  class="formulario" readonly >{{ $user->place->domain.' | '.$user->place->municipality.' | '.$user->place->address }}</text>
     <label>Rol:</label>
