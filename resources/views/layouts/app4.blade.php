@@ -27,13 +27,14 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<div class="container">
-				<div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style=" min-height: 600px;">
+			<div class="container" style="height: 100%">
+				<div class="main">
 					@yield('content')
 				</div>
 			</div>
 		</div>
+		<br><br><br><br><br>
 		<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
 	</body>
 </html>

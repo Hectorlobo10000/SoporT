@@ -16,7 +16,7 @@
 @endsection
 @section('header')
 <tr>
-	<th>#</th>
+	<th width="10px">#</th>
 	<th>Nombre</th>
 	<th>E-mail</th>
 	<th>Telefono</th>

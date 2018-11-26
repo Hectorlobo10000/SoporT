@@ -18,9 +18,9 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/chat.css') }}">
 <div class="container container-chat">
 	@if(Auth::user()->role_id==2)
-	<div class="chatting-with"><h4 style="margin: 5px; color: #FFFFFF">Chateando con {{ $task->client->name }}</h4></div>
+	<div class="chatting-with"><h4>Chateando con {{ $task->client->name }}</h4></div>
 	@elseif(Auth::user()->role_id==3)
-	<div class="chatting-with"><h4 style="margin: 5px; color: #FFFFFF">Chateando con {{ $task->technician->name }}</h4></div>
+	<div class="chatting-with"><h4>Chateando con {{ $task->technician->name }}</h4></div>
 	@endif
 	<div class="chat" id="chat" onLoad="window.scroll(0, 150)">
 		@foreach($task_messages as $task_message)

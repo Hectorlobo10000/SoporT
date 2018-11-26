@@ -5,7 +5,7 @@
 @endsection
 @section('header','Agregar lugar')
 @section('content')
-<form class="form" method="post" action="{{ route('lugares.store') }}">
+<form class="form-md" method="post" action="{{ route('lugares.store') }}">
     @csrf
     <label>Departamento:</label>
     <input type="text" name="domain" class="formulario">
@@ -29,6 +29,6 @@
     </div>
     @endif
     <button type="submit" class="btn-agregar btn btn-normal">Crear</button>
-    <br><br>
+    <br><br><br>
 </form>
 @endsection

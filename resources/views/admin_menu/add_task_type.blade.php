@@ -5,7 +5,7 @@
 @endsection
 @section('header','Agregar actividad')
 @section('content')
-<form class="form" method="post" action="{{ route('actividades.store') }}">
+<form class="form-sm" method="post" action="{{ route('actividades.store') }}">
     @csrf
     <label>Nombre:</label>
     <input type="text" name="name" class="formulario">
@@ -15,6 +15,6 @@
     </div>
     @endif
     <button type="submit" class="btn-agregar btn btn-normal">Crear</button>
-    <br><br>
+    <br><br><br>
 </form>
 @endsection

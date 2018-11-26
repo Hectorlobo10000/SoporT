@@ -6,12 +6,12 @@
 @endsection
 @section('header','Editar anotaciones de la tarea 000'.$task->id)
 @section('content')
-<form class="form" style="width: 100%" action="{{ route('update task annotation',['task'=>$task]) }}" method="POST">
+<form class="form-lg" action="{{ route('update task annotation',['task'=>$task]) }}" method="POST">
 	{{ method_field('PATCH') }}
 	{{ csrf_field() }}
-	<textarea maxlength="1000" name="annotation" class="formulario" style="height: 400px;">{{ $task->annotation }}</textarea>
+	<textarea maxlength="1000" name="annotation" class="formulario" style="height: 500px; width: 100%">{{ $task->annotation }}</textarea>
 	<button class="btn-agregar btn btn-normal" type="submit">Modificar</button>
-	<br><br>
+	<br><br><br>
 </form>
 @endsection
 @else

@@ -26,7 +26,7 @@
 }
 .container-chat{
   font-family: 'Tillium Web', sans-serif;
-  background-color:#5F9EA0;
+  background-color:#a0dade;
   border-radius: 10px;
   border : 2px solid grey;
   position: absolute;
@@ -37,8 +37,7 @@
   float: center;
   background-color: #F0FFFF;
   overflow-y: auto;
-/*  background-image: url('../images/chat.png');
-*/  background-size: 100%
+  background-size: 100%
 }
 .text{
     width: 100%;
@@ -56,11 +55,11 @@
 .message-div-sender{
   text-align: left;
   display: inline-block;
-  background-color: #AFEEEE;
+  background-color: #00ffcc;
   border-radius: 10px;
   margin: 5px;
   max-width: 80%;
-  border : 2px solid #AFEEEE;
+  border : 2px solid #00ffcc;
   left: 0;
 }
 .message-div-receiver{
@@ -74,6 +73,8 @@
 .chatting-with{
   width: 100%;
   background-color: transparent;
+  margin: 5px;
+  color: #004d00;
 }
 .message{
   padding: 5px;
@@ -96,7 +97,7 @@
   height: 0;
   border-style: solid;
   border-width: 15px 10px 0 0;
-  border-color: #AFEEEE transparent transparent transparent;
+  border-color: #00ffcc transparent transparent transparent;
   position: relative;
   margin-right: 3px;
   margin-top:10px;

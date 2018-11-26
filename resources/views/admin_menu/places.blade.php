@@ -16,7 +16,7 @@
 @endsection
 @section('header')
 <tr>
-	<th>#</th>
+	<th width="10px">#</th>
 	<th>Departamento</th>
 	<th>Municipio</th>
 	<th>Dirección</th>

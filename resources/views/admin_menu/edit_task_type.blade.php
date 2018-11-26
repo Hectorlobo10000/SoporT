@@ -5,7 +5,7 @@
 @endsection
 @section('header','Editar actividad')
 @section('content')
-<form class="form" method="post" action="{{ action('TaskTypeController@update',$tipo->id) }}">
+<form class="form-sm" method="post" action="{{ action('TaskTypeController@update',$tipo->id) }}">
 	@csrf
 	@method('PUT')
 	<label>Nombre:</label>
@@ -16,6 +16,6 @@
 	</div>
 	@endif
 	<button type="submit" class="btn-agregar btn btn-normal">Modificar</button>
-	<br><br>
+	<br><br><br>
 </form>
 @endsection

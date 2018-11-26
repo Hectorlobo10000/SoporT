@@ -6,7 +6,7 @@
 @section('header','Agregar usuario')
 @section('content')
 </script>
-<form class="form" method="post" action="{{ route('usuarios.store') }}">
+<form class="form-md" method="post" action="{{ route('usuarios.store') }}">
     @csrf
     <label>Nombre:</label>
     <input type="text" name="name" class="formulario" value="{{ old('name') }}">
@@ -83,6 +83,6 @@
         @endif
     </div>
     <button class="btn-agregar btn btn-normal" type="submit">Crear</button>
-    <br><br>
+    <br><br><br>
 </form>
 @endsection

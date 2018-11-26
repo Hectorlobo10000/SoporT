@@ -9,7 +9,7 @@
 @endsection
 @section('header','Mi perfil')
 @section('content')
-<div class="form">
+<div class="form-md">
     <label>Nombre:</label>
     <text  class="formulario" readonly >{{ $usuario->name }}</text>
     <label>Teléfono:</label>
@@ -25,6 +25,6 @@
     <div style="float: right">
         <a class="btn-edit btn btn-success" href="{{ route('edit.profile',$usuario->id) }}"></a>
     </div>
-    <br>
+    <br><br>
 </div>
 @endsection

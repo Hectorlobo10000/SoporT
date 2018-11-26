@@ -5,7 +5,7 @@
 @endsection
 @section('header','Editar usuario')
 @section('content')
-<form class="form" method="post" action="{{ route('usuarios.update',$usuario->id) }}">
+<form class="form-md" method="post" action="{{ route('usuarios.update',$usuario->id) }}">
     @csrf
     @method('PUT')
     <label>Nombre:</label>
@@ -30,6 +30,6 @@
     </div>
     @endif
     <button class="btn-agregar btn btn-normal" type="submit" >Modificar</button>
-    <br><br>
+    <br><br><br>
 </form>
 @endsection

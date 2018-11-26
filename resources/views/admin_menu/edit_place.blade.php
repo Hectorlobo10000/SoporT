@@ -5,7 +5,7 @@
 @endsection
 @section('header','Editar lugar')
 @section('content')
-<form class="form" method="post" action="{{ action('PlaceController@update',$lugare->id) }}">
+<form class="form-md" method="post" action="{{ action('PlaceController@update',$lugare->id) }}">
     @csrf
     @method('PUT')
     <label>Departamento:</label>
@@ -30,6 +30,6 @@
     </div>
     @endif
     <button type="submit" class="btn-agregar btn btn-normal">Modificar</button>
-    <br><br>
+    <br><br><br>
 </form>
 @endsection

@@ -5,7 +5,7 @@
 @endsection
 @section('header','Editar departamento')
 @section('content')
-<form class="form" method="post" action="{{ action('DepartmentController@update',$departamento->id) }}">
+<form class="form-sm" method="post" action="{{ action('DepartmentController@update',$departamento->id) }}">
     @csrf
     @method('PUT')
     <label>Nombre de departamento:</label>
@@ -16,6 +16,6 @@
     </div>
     @endif
     <button type="submit" class="btn-agregar btn btn-normal">Modificar</button>
-    <br><br>
+    <br><br><br>
 </form>
 @endsection
