@@ -19,29 +19,35 @@
 @if(Auth::id()==$task_log->task->client_id)
 <tr>
 	@if(Auth::id()==$task_log->user_id)
-	@if($task_log->task_state_id===1) {{-- segundo ifpara saber si la accion fue crear o verificar --}}
-	<td>
-		@if($task_log->task->deleted_at===null)
-		Has creado la solicitud {{ '000'.$task_log->task_id }}. Fecha: {{ $task_log->created_at }}
+		@if($task_log->task_state_id===1) {{-- segundo ifpara saber si la accion fue crear o verificar --}}
+		<td>
+			@if($task_log->task->deleted_at===null)
+			Has creado la solicitud {{ '000'.$task_log->task_id }}. Fecha: {{ $task_log->created_at }}
+			@else
+			Has creado la solicitud {{ '<solicitud eliminada>' }}. Fecha: {{ $task_log->created_at }}
+			@endif
+		</td>
 		@else
-		Has creado la solicitud {{ '<solicitud eliminada>' }}. Fecha: {{ $task_log->created_at }}
+		<td>
+			@if($task_log->task->deleted_at===null)
+			Verificaste que la solicitud {{ '000'.$task_log->task_id }} ha sido finalizada. Fecha: {{ $task_log->created_at }}
+			@else
+			Verificaste que la solicitud {{ '<solicitud eliminada>' }} ha sido finalizada. Fecha: {{ $task_log->created_at }}
+			@endif
+		</td>
 		@endif
-	</td>
 	@else
 	<td>
-		@if($task_log->task->deleted_at===null)
-		Verificaste que la solicitud {{ '000'.$task_log->task_id }} ha sido finalizada. Fecha: {{ $task_log->created_at }}
-		@else
-		Verificaste que la solicitud {{ '<solicitud eliminada>' }} ha sido finalizada. Fecha: {{ $task_log->created_at }}
-		@endif
-	</td>
-	@endif
-	@else
-	<td>
-		@if($task_log->task->deleted_at===null)
+		@if($task_log->task->deleted_at===null && $task_log->user->deleted_at===null && $task_log->user->role_id==2)
 		{{ $task_log->user->name }} cambió el estado de la solicitud {{ '000'.$task_log->task_id }} a {{ $task_log->task_state->name }}. Fecha: {{ $task_log->created_at }}
 		@else
-		{{ $task_log->user->name }} cambió el estado de la solicitud {{ '<solicitud eliminada>' }} a {{ $task_log->task_state->name }}. Fecha: {{ $task_log->created_at }}
+			@if($task_log->task->deleted_at!=null && $task_log->user->role_id==2 && $task_log->user->deleted_at===null)
+			{{ $task_log->user->name }} cambió el estado de la solicitud {{ '<solicitud eliminada>' }} a {{ $task_log->task_state->name }}. Fecha: {{ $task_log->created_at }}
+			@elseif($task_log->task->deleted_at===null && ($task_log->user->deleted_at!=null || $task_log->user->role_id!=2))
+			{{ '<cuenta eliminada>' }} cambió el estado de la solicitud {{ '000'.$task_log->task_id }} a {{ $task_log->task_state->name }}. Fecha: {{ $task_log->created_at }}
+			@else
+			{{ '<cuenta eliminada>' }} cambió el estado de la solicitud {{ '<solicitud eliminada>' }} a {{ $task_log->task_state->name }}. Fecha: {{ $task_log->created_at }}
+			@endif
 		@endif
 	</td>
 	@endif

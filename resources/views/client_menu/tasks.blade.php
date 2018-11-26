@@ -35,9 +35,27 @@
 <tr>
 	<td>{{ $counter }}</td>
 	<td>{{ '000'.$task->id }}</td>
-	<td>{{ $task->technician->name }}</td>
-	<td>{{ $task->technician->phone }}</td>
-	<td>{{ $task->technician->email }}</td>
+	<td>
+		@if($task->technician->deleted_at===null && $task->technician->role_id==2)
+		{{ $task->technician->name }}
+		@else
+		{{ '<cuenta eliminada>' }}
+		@endif
+	</td>
+	<td>
+		@if($task->technician->deleted_at===null && $task->technician->role_id==2)
+		{{ $task->technician->phone }}
+		@else
+		{{ '<cuenta eliminada>' }}
+		@endif
+	</td>
+	<td>
+		@if($task->technician->deleted_at===null && $task->technician->role_id==2)
+		{{ $task->technician->email }}
+		@else
+		{{ '<cuenta eliminada>' }}
+		@endif
+	</td>
 	<td>{{ $task->task_type->name }}</td>
 	<td><a href="{{ route('show.description',$task->id) }}">mostrar</a></td>
 	<td>{{ $task->created_at }}</td>

@@ -115,7 +115,7 @@ class TaskController extends Controller{
                    count(c.task_state_id) AS cantidad
             FROM users AS a
             INNER JOIN users_x_task_types AS b ON (a.id = b.user_id)
-            LEFT OUTER JOIN tasks AS c ON (a.id = c.technician_id) where(a.place_id = $place_id && a.role_id = 2 && b.task_type_id = $task_type_id && ((c.task_state_id != 3 && c.task_state_id != 4)|| c.task_state_id IS NULL))
+            LEFT OUTER JOIN tasks AS c ON (a.id = c.technician_id) where(a.deleted_at IS NULL && a.place_id = $place_id && a.role_id = 2 && b.task_type_id = $task_type_id && ((c.task_state_id != 3 && c.task_state_id != 4)|| c.task_state_id IS NULL))
             GROUP BY a.id
             ORDER BY cantidad ASC LIMIT 1;
             "
@@ -130,11 +130,10 @@ class TaskController extends Controller{
                    count(c.task_state_id) AS cantidad
             FROM users AS a
             INNER JOIN users_x_task_types AS b ON (a.id = b.user_id)
-            LEFT OUTER JOIN tasks AS c ON (a.id = c.technician_id) where(a.place_id = $place_id && a.role_id = 2 && ((c.task_state_id != 3 && c.task_state_id != 4)|| c.task_state_id IS NULL))
+            LEFT OUTER JOIN tasks AS c ON (a.id = c.technician_id) where(a.deleted_at IS NULL && a.place_id = $place_id && a.role_id = 2 && ((c.task_state_id != 3 && c.task_state_id != 4)|| c.task_state_id IS NULL))
             GROUP BY a.id
             ORDER BY cantidad ASC LIMIT 1;
             "
-
         )
         );
       }

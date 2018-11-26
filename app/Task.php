@@ -54,7 +54,7 @@ protected $dates = ['deleted_at'];
 	}
 	public function technician()
 	{
-		return $this->belongsTo(\App\User::class);
+		return $this->belongsTo(\App\User::class)->withTrashed();
 	}
 	public function client()
 	{
