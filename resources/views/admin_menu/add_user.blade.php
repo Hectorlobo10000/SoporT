@@ -31,7 +31,7 @@
         </div>
         @endif
         <label>Contraseña:</label>
-        <input type="password" name="pass" class="formulario">
+        <input type="password" name="password" class="formulario">
         @if($errors->has('pass'))
         <div class="alert alert-danger">
             <span>{{ $errors->first('pass') }}</span>
@@ -49,7 +49,7 @@
         </div>
         @endif
         <label>Rol:</label>
-        <select id="roles" name="role_id" onchange="showHide(this)" tabindex="-1">
+        <select id="roles" name="role_id" onchange="showHide(this)">
             @foreach($roles as $role)
             <option value="{{ $role->id }}" >{{ $role->name }}</option>
             @endforeach
@@ -60,7 +60,7 @@
         </div>
         @endif
         <label>Departamento:</label>
-        <select name="department_id" style="margin-bottom: 30px" tabindex="-1">
+        <select name="department_id" style="margin-bottom: 30px">
             @foreach($departments as $department)
             <option value="{{ $department->id }}">{{ $department->name }}</option>
             @endforeach

@@ -82,7 +82,7 @@
 			<button form="form-delete {{ $task->id }}" type="submit" class="btn-delete btn btn-danger"></button>
 		</form>
 	</td>
-	@elseif($task->task_state_id == 4)
+	@elseif($task->task_state_id == 4 || $task->technician->deleted_at!=null)
 	<td class="action-denied"></td>
 	<td>
 		<form style=" margin: 0px" method="POST" id="form-delete {{ $task->id }}" action="{{ route('tasks.destroy',$task->id) }}" >

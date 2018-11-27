@@ -12,6 +12,7 @@ use App\Role;
 use App\Place;
 use App\UsersXTaskType;
 use App\TaskType;
+use App\Task;
 
 class UserController extends Controller
 {
@@ -55,46 +56,74 @@ class UserController extends Controller
         $email = $request->input('email');
         $user_deleted = User::onlyTrashed()->where('email',$email)->first();
         if($user_deleted == NULL){
-            if ($role_id == 2)
-            {
-                $user = new User(['department_id'=>$request->input('department_id'),
-                                     'role_id'=>$role_id,
-                                     'place_id'=>$request->input('place_id'),
-                                     'name'=>$request->input('name'),
-                                     'email'=>$request->input('email'),
-                                     'password'=>Hash::make($request->input('pass')),
-                                     'phone'=>$request->input('phone')]);
-                $user->save();
+            $user = new User(['department_id'=>$request->input('department_id'),
+                                 'role_id'=>$role_id,
+                                 'place_id'=>$request->input('place_id'),
+                                 'name'=>$request->input('name'),
+                                 'email'=>$request->input('email'),
+                                 'password'=>Hash::make($request->input('password')),
+                                 'phone'=>$request->input('phone')]);
+            $user->save();
 
-                $user_id = $user->id;
-
-                $task_types = $request->input('task_types');
-
+            $task_types = $request->input('task_types');
+            if($task_types != null){
                 for ($i=0; $i < count($task_types) ; $i++) {
-                    $user_x_task_type = new UsersXTaskType(['task_type_id'=>$task_types[$i],'user_id'=>$user_id]);
+                    $user_x_task_type = new UsersXTaskType(['task_type_id'=>$task_types[$i],'user_id'=>$user->id]);
                     $user_x_task_type->save();
                 }
-
-                return redirect()->route('usuarios.index');
             }
 
-            else
-            {
-                $user = new User(['department_id'=>$request->input('department_id'),
-                                     'role_id'=>$role_id,
-                                     'place_id'=>$request->input('place_id'),
-                                     'name'=>$request->input('name'),
-                                     'email'=>$request->input('email'),
-                                     'password'=>Hash::make($request->input('pass')),
-                                     'phone'=>$request->input('phone')]);
-                $user->save();
-                return redirect()->route('usuarios.index');
-            }
         }else{
             $user_deleted->restore();
-            return redirect()->route('usuarios.index');
+            $user_deleted->update($request->except(['']));
+            $user_deleted->password = Hash::make($request->input('password'));
+            $task_types = $request->input('task_types');
+            if($task_types != null){
+                for ($i=0; $i < count($task_types) ; $i++) {
+                    $user_x_task_type = new UsersXTaskType(['task_type_id'=>$task_types[$i],'user_id'=>$user_deleted->id]);
+                    $user_x_task_type->save();
+                }
+            }
+            $user_deleted->save();
         }
+            return redirect()->route('usuarios.index');
+    }
 
+     public function update(UserUpdateRequest $request, $id)
+    {
+        $user = User::find($id);
+        $email = $request->input('email');
+        $user_deleted = User::onlyTrashed()->where('email',$email)->first();
+        $task_types = $request->input('task_types');
+        if($user_deleted == NULL){
+            UsersXTaskType::where('user_id',$id)->delete();
+            if($task_types != null){
+                for ($i=0; $i < count($task_types) ; $i++) {
+                    $user_x_task_type = new UsersXTaskType(['task_type_id'=>$task_types[$i],'user_id'=>$user->id]);
+                    $user_x_task_type->save();
+                }
+            }
+            $user->update($request->except(['']));
+        }else{
+            if($request->input('role_id') == 3){
+                UsersXTaskType::where('user_id',$id)->delete();
+            }elseif($request->input('role_id')==2){
+                Task::where('client_id',$id)->delete();
+            }else{
+                UsersXTaskType::where('user_id',$id)->delete();
+                Task::where('client_id',$id)->delete();
+            }
+            $user->delete();
+            $user_deleted->restore();
+            $user_deleted->update($request->except(['']));
+            if($task_types != null){
+                for ($i=0; $i < count($task_types) ; $i++) {
+                    $user_x_task_type = new UsersXTaskType(['task_type_id'=>$task_types[$i],'user_id'=>$user_deleted->id]);
+                    $user_x_task_type->save();
+                }
+            }
+        }
+        return redirect()->route('usuarios.index');
     }
 
     public function edit($id)
@@ -108,11 +137,11 @@ class UserController extends Controller
 
         if ($role->isEmpty() || $user->role_id == 4) {
             $roles = Role::all();
-            return view('admin_menu.edit_user',compact('user','task_types','places','roles','departments'));
         }else{
             $roles = Role::find([1, 2, 3]);
-            return view('admin_menu.edit_user',compact('user','task_types','places','roles','departments'));
         }
+        return view('admin_menu.edit_user',compact('user','task_types','places','roles','departments'));
+
     }
 
     public function editProfile($id)
@@ -127,23 +156,36 @@ class UserController extends Controller
         return view('show_profile',compact('user'));
     }
 
-    public function update(UserUpdateRequest $request, $id)
-    {
-        User::find($id)->update($request->except(['']));
-        return redirect()->route('usuarios.index');
-    }
+
 
     public function updateProfile(UserUpdateProfileRequest $request, $id)
     {
-        $user=User::find($id);
-        $user->update($request->except(['']));
-        return redirect()->route('show.profile',compact('user'));
+        $email = $request->input('email');
+        $user_deleted = User::onlyTrashed()->where('email',$email)->first();
+        if($user_deleted == NULL){
+            User::find($id)->update($request->except(['']));
+        }else{
+            User::find($id)->delete();
+            if($user_deleted->role_id == 3){
+                UsersXTaskType::where('user_id',$id)->delete();
+            }elseif($user_deleted->role_id==2){
+                Task::where('client_id',$id)->delete();
+            }else{
+                UsersXTaskType::where('user_id',$id)->delete();
+                Task::where('client_id',$id)->delete();
+            }
+            $user_deleted->restore();
+            $user_deleted->update($request->except(['']));
+        }
+        return redirect()->route('usuarios.index');
     }
 
     public function destroy($id)
     {
         $user=User::find($id);
         $user->delete();
+        UsersXTaskType::where('user_id',$id)->delete();
+        Task::where('client_id',$id)->delete();
         return redirect()->route('usuarios.index');
     }
 }

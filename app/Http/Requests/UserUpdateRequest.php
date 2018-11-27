@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserUpdateRequest extends FormRequest
@@ -10,14 +10,14 @@ class UserUpdateRequest extends FormRequest
     {
         return true;
     }
-
     public function rules()
     {
-         return [
+        $rules = [
             'name'=>'required',
             'phone'=>'required',
-            'email'=>'required|unique:users,email, '.$this->usuario
+            'email'=>'required|unique:users,email,'.$this->usuario.',id,deleted_at,NULL',
         ];
+         return $rules;
     }
 
     public function messages()

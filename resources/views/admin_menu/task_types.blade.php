@@ -34,7 +34,7 @@
 	<td>
 		<a class="btn-edit btn btn-success" href="{{ route('actividades.edit',$task_type->id) }}"></a>
 	</td>
-	@if($task_type->users()->exists() || $task_type->tasks()->exists())
+	@if($task_type->users()->exists())
 	<td class="action-denied"></td>
 	@else
 	<td>

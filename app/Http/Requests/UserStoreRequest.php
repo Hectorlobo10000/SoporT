@@ -17,7 +17,7 @@ class UserStoreRequest extends FormRequest
             'name'=>'required',
             'email'=>'required|unique:users,email,NULL,id,deleted_at,NULL',
             'phone'=>'required',
-            'pass' => 'required',
+            'password' => 'required',
             'place_id' => 'required',
             'role_id' => 'required',
             'department_id' => 'required'

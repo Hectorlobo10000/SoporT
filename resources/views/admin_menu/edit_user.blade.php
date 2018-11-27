@@ -75,14 +75,22 @@
             <span>{{ $errors->first('department_id') }}</span>
         </div>
         @endif
+        @if($user->role_id==2)
+        <div id="task-types-div" style="display: block;">
+        @else
         <div id="task-types-div" style="display: none;">
+        @endif
             <label>Tipos de actividades (solo para técnicos):</label>
             <table  style="margin-left: 20px">
                 @foreach($task_types as $task_type)
                 <tr>
                     <td>
-                        <input type="checkbox" name="task_types[]" class="tp" value="{{ $task_type->id }}">
-                    </td>
+{{--                         @if($task_type->usersd == $task_type->id)
+ --}}                        <input type="checkbox" name="task_types[]" class="tp" value="{{ $task_type->id }}" checked>
+{{--                         @else
+ --}}                        <input type="checkbox" name="task_types[]" class="tp" value="{{ $task_type->id }}">
+{{--                         @endif
+ --}}                    </td>
                     <td>{{ $task_type->name }}</td>
                 </tr>
                 @endforeach
