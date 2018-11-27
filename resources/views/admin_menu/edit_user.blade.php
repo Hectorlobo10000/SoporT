@@ -85,32 +85,32 @@
                 @foreach($task_types as $task_type)
                 <tr>
                     <td>
-{{--                         @if($task_type->usersd == $task_type->id)
- --}}{{--                         <input type="checkbox" name="task_types[]" class="tp" value="{{ $task_type->id }}" checked>
- --}}{{--                         @else
- --}}                        <input type="checkbox" name="task_types[]" class="tp" value="{{ $task_type->id }}">
-{{--                         @endif
- --}}                    </td>
+                        @if($user->task_types()->where('task_type_id',$task_type->id)->exists())
+                        <input type="checkbox" name="task_types[]" class="tp" value="{{ $task_type->id }}" checked>
+                        @else
+                        <input type="checkbox" name="task_types[]" class="tp" value="{{ $task_type->id }}">
+                        @endif
+                    </td>
                     <td>{{ $task_type->name }}</td>
                 </tr>
                 @endforeach
             </table>
-            @if($errors->has('task_types[]'))
-            <div class="alert alert-danger">
-                <span>{{ $errors->first('task_types[]') }}</span>
+                @if($errors->has('task_types[]'))
+                <div class="alert alert-danger">
+                    <span>{{ $errors->first('task_types[]') }}</span>
+                </div>
+                @endif
             </div>
-            @endif
         </div>
-    </div>
-    <button class="btn-agregar btn btn-normal" type="submit" >Modificar</button>
-</form>
-<script>
-function showHide(elem) {
+        <button class="btn-agregar btn btn-normal" type="submit" >Modificar</button>
+    </form>
+    <script>
+    function showHide(elem) {
     if(elem.value == 2) {
-        document.getElementById('task-types-div').style.display = 'block';
+    document.getElementById('task-types-div').style.display = 'block';
     }else{
-        document.getElementById('task-types-div').style.display = 'none';
+    document.getElementById('task-types-div').style.display = 'none';
     }
-}
-</script>
-@endsection
+    }
+    </script>
+    @endsection
