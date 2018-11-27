@@ -15,7 +15,7 @@ class UserUpdateProfileRequest extends FormRequest
     {
          return [
             'name'=>'required',
-            'email'=>'required|unique:users,email,'.$this->id,
+            'email'=>'required|unique:users,email,'.$this->id.',id,deleted_at,NULL',
             'phone'=>'required',
         ];
     }
