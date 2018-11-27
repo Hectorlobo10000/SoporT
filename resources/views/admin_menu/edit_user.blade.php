@@ -86,8 +86,8 @@
                 <tr>
                     <td>
 {{--                         @if($task_type->usersd == $task_type->id)
- --}}                        <input type="checkbox" name="task_types[]" class="tp" value="{{ $task_type->id }}" checked>
-{{--                         @else
+ --}}{{--                         <input type="checkbox" name="task_types[]" class="tp" value="{{ $task_type->id }}" checked>
+ --}}{{--                         @else
  --}}                        <input type="checkbox" name="task_types[]" class="tp" value="{{ $task_type->id }}">
 {{--                         @endif
  --}}                    </td>
