@@ -66,7 +66,7 @@ class UserController extends Controller
             $user->save();
 
             $task_types = $request->input('task_types');
-            if($task_types != null){
+            if($task_types != null && $request->input('role_id') == 2){
                 for ($i=0; $i < count($task_types) ; $i++) {
                     $user_x_task_type = new UsersXTaskType(['task_type_id'=>$task_types[$i],'user_id'=>$user->id]);
                     $user_x_task_type->save();
@@ -78,7 +78,7 @@ class UserController extends Controller
             $user_deleted->update($request->except(['']));
             $user_deleted->password = Hash::make($request->input('password'));
             $task_types = $request->input('task_types');
-            if($task_types != null){
+            if($task_types != null && $request->input('role_id') == 2){
                 for ($i=0; $i < count($task_types) ; $i++) {
                     $user_x_task_type = new UsersXTaskType(['task_type_id'=>$task_types[$i],'user_id'=>$user_deleted->id]);
                     $user_x_task_type->save();
