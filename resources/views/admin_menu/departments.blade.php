@@ -14,6 +14,7 @@
 	<a href="{{ route('lugares.index') }}">Lugares</a>
 </li>
 @endsection
+@section('table id','table-sm')
 @section('header')
 <tr>
 	<th width="10px">#</th>
@@ -22,7 +23,6 @@
 	<th width="80px">Eliminar</th>
 </tr>
 @endsection
-@section('table id','table-sm')
 @section('content')
 <?php $counter = 0; ?>
 @foreach($departments as $department)

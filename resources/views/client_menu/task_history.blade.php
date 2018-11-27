@@ -8,6 +8,7 @@
 	<a href="{{ route('tasks.history') }}">Historial</a>
 </li>
 @endsection
+@section('table id','table-md')
 @section('header')
 <tr>
 	<th>Historial de solicitudes</th>
