@@ -40,7 +40,7 @@
                             <a style="border-top: 1px solid #d3d3d3" href="{{ url('/logout') }}">Cerrar sesión</a>
                         </div>
                     </div>
-                    <div id="me-seccion-3">
+                    <div id="@yield('table id')">
                         <div class="table-responsive" >
                             <table>
                                 <thead>
@@ -51,7 +51,6 @@
                                 </tbody>
                             </table>
                         </div>
-                        <br>
                         @yield('paginar')
                         @yield('btn add')
                     </div>

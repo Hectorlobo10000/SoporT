@@ -14,17 +14,17 @@
 	<a href="{{ route('lugares.index') }}">Lugares</a>
 </li>
 @endsection
+@section('table id','table-lg')
 @section('header')
 <tr>
 	<th width="10px">#</th>
 	<th>Nombre</th>
 	<th>E-mail</th>
 	<th>Teléfono</th>
+	<th>Lugar</th>
 	<th>Departamento</th>
-	<th>Municipio</th>
-	<th>Dirección</th>
-	<th>Depto. Trabaja</th>
 	<th>Rol</th>
+	<th>Información completa</th>
 	<th width="80px">Modificar</th>
 	<th width="80px">Eliminar</th>
 </tr>
@@ -39,11 +39,10 @@
 	<td>{{ $user->name }}</td>
 	<td>{{ $user->email }}</td>
 	<td>{{ $user->phone }}</td>
-	<td>{{ $user->place->domain }}</td>
-	<td>{{ $user->place->municipality }}</td>
-	<td>{{ $user->place->address }}</td>
+	<td>{{ $user->place->domain.' | '.$user->place->municipality.' | '.$user->place->address }}</td>
 	<td>{{ $user->department->name }}</td>
 	<td>{{ $user->role->name }}</td>
+	<td><a href="{{ route('usuarios.show',$user->id) }}">mostrar</a></td>
 	<td>
 		<a class="btn-edit btn btn-success" href="{{ route('usuarios.edit',$user->id) }}"></a>
 	</td>

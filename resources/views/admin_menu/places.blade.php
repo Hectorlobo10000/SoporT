@@ -14,6 +14,7 @@
 	<a href="{{ route('lugares.index') }}">Lugares</a>
 </li>
 @endsection
+@section('table id','table-md')
 @section('header')
 <tr>
 	<th width="10px">#</th>

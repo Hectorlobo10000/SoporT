@@ -23,7 +23,7 @@ class UserController extends Controller
     }
     public function index()
     {
-        $users = User::paginate(20);
+        $users = User::orderBy('role_id','desc')->orderBy('name','asc')->paginate(20);
 
         return view('admin_menu.users',compact('users'));
     }
@@ -88,7 +88,6 @@ class UserController extends Controller
         }
             return redirect()->route('usuarios.index');
     }
-
      public function update(UserUpdateRequest $request, $id)
     {
         $user = User::find($id);
@@ -150,12 +149,16 @@ class UserController extends Controller
         return view('edit_profile',compact('user'));
     }
 
-    public function show($id)
+    public function showProfile($id)
     {
         $user=User::find($id);
         return view('show_profile',compact('user'));
     }
-
+    public function show($id)
+    {
+        $user=User::find($id);
+        return view('admin_menu/show_user',compact('user'));
+    }
 
 
     public function updateProfile(UserUpdateProfileRequest $request, $id)

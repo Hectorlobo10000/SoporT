@@ -22,6 +22,7 @@
 	<th width="80px">Eliminar</th>
 </tr>
 @endsection
+@section('table id','table-sm')
 @section('content')
 <?php $counter = 0; ?>
 @foreach($departments as $department)

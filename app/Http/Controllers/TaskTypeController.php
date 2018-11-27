@@ -16,7 +16,7 @@ class TaskTypeController extends Controller
 
     public function index()
     {
-        $task_types = TaskType::paginate(20);
+        $task_types = TaskType::orderBy('name','asc')->paginate(20);
         return view('admin_menu.task_types',compact('task_types'));
     }
 

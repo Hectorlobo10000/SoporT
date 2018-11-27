@@ -15,7 +15,7 @@ class PlaceController extends Controller
     }
     public function index()
     {
-        $places = Place::paginate(20);
+        $places = Place::orderBy('domain','asc')->orderBy('municipality','asc')->orderBy('address','asc')->paginate(20);
         return view('admin_menu.places',compact('places'));
     }
 
