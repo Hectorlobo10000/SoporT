@@ -150,19 +150,3 @@ h1
 {
   margin-bottom: 5px;
 }
-
-#table-sm{
-  margin-right: auto;
-  margin-left: auto;
-  width: 40%;
-}
-#table-md{
-  margin-right: auto;
-  margin-left: auto;
-  width: 70%
-}
-#table-lg{
-  margin-right: auto;
-  margin-left: auto;
-  width: 100%;
-}

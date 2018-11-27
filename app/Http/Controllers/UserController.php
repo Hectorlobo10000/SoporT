@@ -165,20 +165,17 @@ class UserController extends Controller
     {
         $email = $request->input('email');
         $user_deleted = User::onlyTrashed()->where('email',$email)->first();
+        $logged_user = User::find($id);
         if($user_deleted == NULL){
-            User::find($id)->update($request->except(['']));
+            $logged_user->update($request->except(['']));
         }else{
-            User::find($id)->delete();
-            if($user_deleted->role_id == 3){
-                UsersXTaskType::where('user_id',$id)->delete();
-            }elseif($user_deleted->role_id==2){
-                Task::where('client_id',$id)->delete();
-            }else{
-                UsersXTaskType::where('user_id',$id)->delete();
-                Task::where('client_id',$id)->delete();
-            }
-            $user_deleted->restore();
-            $user_deleted->update($request->except(['']));
+            $user_deleted->email = 'temorary value';
+            $user_deleted->save();
+            $logged_email = $logged_user->email;
+            $logged_user->update($request->except(['']));
+            $user_deleted->email = $logged_email;
+            $user_deleted->save();
+
         }
         return redirect()->route('usuarios.index');
     }
