@@ -97,13 +97,13 @@ class UserController extends Controller
         $task_types = $request->input('task_types');
         if($user_deleted == NULL){
             UsersXTaskType::where('user_id',$id)->delete();
-            if($task_types != null){
+            if($task_types != null && $request->input('role_id') == 2){
                 for ($i=0; $i < count($task_types) ; $i++) {
                     $user_x_task_type = new UsersXTaskType(['task_type_id'=>$task_types[$i],'user_id'=>$user->id]);
                     $user_x_task_type->save();
                 }
             }
-            $user->update($request->except(['']));
+            $user->update($request->except(['task_types']));
         }else{
             if($request->input('role_id') == 3){
                 UsersXTaskType::where('user_id',$id)->delete();
