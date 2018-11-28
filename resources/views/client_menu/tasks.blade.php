@@ -64,7 +64,7 @@
 	<td><a class="btn-chat btn btn-success" href="{{ route('chat.index',$task->id) }}"></a></td>
 	@if($task->task_state_id==3)
 	<td>
-		<form action="{{ route('verify.task',['task'=>$task]) }}" method="POST" id="form {{ $task->id }}">
+		<form style="margin: 0" action="{{ route('verify.task',['task'=>$task]) }}" method="POST" id="form {{ $task->id }}">
 			{{ method_field('PATCH') }}
 			{{ csrf_field() }}
 			<input type="hidden" name="task_state_id" value="4">
