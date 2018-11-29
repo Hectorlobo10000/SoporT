@@ -48,9 +48,9 @@
 	</tr>
 	@endforeach
 	@endsection
-	@section('paginar')
+	{{-- @section('paginar')
 	{{ $departments->links() }}
-	@endsection
+	@endsection --}}
 	@section('btn add')
 	<a class="btn-agregar btn btn-normal" href="{{ route('departamentos.create') }}">Agregar</a>
 	@endsection

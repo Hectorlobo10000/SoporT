@@ -13,7 +13,7 @@ class TaskLogController extends Controller
     }
       public function history()
     {
-      $task_logs = TaskLog::orderBy('created_at','asc')->paginate(20);
+      $task_logs = TaskLog::orderBy('created_at','asc')->get();
       return view('/client_menu/task_history',compact('task_logs'));
     }
 
