@@ -124,11 +124,11 @@
   background-color: white;
   color: #000000;
   display: block;
-  border: 1px solid grey;
+  border: 1px solid #008080;
   border-radius: 55px;
 }
 .btn-enviar:hover {
-    border: 2px solid grey;
+    border: 2px solid #008080;
 
   background-color: #d3d3d3;
     background-size: 95%;
@@ -136,11 +136,11 @@
 }
 .btn-enviar:active{
     background-image: url(../images/send.png);
-    border: 3px solid grey;
+    border: 3px solid #008080;
 
   background-size: 93%;
 
-  background-color: grey;
+  background-color: #008080;
 }
 .area-escribir-chat{
   margin: 1px auto;

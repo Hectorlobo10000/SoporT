@@ -23,7 +23,7 @@ class UserController extends Controller
     }
     public function index()
     {
-        $users = User::orderBy('role_id','desc')->orderBy('name','asc')->paginate(20);
+        $users = User::orderBy('name','asc')->paginate(20);
 
         return view('admin_menu.users',compact('users'));
     }

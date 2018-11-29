@@ -20,11 +20,7 @@ class TaskController extends Controller{
         $tasks = Task::all();
         return view('client_menu.tasks',compact('tasks'));
     }
-    public function history()
-    {
-      $task_logs = TaskLog::all();
-      return view('/client_menu/task_history',compact('task_logs'));
-    }
+
 
     public function create()
     {
@@ -90,11 +86,12 @@ class TaskController extends Controller{
         $task_type_id = $request->input('task_type_id');
         $place_id = Auth::user()->place_id;
         $request->merge(['technician_id' => $this->getTechnicianId($task_type_id,$place_id)]);
-        $request->validate();
-        $task->technician_id = $request->input('technician_id');
-        $task->task_type_id =$request->input('task_type_id');
-        $task->description =$request->input('description');
-        $task->save();
+        $request->validate([
+          'technician_id' => 'required'
+        ],[
+          'technician_id.required' => 'No hay técnicos disponibles. Intente mas tarde.'
+        ]);
+        $task->update($request->except(['']));
         return redirect()->route('tasks.index');
     }
 
