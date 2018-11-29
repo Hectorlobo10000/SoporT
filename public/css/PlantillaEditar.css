@@ -19,66 +19,44 @@
 body
 {
 	 background: #FFFFFF;
-    font-family: 'Tillium Web', sans-serif;
-    background-color: #F0FFFF;
-    background-image: url('../images/menu.jpg');
-    background-size: 100%;
-    padding-bottom: 200px;
+   font-family: 'Tillium Web', sans-serif;
+   background-color: #F0FFFF;
+   background-image: url('../images/menu.jpg');
+   background-size: 100%;
+   padding-bottom: 200px;
 }
 
 .main{
    width: 100% ;
-
-
 }
 
 .form-sm
 {
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-bottom: 80px;
-  padding-right: 10px;
-  margin-left: auto ;
-  margin-right: auto ;
 	min-width: 200px;
   width: 30%;
-	height: auto;
-	border: 2px solid #008080;
-  border-radius: 0px 30px 0px 30px;
-  background-color:   #a0dade;
-  background-size: 100%;
 }
 .form-md
 {
-  margin-left: auto ;
-  margin-right: auto ;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 80px;
   min-width: 300px;
   width: 50%;
-  height: auto;
-  border: 2px solid #008080;
-  border-radius: 0px 30px 0px 30px;
-  background-color:   #a0dade;
-  background-size: 100%;
 }
 .form-lg
 {
+  min-width: 300px;
+  width: 80%;
+}
+
+.form{
   margin-left: auto ;
   margin-right: auto ;
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 80px;
-  min-width: 300px;
-  width: 80%;
   height: auto;
   border: 2px solid #008080;
   border-radius: 0px 30px 0px 30px;
   background-color:   #a0dade;
-  background-size: 100%;
 }
 
 h1
@@ -166,7 +144,7 @@ label{
 #dropdown:hover .dropbtn {
     color: black;
 }
-.formulario
+.form-input
 {
   margin-bottom: 20px;
   margin-left: auto;
@@ -179,14 +157,29 @@ label{
   background-color: #F0FFFF;
 }
 
+.show-info{
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  width: 80%;
+  border-radius: 10px;
+  border: 2px solid #F0FFFF;
 
+  background-color: #F0FFFF;
+  color: black;
+}
 
+.text-center{
+  text-align: center;
+}
 
 textarea
 {
 	display: block;
 	margin-bottom: 5px;
 	resize: none;
+   text-align: justify;
 }
 
 select

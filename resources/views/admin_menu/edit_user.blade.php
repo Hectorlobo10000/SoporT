@@ -9,26 +9,26 @@
 @endsection
 @section('header','Editar usuario')
 @section('content')
-<form class="form-md" method="post" action="{{ route('usuarios.update',$user->id) }}">
+<form class="form form-md" method="post" action="{{ route('usuarios.update',$user->id) }}">
     @csrf
     @method('PUT')
     <div style="width: 100%;">
         <label>Nombre:</label>
-        <input type="text" name="name" class="formulario" value="{{ $user->name }}">
+        <input type="text" name="name" class="form-input" value="{{ $user->name }}">
         @if($errors->has('name'))
         <div class="alert alert-danger">
             <span>{{ $errors->first('name') }}</span>
         </div>
         @endif
         <label>Teléfono:</label>
-        <input type="text" name="phone" class="formulario" value="{{ $user->phone }}">
+        <input type="text" name="phone" class="form-input" value="{{ $user->phone }}">
         @if($errors->has('phone'))
         <div class="alert alert-danger">
             <span>{{ $errors->first('phone') }}</span>
         </div>
         @endif
         <label>Correo:</label>
-        <input type="email" name="email" class="formulario" value="{{ $user->email }}">
+        <input type="email" name="email" class="form-input" value="{{ $user->email }}">
         @if($errors->has('email'))
         <div class="alert alert-danger">
             <span>{{ $errors->first('email') }}</span>

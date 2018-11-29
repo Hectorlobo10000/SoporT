@@ -11,8 +11,8 @@
 @endif
 @endsection
 @section('content')
-<div class="form-lg">
-	<textarea readonly class="formulario" style="height: 500px;  width: 100%">{{ $task->annotation }}</textarea>
+<div class="form form-lg">
+	<textarea readonly class="show-info" style="height: 500px;  width: 100%">{{ $task->annotation }}</textarea>
 	@if($task->task_state_id != 4)
 	<div style="float: right">
 		<a class="btn-edit btn btn-success" href="{{ route('edit task annotation',$task->id) }}"></a>

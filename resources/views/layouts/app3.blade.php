@@ -36,22 +36,30 @@
                         </div>
                     </div>
                     <div id="@yield('table id')">
+                        <div style="position: relative; right: 0">
+                            <input type="text" id="search" onkeyup="search()" placeholder="Buscar...">
+                        </div>
                         <div class="table-responsive" >
-                            <table>
+                            <table style="margin-bottom: 20px">
                                 <thead>
                                     @yield('header')
                                 </thead>
-                                <tbody>
+                                <tbody id="table">
                                     @yield('content')
                                 </tbody>
                             </table>
                         </div>
-                        @yield('paginar')
-                        @yield('btn add')
+                        <div  class="row">
+                            <div class="col">
+                                @yield('paginar')
+                            </div>
+                            <div class="col">
+                                @yield('btn add')
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- Sidebar -->
         </div>
         <script src="{{ asset('jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
@@ -59,6 +67,18 @@
         $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+        });
+        </script>
+        <script>
+        var $rows = $('#table tr');
+        $('#search').keyup(function() {
+        var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+        reg = RegExp(val, 'i'),
+        text;
+        $rows.show().filter(function() {
+        text = $(this).text().replace(/\s+/g, ' ');
+        return !reg.test(text);
+        }).hide();
         });
         </script>
     </body>

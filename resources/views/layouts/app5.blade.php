@@ -15,19 +15,19 @@
 @endif
 @endsection
 @section('content')
-<div class="form-md">
+<div class="form form-md">
     <label>Nombre:</label>
-    <textfield  class="formulario" readonly >{{ $user->name }}</textfield>
+    <p  class="show-info text-center" >{{ $user->name }}</p>
     <label>Teléfono:</label>
-    <textfield  class="formulario" readonly >{{ $user->phone }}</textfield>
+    <p  class="show-info text-center" >{{ $user->phone }}</p>
     <label>Correo:</label>
-    <textfield  class="formulario" readonly >{{ $user->email }}</textfield>
+    <p  class="show-info text-center" >{{ $user->email }}</p>
     <label>Departamento:</label>
-    <textfield  class="formulario" readonly >{{ $user->department->name }}</textfield>
+    <p  class="show-info text-center" >{{ $user->department->name }}</p>
     <label>Lugar asignado:</label>
-    <textfield  class="formulario" readonly >{{ $user->place->domain.' | '.$user->place->municipality.' | '.$user->place->address }}</textfield>
+    <p  class="show-info text-center" >{{ $user->place->domain.' | '.$user->place->municipality.' | '.$user->place->address }}</p>
     <label>Rol:</label>
-    <textfield  class="formulario" readonly >{{ $user->role->name }}</textfield>
+    <p  class="show-info text-center" >{{ $user->role->name }}</p>
     @if($user->role_id == 2)
     <label>Tipos de actividades asignadas:</label>
     <ul style="margin-left:20px;">

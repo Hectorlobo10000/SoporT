@@ -5,10 +5,10 @@
 @endsection
 @section('header','Agregar actividad')
 @section('content')
-<form class="form-sm" method="post" action="{{ route('actividades.store') }}">
+<form class="form form-sm" method="post" action="{{ route('actividades.store') }}">
     @csrf
     <label>Nombre:</label>
-    <input type="text" name="name" class="formulario">
+    <input type="text" name="name" class="form-input">
     @if($errors->has('name'))
     <div class="alert alert-danger">
         <span>{{ $errors->first('name') }}</span>

@@ -5,7 +5,7 @@
 @endsection
 @section('header','Crear solicitud')
 @section('content')
-<form class="form-lg" method="post" action="{{ route('tasks.store') }}">
+<form class="form form-lg" method="post" action="{{ route('tasks.store') }}">
     @csrf
     @if($errors->has('description'))
     <div class="alert alert-danger">
@@ -25,7 +25,7 @@
     </select>
     <input type="hidden" name="client_id" value={{ Auth::id() }}>
     <label>Descripción:</label>
-    <textarea maxlength="1000" name="description" class="formulario" style="height: 400px; "></textarea>
+    <textarea maxlength="8500" name="description" class="form-input" style="height: 400px; "></textarea>
     <button type="submit" class="btn-agregar btn-crear btn btn-normal" >Crear</button>
 </form>
 @endsection

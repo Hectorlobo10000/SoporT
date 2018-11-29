@@ -5,11 +5,11 @@
 @endsection
 @section('header','Editar departamento')
 @section('content')
-<form class="form-sm" method="post" action="{{ action('DepartmentController@update',$department->id) }}">
+<form class="form form-sm" method="post" action="{{ action('DepartmentController@update',$department->id) }}">
     @csrf
     @method('PUT')
     <label>Nombre de departamento:</label>
-    <input type="text" name="name" class="formulario" value="{{ $department->name }}">
+    <input type="text" name="name" class="form-input" value="{{ $department->name }}">
     @if($errors->has('name'))
     <div class="alert alert-danger">
         <span>{{ $errors->first('name') }}</span>

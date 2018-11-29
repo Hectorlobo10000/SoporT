@@ -6,32 +6,32 @@
 @section('header','Agregar usuario')
 @section('content')
 </script>
-<form class="form-md" method="post" action="{{ route('usuarios.store') }}" id="form">
+<form class="form form-md" method="post" action="{{ route('usuarios.store') }}" id="form">
     @csrf
     <div style="width: 100%;">
         <label>Nombre:</label>
-        <input type="text" name="name" class="formulario" value="{{ old('name') }}">
+        <input type="text" name="name" class="form-input" value="{{ old('name') }}">
         @if($errors->has('name'))
         <div class="alert alert-danger">
             <span>{{ $errors->first('name') }}</span>
         </div>
         @endif
         <label>Teléfono:</label>
-        <input type="text" name="phone" class="formulario" value="{{ old('phone') }}">
+        <input type="text" name="phone" class="form-input" value="{{ old('phone') }}">
         @if($errors->has('phone'))
         <div class="alert alert-danger">
             <span>{{ $errors->first('phone') }}</span>
         </div>
         @endif
         <label>Correo:</label>
-        <input type="email" name="email" class="formulario" value="{{ old('email') }}">
+        <input type="email" name="email" class="form-input" value="{{ old('email') }}">
         @if($errors->has('email'))
         <div class="alert alert-danger">
             <span>{{ $errors->first('email') }}</span>
         </div>
         @endif
         <label>Contraseña:</label>
-        <input type="password" name="password" class="formulario">
+        <input type="password" name="password" class="form-input">
         @if($errors->has('pass'))
         <div class="alert alert-danger">
             <span>{{ $errors->first('pass') }}</span>

@@ -5,10 +5,10 @@
 @endsection
 @section('header','Agregar departamento')
 @section('content')
-<form class="form-sm" method="post" action="{{ route('departamentos.store') }}">
+<form class="form form-sm" method="post" action="{{ route('departamentos.store') }}">
     @csrf
     <label>Nombre de departamento:</label>
-    <input type="text" name="name" class="formulario">
+    <input type="text" name="name" class="form-input">
      @if($errors->has('name'))
     <div class="alert alert-danger">
         <span>{{ $errors->first('name') }}</span>

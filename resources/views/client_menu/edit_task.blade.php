@@ -5,7 +5,7 @@
 @endsection
 @section('header','Editar solicitud')
 @section('content')
-<form class="form" style="width: 100%" method="post" action="{{ route('tasks.update',$task->id) }}">
+<form class="form form-lg" style="width: 100%" method="post" action="{{ route('tasks.update',$task->id) }}">
     @csrf
     @method('PUT')
     @if($errors->has('technician_id') && !($errors->has('description')))
@@ -20,7 +20,7 @@
         @endforeach
     </select>
     <label>Descripción:</label>
-    <textarea maxlength="1000" name="description" class="formulario" style="height: 400px;">{{ $task->description }}</textarea>
+    <textarea maxlength="8500" name="description" class="form-input" style="height: 400px;">{{ $task->description }}</textarea>
     @if($errors->has('description'))
     <div class="alert alert-danger">
         <span>{{ $errors->first('description') }}</span>
