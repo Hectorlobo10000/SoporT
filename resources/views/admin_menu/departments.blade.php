@@ -33,24 +33,25 @@
 	<td>{{ $counter }}</td>
 	<td>{{ $department->name }}</td>
 	<td width="100px">
-		<a class="btn-edit btn btn-success"href="{{ route('departamentos.edit',$department->id) }}"></a></td>
-		@if($department->users()->exists())
-		<td class="action-denied"></td>
-		@else
-		<td>
-			<form method="post" action="{{ action('DepartmentController@destroy',$department->id) }}">
-				@csrf
-				@method('DELETE')
-				<button type="submit" class="btn-delete btn btn-danger"></button>
-			</form>
-		</td>
-		@endif
-	</tr>
-	@endforeach
-	@endsection
-	{{-- @section('paginar')
-	{{ $departments->links() }}
-	@endsection --}}
-	@section('btn add')
-	<a class="btn-agregar btn btn-normal" href="{{ route('departamentos.create') }}">Agregar</a>
-	@endsection
+		<a class="btn-edit btn btn-success"href="{{ route('departamentos.edit',$department->id) }}"></a>
+	</td>
+	@if($department->users()->exists())
+	<td class="action-denied"></td>
+	@else
+	<td>
+		<form method="post" action="{{ action('DepartmentController@destroy',$department->id) }}">
+			@csrf
+			@method('DELETE')
+			<button type="submit" class="btn-delete btn btn-danger"></button>
+		</form>
+	</td>
+	@endif
+</tr>
+@endforeach
+@endsection
+@section('paginar')
+{{ $departments->appends(['search'=>$search])->links() }}
+@endsection
+@section('btn add')
+<a class="btn-agregar btn btn-normal" href="{{ route('departamentos.create') }}">Agregar</a>
+@endsection

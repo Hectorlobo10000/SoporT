@@ -28,6 +28,11 @@ class TaskType extends Model
 		'name'
 	];
 
+	public function scopeSearch($query, $search){
+    	return $query
+    		->where('name','like','%'.$search.'%');
+    }
+
 	public function tasks()
 	{
 		return $this->hasMany(\App\Task::class);

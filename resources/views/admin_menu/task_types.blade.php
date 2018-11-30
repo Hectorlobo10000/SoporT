@@ -49,9 +49,9 @@
 </tr>
 @endforeach
 @endsection
-{{-- @section('paginar')
-{{ $task_types->links() }}
-@endsection --}}
+@section('paginar')
+{{ $task_types->appends(['search'=>$search])->links() }}
+@endsection
 @section('btn add')
 <a class="btn-agregar btn btn-normal" href="{{ route('actividades.create') }}">Agregar</a>
 @endsection

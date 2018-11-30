@@ -13,11 +13,15 @@ class PlaceController extends Controller
     {
         date_default_timezone_set('US/Central');
     }
-    public function index()
+    public function index(Request $request)
     {
-        // $places = Place::orderBy('domain','asc')->orderBy('municipality','asc')->orderBy('address','asc')->paginate(20);
-        $places = Place::orderBy('domain','asc')->orderBy('municipality','asc')->orderBy('address','asc')->get();
-        return view('admin_menu.places',compact('places'));
+        $search=$request->input('search');
+        $places = Place::orderBy('domain','asc')
+            ->orderBy('municipality','asc')
+            ->orderBy('address','asc')
+            ->search($search)
+            ->paginate(20);
+        return view('admin_menu.places',compact('places','search'));
     }
 
     public function create()

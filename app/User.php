@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Department;
 /**
  * Class User
  *
@@ -59,7 +59,23 @@ class User extends Authenticatable
 
     protected $dates = ['deleted_at'];
 
-
+    public function scopeSearch($query, $search){
+    	return $query
+    		->where('name','like','%'.$search.'%')
+    		->orWhere('email','like','%'.$search.'%')
+    		->orWhere('phone','like','%'.$search.'%')
+    		->orWhereHas('department',function($q) use($search){
+    			$q->where('name','like','%'.$search.'%');
+    		})
+    		->orWhereHas('role',function($q)use($search){
+    			$q->where('name','like','%'.$search.'%');
+    		})
+    		->orWhereHas('place',function($q)use($search){
+    			$q->where('domain','like','%'.$search.'%')
+    			->where('municipality','like','%'.$search.'%')
+    			->where('address','like','%'.$search.'%');
+    		});
+    }
 
 	public function department()
 	{

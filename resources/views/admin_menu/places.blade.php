@@ -53,9 +53,9 @@
 </tr>
 @endforeach
 @endsection
-{{-- @section('paginar')
-{{ $places->links() }}
-@endsection --}}
+@section('paginar')
+{{ $places->appends(['search'=>$search])->links() }}
+@endsection
 @section('btn add')
 <a class="btn-agregar btn btn-normal" href="{{ route('lugares.create') }}">Agregar</a>
 @endsection

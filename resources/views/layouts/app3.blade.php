@@ -37,7 +37,10 @@
                     </div>
                     <div id="@yield('table id')">
                         <div style="position: relative; right: 0">
-                            <input type="text" id="search" onkeyup="search()" placeholder="Buscar...">
+                            <form method="get" action="@yield('search action')">
+                                <input type="text" id="search" name="search" onkeyup="search()" value="{{ isset($search) ? $search : ''}}" placeholder="Buscar...">
+                                <input type="submit" style="display: none" />
+                            </form>
                         </div>
                         <div class="table-responsive" >
                             <table style="margin-bottom: 20px">
@@ -70,7 +73,7 @@
                 $("#wrapper").toggleClass("toggled");
             });
         </script>
-        <script>
+        {{-- <script>
         var $rows = $('#table tr');
         $('#search').keyup(function() {
             var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
@@ -81,6 +84,6 @@
                 return !reg.test(text);
             }).hide();
         });
-     </script>
+     </script> --}}
     </body>
 </html>

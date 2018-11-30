@@ -57,9 +57,9 @@
 @endif
 @endforeach
 @endsection
-{{-- @section('paginar')
-{{ $users->links() }}
-@endsection --}}
+@section('paginar')
+{{ $users->appends(['search'=>$search])->links() }}
+@endsection
 @section('btn add')
 <a class="btn-agregar btn btn-normal" href="{{ route('usuarios.create') }}">Agregar</a>
 @endsection

@@ -31,7 +31,10 @@ class Role extends Model
 	protected $fillable = [
 		'name'
 	];
-
+	public function scopeSearch($query, $search){
+    	return $query
+    		->where('name','like','%'.$search.'%');
+    }
 	public function users()
 	{
 		return $this->hasMany(\App\User::class);

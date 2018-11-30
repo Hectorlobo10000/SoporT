@@ -34,7 +34,12 @@ class Place extends Model
 		'municipality',
 		'address'
 	];
-
+	public function scopeSearch($query, $search){
+    	return $query
+    		->where('domain','like','%'.$search.'%')
+    		->orWhere('municipality','like','%'.$search.'%')
+    		->orWhere('address','like','%'.$search.'%');
+    }
 	public function users()
 	{
 		return $this->hasMany(\App\User::class);

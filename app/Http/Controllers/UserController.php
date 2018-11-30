@@ -21,11 +21,14 @@ class UserController extends Controller
     {
         date_default_timezone_set('US/Central');
     }
-    public function index()
+    public function index(Request $request)
     {
         // $users = User::orderBy('name','asc')->paginate(20);
-        $users = User::orderBy('name','asc')->get();
-        return view('admin_menu.users',compact('users'));
+        $search = $request->input('search');
+        $users = User::orderBy('name','asc')
+            ->search($search)
+            ->paginate(20);
+        return view('admin_menu.users',compact('users','search'));
     }
 
     public function create()

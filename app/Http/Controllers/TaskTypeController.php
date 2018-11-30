@@ -14,11 +14,13 @@ class TaskTypeController extends Controller
         date_default_timezone_set('US/Central');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        // $task_types = TaskType::orderBy('name','asc')->paginate(20);
-        $task_types = TaskType::orderBy('name','asc')->get();
-        return view('admin_menu.task_types',compact('task_types'));
+        $search = $request->input('search');
+        $task_types = TaskType::orderBy('name','asc')
+            ->search($search)
+            ->paginate(20);
+            return view('admin_menu.task_types',compact('task_types','search'));
     }
 
     public function create()

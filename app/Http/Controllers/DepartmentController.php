@@ -13,11 +13,13 @@ class DepartmentController extends Controller
     {
         date_default_timezone_set('US/Central');
     }
-    public function index()
+    public function index(Request $request)
     {
-        // $departments = Department::orderBy('name','asc')->paginate(20);
-        $departments = Department::orderBy('name','asc')->get();
-        return view('admin_menu.departments',compact('departments'));
+        $search = $request->input('search');
+        $departments = Department::orderBy('name','asc')
+            ->search($search)
+            ->paginate(20);
+        return view('admin_menu.departments',compact('departments','search'));
     }
 
     public function create()
