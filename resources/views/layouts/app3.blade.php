@@ -36,12 +36,14 @@
                         </div>
                     </div>
                     <div id="@yield('table id')">
+                        @if(Request::url()!=route('tasks.history'))
                         <div style="position: relative; right: 0">
-                            <form method="get" action="@yield('search action')">
-                                <input type="text" id="search" name="search" onkeyup="search()" value="{{ isset($search) ? $search : ''}}" placeholder="Buscar...">
+                            <form method="get">
+                                <input type="text" id="search" name="search" value="{{ isset($search) ? $search : ''}}" placeholder="Buscar...">
                                 <input type="submit" style="display: none" />
                             </form>
                         </div>
+                        @endif
                         <div class="table-responsive" >
                             <table style="margin-bottom: 20px">
                                 <thead>
@@ -73,17 +75,5 @@
                 $("#wrapper").toggleClass("toggled");
             });
         </script>
-        {{-- <script>
-        var $rows = $('#table tr');
-        $('#search').keyup(function() {
-            var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
-            reg = RegExp(val, 'i'),
-            text;
-            $rows.show().filter(function() {
-                text = $(this).text().replace(/\s+/g, ' ');
-                return !reg.test(text);
-            }).hide();
-        });
-     </script> --}}
     </body>
 </html>

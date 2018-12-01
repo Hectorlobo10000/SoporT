@@ -26,7 +26,7 @@ Tareas pendientes
 		$counter = $counter +1;
 	?>
 	<td>{{ $counter }}</td>
-	<td>{{ '000'.$task->id }}</td>
+	<td>{{ $task->code }}</td>
 	<td>{{ $task->client->name }}</td>
 	<td>{{ $task->task_type->name }}</td>
 	<td><a href="{{ route('show.description',$task->id) }}">Mostrar</a></td>

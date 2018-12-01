@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Requests\UserUpdateProfileRequest;
@@ -25,7 +26,8 @@ class UserController extends Controller
     {
         // $users = User::orderBy('name','asc')->paginate(20);
         $search = $request->input('search');
-        $users = User::orderBy('name','asc')
+        $users = User::where('id','!=',Auth::id())
+            ->orderBy('name','asc')
             ->search($search)
             ->paginate(20);
         return view('admin_menu.users',compact('users','search'));

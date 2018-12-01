@@ -12,13 +12,13 @@
 @section('header')
 <tr>
 	<th width="10px">#</th>
-	<th>Código</th>
+	<th style="min-width: 170px;">Código</th>
 	<th>Técnico encargado</th>
 	<th>Teléfono</th>
 	<th>E-mail</th>
 	<th>Asunto</th>
 	<th>Descripción</th>
-	<th>Fecha de creación</th>
+	<th style="min-width: 87px">Fecha de creación</th>
 	<th>Estado</th>
 	<th width="50px">Chat</th>
 	<th width="80px">Verificar</th>
@@ -35,7 +35,7 @@
 ?>
 <tr>
 	<td>{{ $counter }}</td>
-	<td>{{ '000'.$task->id }}</td>
+	<td>{{ $task->code }}</td>
 	<td>
 		@if($task->technician->deleted_at===null && $task->technician->role_id==2)
 		{{ $task->technician->name }}
@@ -99,6 +99,9 @@
 </tr>
 @endif
 @endforeach
+@endsection
+@section('paginar')
+{{ $tasks->appends(['search'=>$search])->links() }}
 @endsection
 @section('btn add')
 <a class="btn-agregar btn btn-normal" href="{{ route('tasks.create') }}">Crear Solicitud</a>

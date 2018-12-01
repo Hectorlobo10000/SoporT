@@ -19,6 +19,7 @@ class CreateTasksTable extends Migration {
 			$table->integer('technician_id')->unsigned()->index('FK_tasks_users_idx');
 			$table->integer('client_id')->unsigned()->index('FK_tasks_users_idx1');
 			$table->integer('task_state_id')->unsigned()->index('FK_tasks_task_states_idx');
+			$table->string('code', 20);
 			$table->string('description', 9000)->nullable();
 			$table->string('annotation', 7300)->nullable();
 			$table->timestamps();

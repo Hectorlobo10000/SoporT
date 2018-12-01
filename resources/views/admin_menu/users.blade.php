@@ -32,7 +32,6 @@
 @section('content')
 <?php $counter = 0; ?>
 @foreach($users as $user)
-@if($user->id != Auth::id())
 <?php $counter = $counter +1; ?>
 <tr>
 	<td>{{ $counter }}</td>
@@ -54,7 +53,6 @@
 		</form>
 	</td>
 </tr>
-@endif
 @endforeach
 @endsection
 @section('paginar')

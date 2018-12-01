@@ -4,7 +4,9 @@
 @section('return')
 {{ route('show task annotation',$task->id) }}
 @endsection
-@section('header','Editar descripción de la solicitud 000'.$task->id)
+@section('header')
+<p>Editar descripción de la solicitud<br>{{ $task->id }}</p>
+@endsection
 @section('content')
 <form class="form form-lg" action="{{ route('update.description',['task'=>$task]) }}" method="POST">
 	{{ method_field('PATCH') }}

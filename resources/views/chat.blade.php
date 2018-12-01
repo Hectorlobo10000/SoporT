@@ -13,7 +13,15 @@
 @endif
 @endif
 @endsection
-@section('header','Tarea 000'.$task->id)
+@if(Auth::user()->role_id==2)
+@section('header')
+<p>Tarea<br>{{ $task->code }}</p>
+@endsection
+@else
+@section('header')
+<p>Solicitud<br>{{ $task->code }}</p>
+@endsection
+@endif
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/chat.css') }}">
 <div class="container container-chat">

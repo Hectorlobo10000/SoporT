@@ -7,7 +7,15 @@
 {{ route('tasks.index') }}
 @endif
 @endsection
-@section('header','Descripción de 000'.$task->id)
+@if(Auth::user()->role_id==2)
+@section('header')
+<p>Descripción de la tarea<br>{{ $task->code }}</p>
+@endsection
+@else
+@section('header')
+<p>Descripción de la solicitud<br>{{ $task->code }}</p>
+@endsection
+@endif
 @section('content')
 <div class="form form-lg">
     <textarea class="show-info" readonly style="height: 500px; width: 100%">{{ $task->description }}</textarea>

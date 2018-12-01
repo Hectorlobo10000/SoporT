@@ -3,7 +3,9 @@
 @section('return')
 {{ route('tasks.index') }}
 @endsection
-@section('header','Editar solicitud')
+@section('header')
+<p>Editar solicitud<br>{{ $task->code }}</p>
+@endsection
 @section('content')
 <form class="form form-lg" style="width: 100%" method="post" action="{{ route('tasks.update',$task->id) }}">
     @csrf

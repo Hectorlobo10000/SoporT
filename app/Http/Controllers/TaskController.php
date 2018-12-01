@@ -15,10 +15,13 @@ class TaskController extends Controller{
     {
         date_default_timezone_set('US/Central');
     }
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::all();
-        return view('client_menu.tasks',compact('tasks'));
+        $search=$request->input('search');
+        $tasks = Task::orderBy('id','asc')
+          ->search($search)
+          ->paginate(20);
+        return view('client_menu.tasks',compact('tasks','search'));
     }
 
 
@@ -43,9 +46,10 @@ class TaskController extends Controller{
           'technician_id'=>$request->input('technician_id'),
           'client_id'=>$request->input('client_id'),
           'task_state_id' => 1,
-          'description'=> $request->input('description')
+          'description'=> $request->input('description'),
+          'code'=>'temp_value'
         ]);
-
+        $task->code = $this->generateCode($task->technician_id,$task->description,$task->id);
         $task->save();
         $task_log = new TaskLog([
           'task_id' => $task->id,
@@ -114,29 +118,39 @@ class TaskController extends Controller{
             INNER JOIN users_x_task_types AS b ON (a.id = b.user_id)
             LEFT OUTER JOIN tasks AS c ON (a.id = c.technician_id) where(a.deleted_at IS NULL && a.place_id = $place_id && a.role_id = 2 && b.task_type_id = $task_type_id && ((c.task_state_id != 3 && c.task_state_id != 4)|| c.task_state_id IS NULL))
             GROUP BY a.id
-            ORDER BY cantidad ASC LIMIT 1;
+            ORDER BY cantidad ASC, RAND() LIMIT 1;
             "
         )
       );
       //busca el tecnico con menos tareas pendientes o iniciadas que pertenezca al mismo lugar que el cliente
-      if (!$data){
+      if (empty($data)){
         $data = DB::Select(
             DB::raw(
             "
             SELECT a.id,
                    count(c.task_state_id) AS cantidad
             FROM users AS a
-            INNER JOIN users_x_task_types AS b ON (a.id = b.user_id)
-            LEFT OUTER JOIN tasks AS c ON (a.id = c.technician_id) where(a.deleted_at IS NULL && a.place_id = $place_id && a.role_id = 2 && ((c.task_state_id != 3 && c.task_state_id != 4)|| c.task_state_id IS NULL))
+            LEFT OUTER JOIN tasks AS c ON (a.id = c.technician_id) where(a.deleted_at IS NULL && a.place_id = 1 && a.role_id = 2 && ((c.task_state_id != 3 && c.task_state_id != 4)|| c.task_state_id IS NULL))
             GROUP BY a.id
-            ORDER BY cantidad ASC LIMIT 1;
+            ORDER BY cantidad ASC, RAND() LIMIT 1;
+            "
+        )
+        );
+      }
+      //busca que pertenezca al mismo lugar que el cliente
+      if (empty($data)){
+        $data = DB::Select(
+            DB::raw(
+            "
+            SELECT id
+            FROM users where(deleted_at IS NULL && place_id = $place_id && a.role_id = 2))
+            ORDER BY RAND() LIMIT 1;
             "
         )
         );
       }
 
-
-        if(!$data){
+        if(empty($data)){
             return null;
         }
 
@@ -144,5 +158,20 @@ class TaskController extends Controller{
         $technician_id = $query['id'];
         return $technician_id;
     }
+
+    public function generateCode($param1,$param2,$param3){
+      $md5 = strtoupper(md5($param1 . $param2 . $param3));
+      $code[] = substr ($md5, 0, 5);
+      $code[] = substr ($md5, 5, 5);
+      $code[] = substr ($md5, 10, 5);
+
+      $membcode = implode ("-", $code);
+      if (strlen($membcode) == "17")
+      {
+        return ($membcode);
+      } else {
+        return (false);
+      }
+  }
 }
 ?>

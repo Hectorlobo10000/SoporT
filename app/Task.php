@@ -43,7 +43,24 @@ class Task extends Model
 		'description',
 		'annotation'
 	];
-protected $dates = ['deleted_at'];
+	protected $dates = ['deleted_at'];
+
+	public function scopeSearch($query, $search){
+    	return $query
+    		->where('code','like','%'.$search.'%')
+    		->orWhere('created_at','like','%'.$search.'%')
+    		->orWhereHas('technician',function($q) use($search){
+    			$q->where('name','like','%'.$search.'%')
+    				->orWhere('email','like','%'.$search.'%');
+    		})
+    		->orWhereHas('task_type',function($q)use($search){
+    			$q->where('name','like','%'.$search.'%');
+    		})
+    		->orWhereHas('task_state',function($q)use($search){
+    			$q->where('name','like','%'.$search.'%');
+    		});
+    }
+
 	public function task_state()
 	{
 		return $this->belongsTo(\App\TaskState::class);
