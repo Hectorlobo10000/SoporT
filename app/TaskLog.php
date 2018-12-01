@@ -28,7 +28,8 @@ class TaskLog extends Model
     		})
     		->orWhereHas('task_state',function($q) use($search){
     			$q->where('name','like','%'.$search.'%');
-    		});
+    		})
+    		->orWhere('created_at','like','%'.$search.'%');
     }
 
 	public function task()

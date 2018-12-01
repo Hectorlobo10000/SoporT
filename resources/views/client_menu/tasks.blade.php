@@ -8,17 +8,22 @@
 	<a href="{{ route('task_logs.index') }}">Historial</a>
 </li>
 @endsection
+<style type="text/css">
+	table{
+		font-size: 14px
+	}
+</style>
 @section('table id','table-lg')
 @section('header')
 <tr>
 	<th width="10px">#</th>
-	<th style="min-width: 170px;">Código</th>
+	<th style="min-width: 150px;">Código</th>
 	<th>Técnico encargado</th>
 	<th>Teléfono</th>
 	<th>E-mail</th>
 	<th>Asunto</th>
 	<th>Descripción</th>
-	<th style="min-width: 87px">Fecha de creación</th>
+	<th style="min-width: 80px">Fecha de creación</th>
 	<th>Estado</th>
 	<th width="50px">Chat</th>
 	<th width="80px">Verificar</th>

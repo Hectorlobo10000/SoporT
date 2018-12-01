@@ -7,8 +7,13 @@
 <li>
 	<a href="{{ route('task_logs.index') }}">Historial</a>
 </li>
+<style type="text/css">
+	table{
+		font-size: 14px
+	}
+</style>
 @endsection
-@section('table id','table-md')
+@section('table id','table-sm')
 @section('header')
 <tr>
 	<th>Historial de solicitudes</th>
