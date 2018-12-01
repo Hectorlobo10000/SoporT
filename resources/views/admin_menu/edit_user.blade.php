@@ -1,10 +1,10 @@
 @extends('layouts.app4')
 @section('title','Editar usuario')
 @section('return')
-@if(url()->previous() != route('usuarios.edit',$user->id))
-{{ url()->previous() }}
-@else
+@if(url()->previous() == route('usuarios.edit',$user->id) || url()->previous() == route('show.profile',Auth::id()))
 {{ route('home') }}
+@else
+{{ url()->previous() }}
 @endif
 @endsection
 @section('header','Editar usuario')

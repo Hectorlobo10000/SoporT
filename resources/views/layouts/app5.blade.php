@@ -1,18 +1,10 @@
 @extends('layouts.app4')
 @section('return')
-@if(url()==route('usuarios.show',$user->id))
-    @if(url()->previous() == route('usuarios.edit',$user->id) || url()->previous() == route('usuarios.show',$user->id))
+    @if(url()->previous() == route('usuarios.edit',$user->id) || url()->previous() == route('usuarios.show',$user->id) || url()->previous() == route('edit.profile',$user->id)|| url()->previous() == route('show.profile',$user->id))
     {{ route('home') }}
     @else
     {{ url()->previous() }}
     @endif
-@else
-    @if(url()->previous() == route('edit.profile',$user->id) || url()->previous() == route('show.profile',$user->id))
-    {{ route('home') }}
-    @else
-    {{ url()->previous() }}
-    @endif
-@endif
 @endsection
 @section('content')
 <div class="form form-md">
