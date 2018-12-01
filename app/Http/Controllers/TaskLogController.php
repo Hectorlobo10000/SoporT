@@ -11,15 +11,18 @@ class TaskLogController extends Controller
     {
         date_default_timezone_set('US/Central');
     }
-      public function history()
+      public function index(Request $request)
     {
-      $task_logs = TaskLog::orderBy('created_at','asc')->get();
-      return view('/client_menu/task_history',compact('task_logs'));
+      $search = $request->input('search');
+      $task_logs = TaskLog::orderBy('created_at','asc')
+        ->search($search)
+        ->paginate(20);
+      return view('/client_menu/task_logs',compact('task_logs','search'));
     }
 
     public function destroy(TaskLog $task_log)
     {
         $task_log->delete();
-        return redirect()->route('tasks.history');
+        return redirect()->route('task_logs.index');
     }
 }

@@ -14,6 +14,7 @@
 			<th width="10px">#</th>
 			<th>Código</th>
 			<th>Solicitante</th>
+			<th style="min-width: 170px">Correo del solicitante</th>
 			<th>Asunto</th>
 			<th>Descripción</th>
 			<th>Departamento</th>

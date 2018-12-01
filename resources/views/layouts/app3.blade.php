@@ -36,14 +36,12 @@
                         </div>
                     </div>
                     <div id="@yield('table id')">
-                        @if(Request::url()!=route('tasks.history'))
                         <div style="position: relative; right: 0">
                             <form method="get">
                                 <input type="text" id="search" name="search" value="{{ isset($search) ? $search : ''}}" placeholder="Buscar...">
                                 <input type="submit" style="display: none" />
                             </form>
                         </div>
-                        @endif
                         <div class="table-responsive" >
                             <table style="margin-bottom: 20px">
                                 <thead>

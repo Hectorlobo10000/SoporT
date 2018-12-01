@@ -5,7 +5,7 @@
 	<a href="{{ route('tasks.index') }}">Solicitudes</a>
 </li>
 <li>
-	<a href="{{ route('tasks.history') }}">Historial</a>
+	<a href="{{ route('task_logs.index') }}">Historial</a>
 </li>
 @endsection
 @section('table id','table-lg')

@@ -30,7 +30,7 @@
 		Route::post('/tareas/store','TaskController@store')->name('tasks.store');
 		Route::delete('/tareas/destroy/{task}','TaskController@destroy')->name('tasks.destroy');
 		Route::get('/tareas/create','TaskController@create')->name('tasks.create');
-		Route::get('/tareas/historial','TaskLogController@history')->name('tasks.history');
+		Route::get('/tareas/historial','TaskLogController@index')->name('task_logs.index');
 		Route::delete('/tareas/historial/destroy/{task_log}','TaskLogController@destroy')->name('task_logs.destroy');
 		Route::get('/chat/{task}','TaskMessageController@index')->name('chat.index');
 		Route::get('/editar-descripcion/{task}','TaskController@editDescription')->name('edit.description');

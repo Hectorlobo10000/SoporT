@@ -28,6 +28,7 @@ Tareas pendientes
 	<td>{{ $counter }}</td>
 	<td>{{ $task->code }}</td>
 	<td>{{ $task->client->name }}</td>
+	<td>{{ $task->client->email }}</td>
 	<td>{{ $task->task_type->name }}</td>
 	<td><a href="{{ route('show.description',$task->id) }}">Mostrar</a></td>
 	<td>{{ $task->client->place->domain }}</td>

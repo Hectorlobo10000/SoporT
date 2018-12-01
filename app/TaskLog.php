@@ -18,6 +18,19 @@ class TaskLog extends Model
 		'user_id'
 	];
 
+	public function scopeSearch($query, $search){
+    	return $query
+    		->whereHas('task',function($q) use($search){
+    			$q->where('code','like','%'.$search.'%');
+    		})
+    		->orWhereHas('user',function($q) use($search){
+    			$q->where('name','like','%'.$search.'%');
+    		})
+    		->orWhereHas('task_state',function($q) use($search){
+    			$q->where('name','like','%'.$search.'%');
+    		});
+    }
+
 	public function task()
 	{
 		return $this->belongsTo(\App\Task::class)->withTrashed();

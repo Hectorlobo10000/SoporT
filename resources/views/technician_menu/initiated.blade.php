@@ -11,10 +11,10 @@ Tareas iniciadas
 <?php $counter = 0 ; ?>
 @foreach($tasks as $task)
 @if(
-	$task->task_state_id===2
-	&& $task->deleted_at === null
-	&& $task->client->deleted_at===null
-	&& $task->client->role_id===3
+$task->task_state_id===2
+&& $task->deleted_at === null
+&& $task->client->deleted_at===null
+&& $task->client->role_id===3
 )
 @section('extra fields')
 <th>Anotación</th>
@@ -29,6 +29,7 @@ Tareas iniciadas
 	<td>{{ $counter }}</td>
 	<td>{{ $task->code }}</td>
 	<td>{{ $task->client->name }}</td>
+	<td>{{ $task->client->email }}</td>
 	<td>{{ $task->task_type->name }}</td>
 	<td><a href="{{ route('show.description',$task->id) }}">mostrar</a></td>
 	<td>{{ $task->client->place->domain }}</td>
