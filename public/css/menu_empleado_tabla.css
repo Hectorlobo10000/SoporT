@@ -20,7 +20,6 @@ table {
     border-collapse: collapse;
     border: 2px solid #DCDCDC;
     width: 100%;
-    font-size: 14px;
 }
 th {
     border: 2px  solid   #d3d3d3;
@@ -38,6 +37,27 @@ td{
 tr:nth-child(even) {background-color: #F0FFFF;}
 tr:nth-child(odd) {background-color: #FFFFFF;}
 
+#table-sm{
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 50%;
+  font-size: 18px;
+}
+#table-md{
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 70%;
+  font-size: 18px;
+}
+#table-lg{
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 95%;
+  font-size: 14px;
+}
 
 
 
