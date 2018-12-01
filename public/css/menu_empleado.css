@@ -65,24 +65,7 @@ body{
     color: white;
     text-decoration: none;
 }
-#table-sm{
-  margin-top: 30px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 50%;
-}
-#table-md{
-  margin-top: 30px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 70%;
-}
-#table-lg{
-  margin-top: 30px;
-  margin-right: auto;
-  margin-left: auto;
-  width: 95%;
-}
+
 .dropdown{
     position : absolute;
     top      : 24px;
