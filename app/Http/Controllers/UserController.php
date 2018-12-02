@@ -127,7 +127,11 @@ class UserController extends Controller
                 }
             }
         }
-        return redirect()->route('usuarios.index');
+        if(url()->previous() == route('usuarios.show',$id)){
+            return redirect()->route('usuarios.show',compact('user'));
+        }else{
+            return redirect()->route('usuarios.index');
+        }
     }
 
     public function edit($id)
@@ -182,7 +186,7 @@ class UserController extends Controller
             $user_deleted->save();
 
         }
-        return redirect()->route('usuarios.index');
+        return redirect()->route('show.profile',compact('id'));
     }
 
     public function destroy($id)
