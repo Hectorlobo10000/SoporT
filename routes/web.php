@@ -40,7 +40,8 @@
 
 	Route::group(['middleware'=>['check.boss.role','prevent-back-history']], function(){
 		//rutas del jefe
-		Route::get('/inicio-jefe','BossController@index')->name('boss index');
+		Route::get('/inicio-jefe/','BossController@index')->name('boss index');
+		Route::get('/inicio-jefe/tareas_x_dpto/pdf','BossController@showPDF')->name('boss.pdf');
 	});
 
 	Route::group(['middleware'=>['check.client_or_technician.role','prevent-back-history']], function(){

@@ -94,3 +94,20 @@ body{
 	position:relative;
 	top:1px;
 }
+
+.btn-pdf{
+	background-image: url('../images/pdf.png');
+  	background-size: 90%;
+  	background-repeat: no-repeat;
+  	background-position: center;
+ 	width: 50px;
+  	height: 50px;
+}
+.btn-pdf:active{
+  	background-size: 80%;
+  	border: 1px solid grey;
+}
+.btn-pdf:hover{
+  	background-size: 85%;
+  	border: 1px solid grey;
+}
