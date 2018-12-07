@@ -18,7 +18,7 @@ class TaskController extends Controller{
     public function index(Request $request)
     {
         $search=$request->input('search');
-        $tasks = Task::orderBy('id','asc')
+        $tasks = Task::orderBy('id','desc')
           ->search($search)
           ->paginate(20);
         return view('client_menu.tasks',compact('tasks','search'));
