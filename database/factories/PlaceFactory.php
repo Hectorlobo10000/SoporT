@@ -4,8 +4,8 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Place::class, function (Faker $faker) {
     return [
-        'domain' => $faker->word,
+        'domain' => $faker->state,
         'municipality' => $faker->city,
-        'address' => $faker->word,
+        'address' => $faker->streetAddress,
     ];
 });
