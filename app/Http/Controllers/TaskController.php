@@ -49,7 +49,7 @@ class TaskController extends Controller{
           'description'=> $request->input('description'),
           'code'=>'temp_value'
         ]);
-        $task->code = $this->generateCode($task->technician_id,$task->description,$task->id);
+        $task->code = $this->generateCode($task->technician_id,$task->description,$task->id,$task->created_at);
         $task->save();
         $task_log = new TaskLog([
           'task_id' => $task->id,
@@ -143,7 +143,7 @@ class TaskController extends Controller{
             DB::raw(
             "
             SELECT id
-            FROM users where(deleted_at IS NULL && place_id = $place_id && a.role_id = 2))
+            FROM users where(deleted_at IS NULL && place_id = $place_id && role_id = 2)
             ORDER BY RAND() LIMIT 1;
             "
         )
@@ -159,14 +159,15 @@ class TaskController extends Controller{
         return $technician_id;
     }
 
-    public function generateCode($param1,$param2,$param3){
-      $md5 = strtoupper(md5($param1 . $param2 . $param3));
-      $code[] = substr ($md5, 0, 5);
-      $code[] = substr ($md5, 5, 5);
-      $code[] = substr ($md5, 10, 5);
+    public function generateCode($param1,$param2,$param3,$param4){
 
-      $membcode = implode ("-", $code);
-      if (strlen($membcode) == "17")
+      $md5 = strtoupper(md5($param4 . $param3 . $param2 . $param1.rand(1,999999999).rand(-999999,9999999999)));
+      $code[] = substr ($md5, 0, 4);
+      $code[] = substr ($md5, 4, 4);
+      $code[] = substr ($md5, 20, 4);
+
+      $membcode = implode ("", $code);
+      if (strlen($membcode) == "12")
       {
         return ($membcode);
       } else {

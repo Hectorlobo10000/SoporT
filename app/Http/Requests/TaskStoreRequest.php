@@ -15,13 +15,16 @@ class TaskStoreRequest extends FormRequest
     {
         return [
                     'description'=>'required',
+                    'code'=>'unique:tasks,code'
                ];
     }
 
 
     public function messages()
     {
-        return ['description.required' => "El campo 'Descripción' es obligatorio",
-    ];
+        return [
+            'description.required' => "El campo 'Descripción' es obligatorio",
+            'code.unique' => 'Ha ocurrido un error. Intentelo mas tarde.'
+        ];
     }
 }
