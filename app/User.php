@@ -11,6 +11,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Department;
+use Laravel\Passport\HasApiTokens;
 /**
  * Class User
  *
@@ -37,6 +38,7 @@ class User extends Authenticatable
 {
 	use Notifiable;
 	use SoftDeletes;
+	use HasApiTokens;
 
 
 	protected $fillable = [
