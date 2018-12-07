@@ -29,7 +29,7 @@
 
 		@endif
 		@endforeach
-		<tr>
+		<tr style="font-size: 12px">
 			<td>Total de tareas: {{ $department->value }}</td>
 		</tr>
 	</table>

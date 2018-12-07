@@ -12,19 +12,19 @@ class TaskStatesTableSeeder extends Seeder
     public function run()
     {
         DB::table('task_states')->insert([
-            'name' => 'Pendiente'
+            'name' => 'pendiente'
         ]);
 
         DB::table('task_states')->insert([
-            'name' => 'Iniciada'
+            'name' => 'iniciada'
         ]);
 
         DB::table('task_states')->insert([
-            'name' => 'Finalizada'
+            'name' => 'finalizada'
         ]);
 
         DB::table('task_states')->insert([
-            'name' => 'Verificada'
+            'name' => 'verificada'
         ]);
     }
 }
