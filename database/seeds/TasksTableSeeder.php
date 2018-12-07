@@ -33,6 +33,7 @@ class TasksTableSeeder extends Seeder
                 'annotation' => 'none',
                 'code' => str_random(20),
                 'created_at' => date('Y-m-01').' '.'00:00:00',
+                'updated_at' => date('Y-m-01').' '.'00:00:00',
             ]);
             $ci = 0;
             $ti = 0;
