@@ -4,3 +4,10 @@ DB_PORT=3306
 DB_DATABASE=homestead
 DB_USERNAME=homestead
 DB_PASSWORD=secret
+
+DB_CONNECTION=mysql
+DB_HOST=www.db4free.net
+DB_PORT=3306
+DB_DATABASE=soport
+DB_USERNAME=soport
+DB_PASSWORD=soportse
