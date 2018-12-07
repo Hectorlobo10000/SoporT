@@ -11,6 +11,24 @@ class TaskTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\TaskType::class, 10)->create();
+        DB::table('task_types')->insert([
+            'name' => 'Monitor'
+        ]);
+
+        DB::table('task_types')->insert([
+            'name' => 'Impresora'
+        ]);
+
+        DB::table('task_types')->insert([
+            'name' => 'CPU'
+        ]);
+
+        DB::table('task_types')->insert([
+            'name' => 'Aire Acondicionado'
+        ]);
+
+        DB::table('task_types')->insert([
+            'name' => 'Internet'
+        ]);
     }
 }

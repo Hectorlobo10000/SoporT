@@ -11,6 +11,20 @@ class TaskStatesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\TaskState::class, 3)->create();
+        DB::table('task_states')->insert([
+            'name' => 'Pendiente'
+        ]);
+
+        DB::table('task_states')->insert([
+            'name' => 'Iniciada'
+        ]);
+
+        DB::table('task_states')->insert([
+            'name' => 'Finalizada'
+        ]);
+
+        DB::table('task_states')->insert([
+            'name' => 'Verificada'
+        ]);
     }
 }

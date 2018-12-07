@@ -11,6 +11,24 @@ class DepartmentsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Department::class, 10)->create();
+        DB::table('departments')->insert([
+            'name' => 'Soporte'
+        ]);
+        
+        DB::table('departments')->insert([
+            'name' => 'Ventas'
+        ]);
+
+        DB::table('departments')->insert([
+            'name' => 'Gerencia'
+        ]);
+
+        DB::table('departments')->insert([
+            'name' => 'Marketing'
+        ]);
+
+        DB::table('departments')->insert([
+            'name' => 'Contabilidad'
+        ]);
     }
 }
